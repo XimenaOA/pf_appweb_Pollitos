@@ -1,6 +1,6 @@
   // Función para mostrar la sección seleccionada y cambiar la imagen principal
   function mostrarSeccion(seccion) {
-    
+
     // Ocultar todas las secciones
     var secciones = document.querySelectorAll('.juego-contenido');
     secciones.forEach(function(sec) {
@@ -14,7 +14,7 @@
     var imagenBanner = document.getElementById("imagen-banner");
     switch (seccion) {
         case 'Valorant':
-            imagenBanner.src = "recursos/valorant.png";  // PONER IMAGEN QUE NO SE NOS OLVIDE
+            imagenBanner.src = "recursos/valorant.gif";  
             break;
         case 'Genshin':
             imagenBanner.src = "recursos/kinch.gif";   

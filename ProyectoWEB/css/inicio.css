@@ -81,9 +81,9 @@ nav ul li a:hover {
     justify-content: center;
     align-items: center;
     width: 100vw;  /* Ancho del 100% de la ventana */
-    height: 50vh;  /* Altura del 50% de la ventana */
+    height: 70vh;  /* Altura del 50% de la ventana */
     overflow: hidden;
-    background-color: #222; /* Fondo de la sección de la imagen */
+    background-color: #222; 
 }
 
 .imagenPrincipal img {
