@@ -20,7 +20,7 @@
             imagenBanner.src = "recursos/kinch.gif";   
             break;
         case 'LOL':
-            imagenBanner.src = "recursos/lol.png";      // PONER IMAGEN QUE NO SE NOS OLVIDE
+            imagenBanner.src = "recursos/lol.gif";      // PONER IMAGEN QUE NO SE NOS OLVIDE
             break;
         case 'Fortnite':
             imagenBanner.src = "recursos/fortnite.png"; // PONER IMAGEN QUE NO SE NOS OLVIDE
