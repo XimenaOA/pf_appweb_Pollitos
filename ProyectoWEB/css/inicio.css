@@ -6,33 +6,41 @@ body {
 }
 
 header {
-    background-color: #1a1a40;
-    padding: 20px;
-    text-align:left;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #333; 
 }
 
 header h1 {
     margin: 0;
-    color: #fff;
+    font-size: 24px; /* Ajusta el tamaño del logo*/
+    color: white;
+}
+
+nav {
+    margin: 0;
+    justify-content: center;
 }
 
 nav ul {
     list-style-type: none;
+    margin: 0;
     padding: 0;
-    display: flex;
-    justify-content: center;
-    background-color: #1a1a40;
+    display: flex; /* es para que los elementos esten en fila */
 }
 
 nav ul li {
-    margin: 0 15px;
+    margin-left: 20px; /* Espacio entre los elementos del menu */
 }
 
 nav ul li a {
     text-decoration: none;
-    color: #fff;
-    font-weight: bold;
+    color: white; 
+    font-size: 16px; 
 }
+
 
 nav ul li a:hover {
     color: #00aaff;
@@ -68,10 +76,13 @@ nav ul li a:hover {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: auto;
+    width: 100vw; /* Nota: Hace que el ancho ocupe el 100% de la ventana */
+    height: 100vh; /* NOTA: Hace que la altura ocupe el 100% de la ventana */
+    overflow: hidden; /* IMPORTNTE: Oculta cualquier parte que se desborde */
 }
 
 .imagenPrincipal img {
-    max-width: 100%;
-    height: auto;
+    width: 100%;
+    height: 100%;
+   object-fit: cover; /* ojo aqui; Asegura que la imagen se ajuste a su contenedor sin deformarse */
 }
