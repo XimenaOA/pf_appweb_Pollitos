@@ -11,31 +11,43 @@
         <h1>WiXDi Games</h1>
         <nav>
             <ul>
-                <li><a href="#" id="valorant">Valorant</a></li>
-                <li><a href="#" id="genshin">Genshin Impact</a></li>
-                <li><a href="#" id="league">League of Legends</a></li>
-                <li><a href="#" id="fortnite">Fortnite</a></li>
+                <li><a href="#" onclick="mostrarSeccion('Valorant')">Valorant</a></li>
+                <li><a href="#" onclick="mostrarSeccion('Genshin')">Genshin Impact</a></li>
+                <li><a href="#" onclick="mostrarSeccion('LOL')">League of Legends</a></li>
+                <li><a href="#" onclick="mostrarSeccion('Fortnite')">Fortnite</a></li>
             </ul>
         </nav>
     </header>
 
-    <div>
-        <section class="imagenPrincipal">
-            <img id="imagen-banner" src="recursos/descarga.gif" alt="kinich">
-        </section>
+    <!-- Imagen principal del banner -->
+    <div class="imagenPrincipal">
+        <img id="imagen-banner" src="recursos/kinch.gif" alt="imagen-principal">
     </div>
-    
-    <section class="contenido">
-        <article id="Genshin-contenido" class="juego-contenido">
-            <h2>Genshin Impact</h2>
-            <p>Genshin Impact (en chino, 原神; pinyin, Yuán Shén, en japonés: 原神, romanizado: Genshin) 
-                es un videojuego de rol de acción desarrollado por miHoYo, publicado por miHoYo en China continental 
-                y en todo el mundo por HoYoverse para las plataformas Android, iOS, Microsoft Windows, PlayStation 4 y PlayStation 5.
-                 Es un título gratuito monetizado mediante un sistema gacha, que recibe actualizaciones frecuentemente utilizando 
-                 el modelo de juego como servicio. Se lanzó el 28 de septiembre de 2020. Una versión para Xbox Series X/S se lanzará 
-                 el 20 de noviembre de 2024. También se lanzará una versión para Nintendo Switch, aunque no se ha anunciado una 
-                 ventana de lanzamiento</p>
-        </article>
+
+    <!-- Secciones de los juegos -->
+    <section id="Valorant" class="juego-contenido" style="display:none;">
+        <h2>Valorant</h2>
+        <p>Valorant es un videojuego de disparos en primera persona desarrollado por Riot Games.</p>
     </section>
+
+    <section id="Genshin" class="juego-contenido" style="display:none;">
+        <h2>Genshin Impact</h2>
+        <p>Genshin Impact es un videojuego de rol de acción desarrollado por miHoYo.</p>
+    </section>
+
+    <section id="LOL" class="juego-contenido" style="display:none;">
+        <h2>League of Legends</h2>
+        <p>League of Legends es un videojuego multijugador de arena de batalla en línea.</p>
+    </section>
+
+    <section id="Fortnite" class="juego-contenido" style="display:none;">
+        <h2>Fortnite</h2>
+        <p>Fortnite es un videojuego de supervivencia y construcción desarrollado por Epic Games.</p>
+    </section>
+
+
+
+     <!-- Aquí conectamos el archivo JS -->
+     <script src="js/script.js"></script>
 </body>
 </html>
