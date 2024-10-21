@@ -1,118 +1,162 @@
 body {
-    margin: 0;
     font-family: Arial, sans-serif;
-    background-color: #121212;
-    color: #fff;
+    margin: 0;
+    padding: 0;
+    background-color: #f5f5f5;
 }
 
 header {
+    background-color: white;
+    padding: 10px 20px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 10px 20px;
-    background-color: #333;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
-header h1 {
-    margin: 0;
-    font-size: 24px; /* Ajusta el tamaño del logo */
-    color: white;
-}
-
-nav {
-    margin: 0;
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+    color: #2a8457;
 }
 
 nav ul {
     list-style-type: none;
-    margin: 0;
-    padding: 0;
-    display: flex; /* Para que los elementos del menú estén en fila */
-    justify-content: center;
+    display: flex;
 }
 
 nav ul li {
-    margin-left: 20px; /* Espacio entre los elementos del menú */
+    margin-right: 20px;
 }
 
 nav ul li a {
     text-decoration: none;
-    color: white;
-    font-size: 16px;
-    padding: 10px 15px;
-    border-radius: 5px;
-    transition: background-color 0.3s ease, color 0.3s ease;
+    color: #333;
 }
 
-nav ul li a:hover {
-    background-color: #00aaff;
-    color: #fff;
+nav ul li a.active {
+    color: #0f3b13;
+    border-bottom: 2px solid #1c9358;
 }
 
-.contenido {
-    text-align: left;
-    padding: 50px 20px;
+.user-actions {
+    display: flex;
 }
 
-.juego-contenido {
-    display: none; /* Oculta todas las secciones al inicio */
-    text-align: center;
-    margin-top: 20px;
+.icon-button {
+    margin-left: 15px;
+    text-decoration: none;
+    font-size: 20px;
+}
+
+main {
+    display: flex;
     padding: 20px;
 }
 
-.juego-contenido h2 {
-    margin: 20px 0 10px;
-    color: #fff;
-    font-size: 28px;
+.feed {
+    flex: 3;
+    margin-right: 20px;
 }
 
-.juego-contenido p {
-    max-width: 800px;
-    margin: 0 auto;
-    color: #ccc;
-    font-size: 18px;
-    line-height: 1.6;
-}
-
-/* Estilo para la imagen principal */
-.imagenPrincipal {
+.post-creator {
+    background-color: white;
+    padding: 15px;
+    border-radius: 8px;
     display: flex;
-    justify-content: center;
     align-items: center;
-    width: 100vw;  /* Ancho del 100% de la ventana */
-    height: 70vh;  /* Altura del 50% de la ventana */
-    overflow: hidden;
-    background-color: #222; 
+    margin-bottom: 20px;
 }
 
-.imagenPrincipal img {
+.avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.post-creator input {
+    flex-grow: 1;
+    border: none;
+    padding: 10px;
+    background-color: #f0f0f0;
+    border-radius: 20px;
+    outline: none;
+}
+
+.post-button {
+    background: none;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+    margin-left: 10px;
+}
+
+.posts {
+    background-color: white;
+    border-radius: 8px;
+    padding: 15px;
+}
+
+/* Estilos para el post */
+.post {
+    background-color: white;
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+.post-header {
+    display: flex;
+    align-items: center;
+}
+
+.post-header .avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.post-header .username {
+    font-weight: bold;
+    color: #333;
+}
+
+.post-content {
+    margin-top: 10px;
+}
+
+.post-content p {
+    font-size: 16px;
+    color: #333;
+}
+
+.post-content .post-image {
     width: 100%;
-    height: 100%;
-    object-fit: cover; /* Asegura que la imagen se ajuste al contenedor sin deformarse */
-    border-bottom: 3px solid #00aaff;
+    border-radius: 8px;
+    margin-top: 10px;
 }
 
-/* Sección adicional para mejorar el responsive */
-@media (max-width: 768px) {
-    nav ul {
-        flex-direction: column;
-    }
+.communities {
+    flex: 1;
+    background-color: white;
+    border-radius: 8px;
+    padding: 15px;
+}
 
-    nav ul li {
-        margin-left: 0;
-        margin-bottom: 10px;
-    }
+.community-list {
+    display: flex;
+    flex-wrap: wrap;
+}
 
-    .imagenPrincipal {
-        height: 30vh; /* Reduce el tamaño de la imagen principal en pantallas pequeñas */
-    }
+.community-item {
+    width: 50%;
+    padding: 10px;
+    text-align: center;
+}
 
-    .juego-contenido h2 {
-        font-size: 24px;
-    }
-
-    .juego-contenido p {
-        font-size: 16px;
-    }
+.community-item img {
+    width: 100%;
+    border-radius: 8px;
 }

@@ -3,51 +3,62 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Videojuegos</title>
+    <title>WiXDi Games - Comunidad</title>
     <link rel="stylesheet" href="css/inicio.css">
 </head>
 <body>
     <header>
-        <h1>WiXDi Games</h1>
+        <div class="logo">WiXDi Games</div>
         <nav>
             <ul>
-                <li><a href="#" onclick="mostrarSeccion('Valorant')">Valorant</a></li>
-                <li><a href="#" onclick="mostrarSeccion('Genshin')">Genshin Impact</a></li>
-                <li><a href="#" onclick="mostrarSeccion('LOL')">League of Legends</a></li>
-                <li><a href="#" onclick="mostrarSeccion('Fortnite')">Fortnite</a></li>
+                <li><a href="#" class="active">Feed</a></li> <!--Aqui se puso el FEED ya que pues las redes tenen su feed principal no-->
+                <li><a href="#">Genshin Impact</a></li>
+                <li><a href="#">Valorant</a></li>
+                <li><a href="#">League Of Legends</a></li>
+                <li><a href="#">Overwatch</a></li>
             </ul>
         </nav>
+        <div class="user-actions">
+            <!--Puse emojis para dimsular los iconos xd-->
+            <a href="#" class="icon-button search">🔍</a>
+            <a href="#" class="icon-button notifications">🔔</a>
+            <a href="#" class="icon-button profile">👤</a>
+            <a href="#" class="icon-button settings">⚙️</a>
+        </div>
     </header>
 
-    <!-- Imagen principal del banner -->
-    <div class="imagenPrincipal">
-        <img id="imagen-banner" src="recursos/kinch.gif" alt="imagen-principal">
-    </div>
+    <main>
+        <section class="feed">
+            <div class="post-creator">
+                <img src="recursos/kinich genshin impact icon pfp.jpg" alt="User Avatar" class="avatar">
+                <input type="text" placeholder="Escribe una publicación en WiXDi Games">
+                <button class="post-button">📷</button>
+                <button class="post-button">🎥</button>
+            </div>
 
-    <!-- Secciones de los juegos -->
-    <section id="Valorant" class="juego-contenido" style="display:none;">
-        <h2>Valorant</h2>
-        <p>Valorant es un videojuego de disparos en primera persona desarrollado por Riot Games.</p>
-    </section>
+            <div class="posts">
+                
+                <div class="post">
+                    <div class="post-header">
+                        <img src="recursos/kinich genshin impact icon pfp.jpg" alt="Avatar" class="avatar">
+                        <span class="username">Usuario123</span>
+                    </div>
+                    <div class="post-content">
+                        <p>Primer post: ¡Hola a todos!</p>
+                        <img src="recursos/kinichUlti.gif" alt="Imagen del post" class="post-image">
+                    </div>
+                </div>
+            </div>
+        </section>
 
-    <section id="Genshin" class="juego-contenido" style="display:none;">
-        <h2>Genshin Impact</h2>
-        <p>Genshin Impact es un videojuego de rol de acción desarrollado por miHoYo.</p>
-    </section>
+        <aside class="communities">
+            <h2>Mis comunidades</h2>
+            <div class="community-list">
+                <!-- Las comunidades se haran dinamicas con JavaScript -->
+            </div>
+        </aside>
+    </main>
 
-    <section id="LOL" class="juego-contenido" style="display:none;">
-        <h2>League of Legends</h2>
-        <p>League of Legends es un videojuego multijugador de arena de batalla en línea.</p>
-    </section>
-
-    <section id="Fortnite" class="juego-contenido" style="display:none;">
-        <h2>Fortnite</h2>
-        <p>Fortnite es un videojuego de supervivencia y construcción desarrollado por Epic Games.</p>
-    </section>
-
-
-
-     <!-- Aquí conectamos el archivo JS -->
-     <script src="js/script.js"></script>
+    <script src="js/script.js"></script>
 </body>
 </html>
