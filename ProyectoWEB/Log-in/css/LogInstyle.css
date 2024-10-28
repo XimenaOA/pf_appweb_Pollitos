@@ -30,13 +30,13 @@ main{
 
 .caja__trasera{
     width: 100%;
-    padding: 10px 20px;
+    padding: 200px 10px;
     display: flex;
     justify-content: center;
     -webkit-backdrop-filter: blur(10px);
     backdrop-filter: blur(10px);
     background-color: rgba(10, 46, 81, 0.437);
-
+    border-radius: 20px;
 }
 
 .caja__trasera div{
@@ -86,7 +86,7 @@ main{
     width: 100%;
     max-width: 380px;
     position: relative;
-    top: -185px;
+    top: -385px;
     left: 10px;
 
     /*La transicion va despues del codigo JS*/
