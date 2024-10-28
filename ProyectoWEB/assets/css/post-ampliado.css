@@ -192,3 +192,8 @@ main {
     border-radius: 20px;
     cursor: pointer;
 }
+
+                .comment-creator input:focus {
+                    background-color: #e0f7e0;
+                    box-shadow: 0 0 5px #2a8457;
+                }

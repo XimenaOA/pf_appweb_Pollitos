@@ -45,39 +45,32 @@
 
             <div class="comments-section">
                 <h3>Comentarios</h3>
-                <div class="comment">
-                    <img src="assets/recursos/kinich genshin impact icon pfp.jpg" alt="Avatar" class="avatar">
-                    <div class="comment-body">
-                        <span class="comment-username">Amigo123</span>
-                        <p>A mi no me salio basta 😞.</p>
+                <div class="comments-list">
+                    <div class="comment">
+                        <img src="assets/recursos/kinich genshin impact icon pfp.jpg" alt="Avatar" class="avatar">
+                        <div class="comment-body">
+                            <span class="comment-username">Amigo123</span>
+                            <p>A mi no me salio basta 😞.</p>
+                        </div>
                     </div>
-                </div>
-
-                <div class="comment">
-                    <img src="assets/recursos/kinich genshin impact icon pfp.jpg" alt="Avatar" class="avatar">
-                    <div class="comment-body">
-                        <span class="comment-username">Usuario456</span>
-                        <p>¡A mi tambien me salio!</p>
-                    </div>
-                </div>
-
-                <div class="comment">
-                    <img src="assets/recursos/kinich genshin impact icon pfp.jpg" alt="Avatar" class="avatar">
-                    <div class="comment-body">
-                        <span class="comment-username">GamerCool</span>
-                        <p>Kinch mi patron.</p>
+                    <div class="comment">
+                        <img src="assets/recursos/kinich genshin impact icon pfp.jpg" alt="Avatar" class="avatar">
+                        <div class="comment-body">
+                            <span class="comment-username">Usuario456</span>
+                            <p>¡A mi tambien me salio!</p>
+                        </div>
                     </div>
                 </div>
             </div>
 
             <div class="comment-creator">
                 <img src="assets/recursos/kinich genshin impact icon pfp.jpg" alt="User Avatar" class="avatar">
-                <input type="text" placeholder="Escribe un comentario...">
-                <button class="comment-button">Enviar</button>
+                <input type="text" id="commentInput" placeholder="Escribe un comentario...">
+                <button class="comment-button" onclick="addComment()">Enviar</button>
             </div>
         </section>
     </main>
 
-    <script src="assets/js/script.js"></script>
+    <script src="assets/js/posts.js"></script>
 </body>
 </html>

@@ -1,35 +1,42 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WiXDi Games - Comunidad</title>
-    <link rel="stylesheet" href="assets/css/inicio.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Valorant</title>
+  <link rel="stylesheet" href="assets/css/ValorantCSS.css">
 </head>
 <body>
-
-  <!-- Top Navigation Header -->
-  <header>
-    <div class="logo">WiXDi Games</div>
-    <nav>
-      <ul>
-        <li><a href="#" class="active">Feed</a></li>
-        <li><a href="#">Genshin Impact</a></li>
-        <li><a href="#">Valorant</a></li>
-        <li><a href="#">League Of Legends</a></li>
-        <li><a href="#">Overwatch</a></li>
-      </ul>
-    </nav>
-    <div class="user-actions">
-      <a href="#" class="icon-button search">🔍</a>
-      <a href="#" class="icon-button notifications">🔔</a>
-      <a href="#" class="icon-button profile">👤</a>
-      <a href="#" class="icon-button settings">⚙️</a>
-    </div>
-  </header>
+    <header>
+        <div class="logo">WiXDi Games</div>
+        <nav>
+          <ul>
+            <li><a href="#" class="active">Feed</a></li>
+            <li><a href="#">Genshin Impact</a></li>
+            <li><a href="#">Valorant</a></li>
+            <li><a href="#">League Of Legends</a></li>
+            <li><a href="#">Overwatch</a></li>
+          </ul>
+        </nav>
+        <div class="user-actions">
+          <a href="#" class="icon-button search">🔍</a>
+          <a href="#" class="icon-button notifications">🔔</a>
+          <a href="#" class="icon-button profile">👤</a>
+          <a href="#" class="icon-button settings">⚙️</a>
+        </div>
+      </header>
 
   <div class="container">
-    <!-- Main Valorant Section -->
+    <!-- Encabezado -->
+    <header class="header">
+
+          <!-- AQUI IRIA EL BANNER DEL VALORANT -->
+
+        <h1 class="title">Valorant</h1>
+      </div>
+    </header>
+
+    <!-- Sección de pestañas -->
     <div class="tabs">
       <ul class="tabs-list">
         <li class="tab-item active" data-tab="feed">
@@ -46,9 +53,9 @@
         </li>
       </ul>
 
-      <!-- Feed Tab Content -->
+      <!-- Contenido de la pestaña Feed -->
       <div class="tab-content active" id="feed">
-        <!-- Create Post Bar -->
+        <!-- Barra para crear publicación -->
         <div class="create-post">
           <img src="user-avatar.png" alt="User Avatar" class="avatar">
           <input type="text" placeholder="Escribe una publicación en WIXDI Games" class="post-input">
@@ -56,7 +63,7 @@
           <button class="icon-button">✍️</button>
         </div>
 
-        <!-- Posts List -->
+        <!-- Lista de publicaciones -->
         <div class="posts">
           <div class="post">
             <div class="post-header">
@@ -84,20 +91,7 @@
         </div>
       </div>
 
-      <!-- Matches Tab Content -->
-      <div class="tab-content" id="matches">
-        <p class="text-center">Historial de partidas no disponible</p>
-      </div>
-
-      <!-- Teams Tab Content -->
-      <div class="tab-content" id="teams">
-        <p class="text-center">Encuentra equipos o crea el tuyo propio</p>
-      </div>
-
-      <!-- Tournaments Tab Content -->
-      <div class="tab-content" id="tournaments">
-        <p class="text-center">Próximamente torneos disponibles</p>
-      </div>
+      
     </div>
   </div>
 

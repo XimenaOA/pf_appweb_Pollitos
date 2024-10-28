@@ -1,0 +1,171 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f5f5f5;
+}
+
+header {
+    background-color: white;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+    color: #2a8457;
+}
+
+nav ul {
+    list-style-type: none;
+    display: flex;
+}
+
+nav ul li {
+    margin-right: 20px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #333;
+}
+
+nav ul li a.active {
+    color: #0f3b13;
+    border-bottom: 2px solid #1c9358;
+}
+
+/* Contenedor principal */
+.container {
+    padding: 20px;
+}
+
+
+
+.valorant-logo {
+    width: 50px; /* Ajusta el tamaño según sea necesario */
+}
+
+.title {
+    font-size: 24px;
+    color: #2a8457;
+}
+
+
+/* Pestañas */
+.tabs {
+    margin-top: 20px;
+}
+
+.tabs-list {
+    list-style-type: none;
+    display: flex;
+    padding: 0;
+}
+
+.tab-item {
+    margin-right: 20px;
+    cursor: pointer;
+    padding: 10px;
+    background-color: #f0f0f0;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.tab-item.active {
+    background-color: #2a8457;
+    color: white;
+}
+
+.tab-content {
+    margin-top: 20px;
+}
+
+/* Crear publicación */
+.create-post {
+    display: flex;
+    align-items: center;
+    background-color: white;
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.post-input {
+    flex-grow: 1;
+    border: none;
+    padding: 10px;
+    background-color: #f0f0f0;
+    border-radius: 20px;
+    outline: none;
+}
+
+.icon-button {
+    background: none;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+    margin-left: 10px;
+}
+
+/* Publicaciones */
+.posts {
+    background-color: white;
+    border-radius: 8px;
+    padding: 15px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.post {
+    background-color: white;
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 20px; /* Espacio entre publicaciones */
+    border: 1px solid #e0e0e0; /* Borde ligero para separar las publicaciones */
+    transition: box-shadow 0.3s; /* Transición suave al pasar el ratón */
+}
+
+/* Efecto al pasar el ratón sobre cada publicación */
+.post:hover {
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Aumentar sombra en hover */
+}
+
+/* Restante del estilo */
+.post-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.post-author {
+    font-weight: bold;
+    color: #333;
+}
+
+.post-timestamp {
+    color: gray;
+    font-size: 12px;
+}
+
+.post-content {
+    margin-top: 10px;
+}
+
+.post-content p {
+    font-size: 16px;
+    color: #333;
+}
+/* Estilos adicionales */
+.text-center {
+    text-align: center;
+}
+
+                    .create-post input:focus {
+                        background-color: #e0f7e0;
+                        box-shadow: 0 0 5px #2a8457;
+                    }

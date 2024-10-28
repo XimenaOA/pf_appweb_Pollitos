@@ -190,3 +190,17 @@ main {
     font-size: 14px;
     color: gray;
 }
+
+
+                                    
+                                                .post-creator input:focus {
+                                                    background-color: #e0f7e0;
+                                                    box-shadow: 0 0 5px #2a8457;
+                                                }
+
+
+                                
+.profile-card:hover, .Amistades-lista ul li:hover {
+    transform: translateY(-3px);
+    transition: 0.3s ease;
+}
