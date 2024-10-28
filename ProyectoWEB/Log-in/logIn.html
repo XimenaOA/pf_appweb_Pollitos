@@ -1,15 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Login y Registro</title>
 
-    <link
-        href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
-        rel="stylesheet" />
-
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="css/LogInstyle.css" />
 </head>
 
@@ -32,20 +28,36 @@
             <!--Formulario de Login y registro-->
             <div class="contenedor__login-register">
                 <!--Login-->
-                <form action="" class="formulario__login">
+                <form action="login.php" method="post" class="formulario__login">
                     <h2>Iniciar Sesión</h2>
-                    <input type="text" name="usuario" placeholder="Usuario"  />
+                    <input type="text" name="usuario" placeholder="Correo Electrónico" required />
                     <br />
-                    <input type="password" name="contrasena" placeholder="Contraseña"  />
+                    <input type="password" name="contrasena" placeholder="Contraseña" required />
                     <br />
                     <button type="submit">Entrar</button>
                 </form>
 
                 <!--Registro-->
-                <form action="" class="formulario__register">
-                    <h2>Regístrarse</h2>
-                    <input type="text" name="usuario" placeholder="Usuario"  /><br />
-                    <input type="password" name="contrasena" placeholder="Contraseña"  /><br />
+                <form id="formularioRegistro" class="formulario__register" enctype="multipart/form-data">
+                    <h2>Regístrate</h2>
+                    <!-- Contenedor de alerta para mensajes de registro -->
+                    <div id="registro_alerta" style="display: none; text-align: center; font-weight: bold; margin-bottom: 20px;"></div>
+
+                    <input type="text" name="nombreCompleto" placeholder="Nombre Completo" required /><br />
+                    <input type="email" name="correo" placeholder="Correo Electrónico" required /><br />
+                    <input type="password" name="contrasena" placeholder="Contraseña" required /><br />
+                    <input type="tel" name="telefono" placeholder="Teléfono" /><br />
+                    <label for="avatar">Avatar:</label>
+                    <input type="file" name="avatar" id="avatar" /><br />
+                    <input type="text" name="ciudad" placeholder="Ciudad" /><br />
+                    <label for="fechaNacimiento">Fecha de Nacimiento:</label>
+                    <input type="date" name="fechaNacimiento" id="fechaNacimiento" /><br />
+                    <label for="genero">Género:</label>
+                    <select name="genero" id="genero">
+                        <option value="masculino">Masculino</option>
+                        <option value="femenino">Femenino</option>
+                        <option value="otro">Otro</option>
+                    </select><br />
                     <button type="submit">Registrarse</button>
                 </form>
             </div>
@@ -53,6 +65,35 @@
     </main>
 
     <script src="js/LogIn.js"></script>
-</body>
+    <script>
+        // Manejador de envío del formulario de registro
+        document.getElementById("formularioRegistro").addEventListener("submit", function(event) {
+            event.preventDefault();
+            let formData = new FormData(this);
 
+            fetch("register.php", {
+                method: "POST",
+                body: formData
+            })
+            .then(response => response.text())
+            .then(data => {
+                const alerta = document.getElementById("registro_alerta");
+                alerta.style.display = "block";
+                if (data.includes("Registro exitoso")) {
+                    alerta.style.color = "green";
+                    alerta.textContent = data;
+                } else {
+                    alerta.style.color = "red";
+                    alerta.textContent = "Error al registrar: " + data;
+                }
+            })
+            .catch(error => {
+                const alerta = document.getElementById("registro_alerta");
+                alerta.style.display = "block";
+                alerta.style.color = "red";
+                alerta.textContent = "Error de red: " + error;
+            });
+        });
+    </script>
+</body>
 </html>

@@ -58,6 +58,35 @@ function register() {
     }
 }
 
+document.getElementById("formularioRegistro").addEventListener("submit", function(event) {
+    event.preventDefault();
+    let formData = new FormData(this);
+
+    fetch("register.php", {
+        method: "POST",
+        body: formData
+    })
+    .then(response => response.text())
+    .then(data => {
+        const alerta = document.getElementById("registro_alerta");
+        alerta.style.display = "block";
+        if (data.includes("Registro exitoso")) {
+            alerta.style.color = "green";
+            alerta.textContent = data;
+        } else {
+            alerta.style.color = "red";
+            alerta.textContent = "Error al registrar: " + data;
+        }
+    })
+    .catch(error => {
+        const alerta = document.getElementById("registro_alerta");
+        alerta.style.display = "block";
+        alerta.style.color = "red";
+        alerta.textContent = "Error de red: " + error;
+    });
+});
+
+
 // Agregar evento al boton Entrar del formulario de inicio de sesion
 document.querySelector(".formulario__login button").addEventListener("click", function(event) {
     event.preventDefault(); // Evita el envio
