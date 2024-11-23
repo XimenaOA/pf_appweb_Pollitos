@@ -45,7 +45,7 @@
                 </form>
 
                 <!--Registro enctype="multipart/form-data-->
-                <form action="Registrar_Servlet" class="formulario__register">
+                <form action="${pageContext.request.contextPath}/Registrar_Servlet" class="formulario__register">
                     <h2>Regístrate</h2>
                     <!-- Contenedor de alerta para mensajes de registro -->
                     <div id="registro_alerta" style="display: none; text-align: center; font-weight: bold; margin-bottom: 20px;"></div>

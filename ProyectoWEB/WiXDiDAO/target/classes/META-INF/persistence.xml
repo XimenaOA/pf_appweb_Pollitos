@@ -7,7 +7,9 @@
     <class>dominio.Municipio</class>
     <class>dominio.Post</class>
     <class>dominio.Comentario</class>
-    <properties>
+    <poperty name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/comunidad?zeroDateTimeBehavior=CONVERT_TO_NULL"/>
+      <property name="javax.persistence.jdbc.user" value="root"/>
+      <propertroperties>
       <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/comunidad?zeroDateTimeBehavior=CONVERT_TO_NULL"/>
       <property name="javax.persistence.jdbc.user" value="root"/>
       <property name="javax.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver"/>

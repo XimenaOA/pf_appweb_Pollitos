@@ -1,3 +1,4 @@
+Exception\ExceptionController.class
 factory\FactoryObjects.class
 control\IFachada.class
 control\Fachada.class
