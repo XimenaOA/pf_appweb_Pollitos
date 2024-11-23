@@ -1,0 +1,17 @@
+127.0.0.1 - - [23/Nov/2024:03:59:38 -0700] "HEAD /netbeans-tomcat-status-test HTTP/1.1" 404 -
+127.0.0.1 - - [23/Nov/2024:03:59:38 -0700] "GET /manager/text/ HTTP/1.1" 401 2562
+127.0.0.1 - root [23/Nov/2024:03:59:40 -0700] "GET /manager/text/ HTTP/1.1" 200 44
+127.0.0.1 - - [23/Nov/2024:03:59:40 -0700] "HEAD /netbeans-tomcat-status-test HTTP/1.1" 404 -
+127.0.0.1 - root [23/Nov/2024:03:59:40 -0700] "GET /manager/text/ HTTP/1.1" 200 44
+127.0.0.1 - - [23/Nov/2024:03:59:40 -0700] "HEAD /netbeans-tomcat-status-test HTTP/1.1" 404 -
+127.0.0.1 - root [23/Nov/2024:03:59:40 -0700] "GET /manager/text/ HTTP/1.1" 200 44
+127.0.0.1 - - [23/Nov/2024:03:59:40 -0700] "HEAD /netbeans-tomcat-status-test HTTP/1.1" 404 -
+127.0.0.1 - root [23/Nov/2024:03:59:40 -0700] "GET /manager/text/ HTTP/1.1" 200 44
+127.0.0.1 - root [23/Nov/2024:03:59:40 -0700] "GET /manager/text/list HTTP/1.1" 200 209
+127.0.0.1 - root [23/Nov/2024:03:59:40 -0700] "GET /manager/text/list HTTP/1.1" 200 209
+127.0.0.1 - root [23/Nov/2024:03:59:41 -0700] "GET /manager/text/deploy?config=file%3A%2FC%3A%2FUsers%2Fhaloa%2FAppData%2FLocal%2FTemp%2Fcontext11412506790006000626.xml&path=/WiXDi_WebApplication HTTP/1.1" 200 91
+127.0.0.1 - root [23/Nov/2024:03:59:41 -0700] "GET /manager/text/start?path=/WiXDi_WebApplication HTTP/1.1" 200 90
+0:0:0:0:0:0:0:1 - - [23/Nov/2024:03:59:42 -0700] "GET /WiXDi_WebApplication/JSP/registrer.jsp HTTP/1.1" 200 3817
+0:0:0:0:0:0:0:1 - - [23/Nov/2024:03:59:42 -0700] "GET /WiXDi_WebApplication/JSP/JS/LogIn.js HTTP/1.1" 404 735
+0:0:0:0:0:0:0:1 - - [23/Nov/2024:03:59:42 -0700] "GET /CSS/LogInstyle.css HTTP/1.1" 404 709
+0:0:0:0:0:0:0:1 - - [23/Nov/2024:03:59:55 -0700] "GET /WiXDi_WebApplication/Registrar_Servlet?nombre=a&apellidoPaterno=a&apellidoMaterno=a&correo=a%40gmail.com&contrasena=a&telefono=1&avatar=&municipio=a&estado=a&fechaNacimiento=2024-11-03&genero=masculino HTTP/1.1" 500 3494
