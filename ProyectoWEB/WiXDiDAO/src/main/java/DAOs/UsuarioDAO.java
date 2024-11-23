@@ -80,22 +80,6 @@ public class UsuarioDAO implements IUsuarioDAO{
     }
 
     @Override
-    public void agregarEstado(Estado estado, Usuario usuario) {
-        EntityTransaction transaction = em.getTransaction();
-        try {
-            transaction.begin();
-            usuario.setEstado(estado); // O cualquier otra lógica para asociar el estado al usuario
-            em.merge(usuario);
-            transaction.commit();
-        } catch (RuntimeException e) {
-            if (transaction.isActive()) {
-                transaction.rollback();
-            }
-            throw e; // Lanza la excepción para manejarla en otro lugar
-        }
-    }
-
-    @Override
     public List<Usuario> consultarUsuarios() {
         List<Usuario> usuarios = new ArrayList<>();
         try {

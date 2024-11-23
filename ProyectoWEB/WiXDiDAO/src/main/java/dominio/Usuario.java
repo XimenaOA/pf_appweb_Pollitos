@@ -5,6 +5,8 @@
 package dominio;
 
 import java.util.Calendar;
+import java.util.Date;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -28,7 +30,7 @@ public class Usuario {
     private int idUsuario;
 
     @Column(nullable = false, length = 50)
-    private String nombres;
+    private String nombre;
 
     @Column(nullable = false, length = 50)
     private String apellidoPaterno;
@@ -48,11 +50,8 @@ public class Usuario {
     @Column(length = 255)
     private String urlAvatar;
 
-    @Column(length = 255)
-    private String ciudad;
-
     @Temporal(TemporalType.DATE)
-    private Calendar fechaNacimiento;
+    private Date fechaNacimiento;
 
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
@@ -62,9 +61,31 @@ public class Usuario {
     @Column(nullable = false)
     private Rol rol;
 
-    @ManyToOne
-    @JoinColumn(name = "id_estado", foreignKey = @ForeignKey(name = "fk_estado"))
-    private Estado estado;
+    @ManyToOne(cascade = CascadeType.PERSIST)
+    @JoinColumn(name = "idMunicipio", nullable = false)
+    private Municipio municipio;
+
+    public Usuario(String nombre, String apellidoPaterno, String apellidoMaterno, String correo, String contrasenia, String telefono, String urlAvatar, Date fechaNacimiento, Genero genero, Rol rol, Municipio municipio) {
+        this.nombre = nombre;
+        this.apellidoPaterno = apellidoPaterno;
+        this.apellidoMaterno = apellidoMaterno;
+        this.correo = correo;
+        this.contrasenia = contrasenia;
+        this.telefono = telefono;
+        this.urlAvatar = urlAvatar;
+        this.fechaNacimiento = fechaNacimiento;
+        this.genero = genero;
+        this.rol = rol;
+        this.municipio = municipio;
+    }
+
+    public Municipio getMunicipio() {
+        return municipio;
+    }
+
+    public void setMunicipio(Municipio municipio) {
+        this.municipio = municipio;
+    }
 
     public enum Genero {
         MASCULINO, FEMENINO, NO_ESPECIFICADO
@@ -83,11 +104,11 @@ public class Usuario {
     }
 
     public String getNombres() {
-        return nombres;
+        return nombre;
     }
 
     public void setNombres(String nombres) {
-        this.nombres = nombres;
+        this.nombre = nombres;
     }
 
     public String getApellidoPaterno() {
@@ -138,19 +159,11 @@ public class Usuario {
         this.urlAvatar = urlAvatar;
     }
 
-    public String getCiudad() {
-        return ciudad;
-    }
-
-    public void setCiudad(String ciudad) {
-        this.ciudad = ciudad;
-    }
-
-    public Calendar getFechaNacimiento() {
+    public Date getFechaNacimiento() {
         return fechaNacimiento;
     }
 
-    public void setFechaNacimiento(Calendar fechaNacimiento) {
+    public void setFechaNacimiento(Date fechaNacimiento) {
         this.fechaNacimiento = fechaNacimiento;
     }
 
@@ -169,16 +182,4 @@ public class Usuario {
     public void setRol(Rol rol) {
         this.rol = rol;
     }
-
-    public Estado getEstado() {
-        return estado;
-    }
-
-    public void setEstado(Estado estado) {
-        this.estado = estado;
-    }
-
-    
-
-    
 }

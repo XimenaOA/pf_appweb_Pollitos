@@ -18,6 +18,5 @@ public interface IUsuarioDAO {
     public void actualizarUsuario(Usuario usuario);
     public void eliminarUsuario(Usuario usuario);
     public Usuario consultarUsuario(int id);
-    public void agregarEstado(Estado estado, Usuario usuario);
     public List<Usuario> consultarUsuarios();
 }

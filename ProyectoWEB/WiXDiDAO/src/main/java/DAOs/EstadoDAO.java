@@ -75,22 +75,6 @@ public class EstadoDAO implements IEstadoDAO{
     }
 
     @Override
-    public void eliminarEstado(Estado estado) {
-        EntityTransaction tx = em.getTransaction();
-        try {
-            tx.begin();
-            estado = em.find(Estado.class, estado.getIdEstado()); // Busca el estado
-            em.remove(estado); // Elimina el estado encontrado
-            tx.commit();
-        } catch (Exception e) {
-            if (tx.isActive()) {
-                tx.rollback();
-            }
-            System.err.println("Error al eliminar estado: " + e.getMessage());
-        }
-    }
-
-    @Override
     public Estado consultarEstado(int id) {
         try {
             return em.find(Estado.class, id); // Busca y retorna el estado por ID

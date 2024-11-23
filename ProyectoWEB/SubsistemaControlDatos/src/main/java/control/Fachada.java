@@ -50,51 +50,6 @@ public class Fachada implements IFachada{
     }
 
     @Override
-    public void agregarEstado(Estado estado) {
-            factory.objectoEstado().agregarEstado(estado);
-    }
-
-    @Override
-    public void agregarMunicipio(Estado estado, Municipio municipio) {
-            factory.objectoEstado().agregarMunicipio(estado, municipio);
-    }
-
-    @Override
-    public void actualizarEstado(Estado estado) {
-            factory.objectoEstado().actualizarEstado(estado);
-    }
-
-    @Override
-    public void eliminarEstado(Estado estado) {
-        factory.objectoEstado().eliminarEstado(estado);
-    }
-
-    @Override
-    public Estado consultarEstado(int id) {
-        return factory.objectoEstado().consultarEstado(id);
-    }
-
-    @Override
-    public void agregarMunicipio(Municipio municipio) {
-        factory.objectoMunicipio().agregarMunicipio(municipio);
-    }
-
-    @Override
-    public void actualizarMunicipio(Municipio municipio) {
-        factory.objectoMunicipio().actualizarMunicipio(municipio);
-    }
-
-    @Override
-    public void eliminarMunicipio(Municipio municipio) {
-        factory.objectoMunicipio().eliminarMunicipio(municipio);
-    }
-
-    @Override
-    public Municipio consultarMunicipio(int id) {
-       return factory.objectoMunicipio().consultarMunicipio(id);
-    }
-
-    @Override
     public void agregarPost(Post post) {
         factory.obejctoPost().agregarPost(post);
     }
@@ -137,11 +92,6 @@ public class Fachada implements IFachada{
     @Override
     public Usuario consultarUsuario(int id) {
         return factory.objectoUsuario().consultarUsuario(id);
-    }
-
-    @Override
-    public void agregarEstado(Estado estado, Usuario usuario) {
-        factory.objectoUsuario().agregarEstado(estado, usuario);
     }
 
     @Override

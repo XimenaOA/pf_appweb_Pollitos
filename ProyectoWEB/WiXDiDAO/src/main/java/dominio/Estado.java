@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package dominio;
 
 import javax.persistence.*;
@@ -14,23 +10,33 @@ public class Estado {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int idEstado;
+    @Column(name = "idEstado", nullable = false)
+    private Long id;
 
-    @Column(nullable = false, unique = true)
+    @Column(name = "nombre", nullable = false, length = 30)
     private String nombre;
 
-    @OneToMany(mappedBy = "estado", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Municipio> municipios = new ArrayList<>();
+    @OneToMany(mappedBy = "estado", cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    private List<Municipio> municipios;
 
-    @OneToMany(mappedBy = "estado", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Usuario> usuarios = new ArrayList<>(); // Si necesitas la relación
-
-    public int getIdEstado() {
-        return idEstado;
+    // Constructor vacío (necesario para JPA)
+    public Estado() {
+        this.municipios = new ArrayList<>();  // Inicialización de la lista para evitar NullPointerException
     }
 
-    public void setIdEstado(int idEstado) {
-        this.idEstado = idEstado;
+    // Constructor con parámetros (para cuando se desee crear un Estado con nombre)
+    public Estado(String nombre) {
+        this.nombre = nombre;
+        this.municipios = new ArrayList<>();  // Inicialización de la lista para evitar NullPointerException
+    }
+
+    // Getters y Setters
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getNombre() {
@@ -47,13 +53,5 @@ public class Estado {
 
     public void setMunicipios(List<Municipio> municipios) {
         this.municipios = municipios;
-    }
-
-    public List<Usuario> getUsuarios() {
-        return usuarios;
-    }
-
-    public void setUsuarios(List<Usuario> usuarios) {
-        this.usuarios = usuarios;
     }
 }

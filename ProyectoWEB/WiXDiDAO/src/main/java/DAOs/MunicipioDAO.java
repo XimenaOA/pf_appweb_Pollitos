@@ -53,23 +53,6 @@ public class MunicipioDAO implements IMunicipioDAO{
         }
     }
 
-    @Override
-    public void eliminarMunicipio(Municipio municipio) {
-        EntityTransaction transaction = em.getTransaction();
-        try {
-            transaction.begin();
-            Municipio municipioToRemove = em.find(Municipio.class, municipio.getIdMunicipio());
-            if (municipioToRemove != null) {
-                em.remove(municipioToRemove);
-            }
-            transaction.commit();
-        } catch (RuntimeException e) {
-            if (transaction.isActive()) {
-                transaction.rollback();
-            }
-            throw e; // Lanza la excepción para manejarla en otro lugar
-        }
-    }
 
     @Override
     public Municipio consultarMunicipio(int id) {
