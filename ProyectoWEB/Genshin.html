@@ -3,29 +3,53 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Genshin Impact - WiXDi Games</title>
-    <link rel="stylesheet" href="assets/css/styles.css">
+    <title>WiXDi Games - Comunidad</title>
+    <link rel="stylesheet" href="assets/css/Comunidades.css">
 </head>
 <body>
     <header>
         <div class="logo">WiXDi Games</div>
         <nav>
             <ul>
-                <li><a href="index.html">Feed</a></li>
-                <li><a href="valorant.html">Valorant</a></li>
-                <li><a href="overwatch.html">Overwatch</a></li>
-                <li><a href="league-of-legends.html">League of Legends</a></li>
-                <li><a href="genshin-impact.html" class="active">Genshin Impact</a></li>
+                <li><a href="#" >Feed</a></li>
+                <li><a href="#" class="active">Genshin Impact</a></li>
+                <li><a href="#">Valorant</a></li>
+                <li><a href="#">League Of Legends</a></li>
+                <li><a href="#">Overwatch</a></li>
             </ul>
         </nav>
+        <div class="user-actions">
+            <a href="#" class="icon-button search">🔍</a>
+            <a href="#" class="icon-button notifications">🔔</a>
+            <a href="#" class="icon-button profile">👤</a>
+            <a href="#" class="icon-button settings">⚙️</a>
+        </div>
     </header>
 
     <main>
-        <h1>Genshin Impact</h1>
-        <p>Genshin Impact es un juego de rol de acción de mundo abierto desarrollado por miHoYo. Explora un vasto mundo, descubre secretos y combate junto a compañeros.</p>
-        <!-- Contenido adicional de la página de Genshin Impact -->
+        <section class="feed">
+            <div class="post-creator">
+                <img src="/assets/recursos/kinich genshin impact icon pfp.jpg" alt="User Avatar" class="avatar">
+                <input type="text" placeholder="Escribe una publicación en WiXDi Games">
+                <button class="post-button">📷</button>
+                <button class="post-button">🎥</button>
+            </div>
+
+            <div class="posts">
+                <div class="post">
+                    <div class="post-header">
+                        <img src="/assets/recursos/kinich genshin impact icon pfp.jpg" alt="Avatar" class="avatar">
+                        <span class="username">Usuario123</span>
+                    </div>
+                    <div class="post-content">
+                        <p>Primer post: ¡Hola a todos!</p>
+                        <img src="/assets/recursos/kinichUlti.gif" alt="Imagen del post" class="post-image">
+                    </div>
+                </div>
+            </div>
+        </section>
     </main>
 
-    <script src="assets/js/posts.js"></script>
+    <script src="js/script.js"></script>
 </body>
 </html>

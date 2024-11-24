@@ -1,100 +1,55 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Valorant</title>
-  <link rel="stylesheet" href="assets/css/ValorantCSS.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WiXDi Games - Comunidad</title>
+    <link rel="stylesheet" href="assets/css/Comunidades.css">
 </head>
 <body>
     <header>
         <div class="logo">WiXDi Games</div>
         <nav>
-          <ul>
-            <li><a href="#" class="active">Feed</a></li>
-            <li><a href="#">Genshin Impact</a></li>
-            <li><a href="#">Valorant</a></li>
-            <li><a href="#">League Of Legends</a></li>
-            <li><a href="#">Overwatch</a></li>
-          </ul>
+            <ul>
+                <li><a href="#" >Feed</a></li>
+                <li><a href="#" >Genshin Impact</a></li>
+                <li><a href="#" class="active" >Valorant</a></li>
+                <li><a href="#">League Of Legends</a></li>
+                <li><a href="#">Overwatch</a></li>
+            </ul>
         </nav>
         <div class="user-actions">
-          <a href="#" class="icon-button search">🔍</a>
-          <a href="#" class="icon-button notifications">🔔</a>
-          <a href="#" class="icon-button profile">👤</a>
-          <a href="#" class="icon-button settings">⚙️</a>
+            <a href="#" class="icon-button search">🔍</a>
+            <a href="#" class="icon-button notifications">🔔</a>
+            <a href="#" class="icon-button profile">👤</a>
+            <a href="#" class="icon-button settings">⚙️</a>
         </div>
-      </header>
-
-  <div class="container">
-    <!-- Encabezado -->
-    <header class="header">
-
-          <!-- AQUI IRIA EL BANNER DEL VALORANT -->
-
-        <h1 class="title">Valorant</h1>
-      </div>
     </header>
 
-    <!-- Sección de pestañas -->
-    <div class="tabs">
-      <ul class="tabs-list">
-        <li class="tab-item active" data-tab="feed">
-          <span class="icon">💬</span> Feed
-        </li>
-        <li class="tab-item" data-tab="matches">
-          <span class="icon">⚔️</span> Partidas
-        </li>
-        <li class="tab-item" data-tab="teams">
-          <span class="icon">👥</span> Equipos
-        </li>
-        <li class="tab-item" data-tab="tournaments">
-          <span class="icon">🏆</span> Torneos
-        </li>
-      </ul>
-
-      <!-- Contenido de la pestaña Feed -->
-      <div class="tab-content active" id="feed">
-        <!-- Barra para crear publicación -->
-        <div class="create-post">
-          <img src="user-avatar.png" alt="User Avatar" class="avatar">
-          <input type="text" placeholder="Escribe una publicación en WIXDI Games" class="post-input">
-          <button class="icon-button">📷</button>
-          <button class="icon-button">✍️</button>
-        </div>
-
-        <!-- Lista de publicaciones -->
-        <div class="posts">
-          <div class="post">
-            <div class="post-header">
-              <div class="post-author">ValorantPro</div>
-              <div class="post-timestamp">Hace 2h</div>
+    <main>
+        <section class="feed">
+            <div class="post-creator">
+                <img src="/assets/recursos/kinich genshin impact icon pfp.jpg" alt="User Avatar" class="avatar">
+                <input type="text" placeholder="Escribe una publicación en WiXDi Games">
+                <button class="post-button">📷</button>
+                <button class="post-button">🎥</button>
             </div>
-            <p class="post-content">¡Increíble ace con Jett en Ascent!</p>
-            <div class="post-actions">
-              <span>❤️ 234</span>
-              <span>💬 45</span>
-            </div>
-          </div>
 
-          <div class="post">
-            <div class="post-header">
-              <div class="post-author">TacticalPlayer</div>
-              <div class="post-timestamp">Hace 3h</div>
+            <div class="posts">
+                <div class="post">
+                    <div class="post-header">
+                        <img src="/assets/recursos/kinich genshin impact icon pfp.jpg" alt="Avatar" class="avatar">
+                        <span class="username">Usuario123</span>
+                    </div>
+                    <div class="post-content">
+                        <p>Esa jett parece hacker!</p>
+                        <img src="/assets/recursos/valorant.gif" alt="Imagen del post" class="post-image">
+                    </div>
+                </div>
             </div>
-            <p class="post-content">Guía: Mejores posiciones para Cypher en Pearl</p>
-            <div class="post-actions">
-              <span>❤️ 189</span>
-              <span>💬 32</span>
-            </div>
-          </div>
-        </div>
-      </div>
+        </section>
+    </main>
 
-      
-    </div>
-  </div>
-
-  <script src="script.js"></script>
+    <script src="js/script.js"></script>
 </body>
 </html>

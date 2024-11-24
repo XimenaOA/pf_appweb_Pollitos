@@ -3,29 +3,53 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>League of Legends - WiXDi Games</title>
-    <link rel="stylesheet" href="assets/css/styles.css">
+    <title>WiXDi Games - Comunidad</title>
+    <link rel="stylesheet" href="assets/css/Comunidades.css">
 </head>
 <body>
     <header>
         <div class="logo">WiXDi Games</div>
         <nav>
             <ul>
-                <li><a href="index.html">Feed</a></li>
-                <li><a href="valorant.html">Valorant</a></li>
-                <li><a href="overwatch.html">Overwatch</a></li>
-                <li><a href="league-of-legends.html" class="active">League of Legends</a></li>
-                <li><a href="genshin-impact.html">Genshin Impact</a></li>
+                <li><a href="#" >Feed</a></li>
+                <li><a href="#">Genshin Impact</a></li>
+                <li><a href="#">Valorant</a></li>
+                <li><a href="#" class="active">League Of Legends</a></li>
+                <li><a href="#">Overwatch</a></li>
             </ul>
         </nav>
+        <div class="user-actions">
+            <a href="#" class="icon-button search">🔍</a>
+            <a href="#" class="icon-button notifications">🔔</a>
+            <a href="#" class="icon-button profile">👤</a>
+            <a href="#" class="icon-button settings">⚙️</a>
+        </div>
     </header>
 
     <main>
-        <h1>League of Legends</h1>
-        <p>League of Legends es un juego de estrategia y combate por equipos de Riot Games. Participa en emocionantes batallas y derrota al equipo enemigo.</p>
-        <!-- Contenido adicional de la página de League of Legends -->
+        <section class="feed">
+            <div class="post-creator">
+                <img src="/assets/recursos/kinich genshin impact icon pfp.jpg" alt="User Avatar" class="avatar">
+                <input type="text" placeholder="Escribe una publicación en WiXDi Games">
+                <button class="post-button">📷</button>
+                <button class="post-button">🎥</button>
+            </div>
+
+            <div class="posts">
+                <div class="post">
+                    <div class="post-header">
+                        <img src="/assets/recursos/kinich genshin impact icon pfp.jpg" alt="Avatar" class="avatar">
+                        <span class="username">Usuario123</span>
+                    </div>
+                    <div class="post-content">
+                        <p>Vean Arcane porfa</p>
+                        <img src="/assets/recursos/Arcane.gif" alt="Imagen del post" class="post-image">
+                    </div>
+                </div>
+            </div>
+        </section>
     </main>
 
-    <script src="assets/js/posts.js"></script>
+    <script src="js/script.js"></script>
 </body>
 </html>
