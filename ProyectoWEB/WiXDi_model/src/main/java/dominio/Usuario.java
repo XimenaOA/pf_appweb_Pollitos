@@ -5,19 +5,20 @@
 package dominio;
 
 import java.util.Date;
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.Table;
-import jakarta.persistence.Temporal;
-import jakarta.persistence.TemporalType;
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
 
 
 @Entity
@@ -46,8 +47,8 @@ public class Usuario {
     @Column(unique = true, length = 13)
     private String telefono;
 
-    @Column(length = 255)
-    private String urlAvatar;
+    @Column(nullable = true)
+    private String imagen;
 
     @Temporal(TemporalType.DATE)
     private Date fechaNacimiento;
@@ -64,20 +65,38 @@ public class Usuario {
     @JoinColumn(name = "idMunicipio", nullable = false)
     private Municipio municipio;
 
-    public Usuario(String nombre, String apellidoPaterno, String apellidoMaterno, String correo, String contrasenia, String telefono, String urlAvatar, Date fechaNacimiento, Genero genero, Rol rol, Municipio municipio) {
+    public Usuario() {
+    }
+
+    public Usuario(String correo, String contrasenia) {
+        this.correo = correo;
+        this.contrasenia = contrasenia;
+    }
+    
+    public Usuario(String nombre, String apellidoPaterno, String apellidoMaterno, String correo, String contrasenia, String telefono, String imagen, Date fechaNacimiento, Genero genero, Rol rol, Municipio municipio) {
         this.nombre = nombre;
         this.apellidoPaterno = apellidoPaterno;
         this.apellidoMaterno = apellidoMaterno;
         this.correo = correo;
         this.contrasenia = contrasenia;
         this.telefono = telefono;
-        this.urlAvatar = urlAvatar;
+        this.imagen = imagen;
         this.fechaNacimiento = fechaNacimiento;
         this.genero = genero;
         this.rol = rol;
         this.municipio = municipio;
     }
 
+    public String getImagen() {
+        return imagen;
+    }
+
+    public void setImagen(String imagen) {
+        this.imagen = imagen;
+    }
+
+    
+    
     public Municipio getMunicipio() {
         return municipio;
     }
@@ -150,13 +169,14 @@ public class Usuario {
         this.telefono = telefono;
     }
 
-    public String getUrlAvatar() {
-        return urlAvatar;
+    public String getNombre() {
+        return nombre;
     }
 
-    public void setUrlAvatar(String urlAvatar) {
-        this.urlAvatar = urlAvatar;
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
+
 
     public Date getFechaNacimiento() {
         return fechaNacimiento;

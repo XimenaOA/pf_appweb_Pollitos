@@ -31,4 +31,5 @@ public interface IFachada {
     public void eliminarUsuario(Usuario usuario);
     public Usuario consultarUsuario(int id);
     public List<Usuario> consultarUsuarios();
+    public boolean iniciarSesion(Usuario usuario);
 }

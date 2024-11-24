@@ -7,8 +7,8 @@ package DAOs;
 import conexion.Conexion;
 import dominio.Comentario;
 import interfaces.IComentarioDAO;
-import jakarta.persistence.EntityManager;
-import jakarta.persistence.EntityTransaction;
+import javax.persistence.EntityManager;
+
 
 
 /**
@@ -17,24 +17,23 @@ import jakarta.persistence.EntityTransaction;
  */
 public class ComentarioDAO implements IComentarioDAO {
 
-    private EntityManager em;
     private Conexion conexion;
 
     public ComentarioDAO() {
         this.conexion = new Conexion();
-        this.em = conexion.getEntityManager();
     }
 
     @Override
     public void agregarComentario(Comentario comentario) {
-        EntityTransaction tx = em.getTransaction(); // Inicia la transacción
+        EntityManager em = conexion.abrir();
+        em.getTransaction().begin();
         try {
-            tx.begin();
+            em.getTransaction().begin();
             em.persist(comentario); // Persiste el nuevo comentario
-            tx.commit(); // Confirma la transacción
+            em.getTransaction().commit(); // Confirma la transacción
         } catch (Exception e) {
-            if (tx.isActive()) {
-                tx.rollback(); // Hace rollback en caso de error
+            if (em.getTransaction().isActive()) {
+                em.getTransaction().rollback(); // Hace rollback en caso de error
             }
             System.err.println("Error al agregar comentario: " + e.getMessage());
         }
@@ -42,16 +41,17 @@ public class ComentarioDAO implements IComentarioDAO {
 
     @Override
     public void agregarComentarioAComentario(Comentario comentario, Comentario comentarioNuevo) {
-        EntityTransaction tx = em.getTransaction(); // Inicia la transacción
+        EntityManager em = conexion.abrir();
+        em.getTransaction().begin();
         try {
-            tx.begin();
+            em.getTransaction().begin();
             // Aquí asumimos que 'comentarioNuevo' es una respuesta al 'comentario' existente
             comentarioNuevo.setComentarioPadre(comentario); // Asocia el nuevo comentario al comentario existente
             em.persist(comentarioNuevo); // Persiste el nuevo comentario
-            tx.commit(); // Confirma la transacción
+            em.getTransaction().commit(); // Confirma la transacción
         } catch (Exception e) {
-            if (tx.isActive()) {
-                tx.rollback(); // Hace rollback en caso de error
+            if (em.getTransaction().isActive()) {
+                em.getTransaction().rollback(); // Hace rollback en caso de error
             }
             System.err.println("Error al agregar comentario a otro comentario: " + e.getMessage());
         }
@@ -59,14 +59,15 @@ public class ComentarioDAO implements IComentarioDAO {
 
     @Override
     public void actualizarComentario(Comentario comentario) {
-        EntityTransaction tx = em.getTransaction(); // Inicia la transacción
+        EntityManager em = conexion.abrir();
+        em.getTransaction().begin();
         try {
-            tx.begin();
+            em.getTransaction().begin();
             em.merge(comentario); // Actualiza el comentario existente
-            tx.commit(); // Confirma la transacción
+            em.getTransaction().commit(); // Confirma la transacción
         } catch (Exception e) {
-            if (tx.isActive()) {
-                tx.rollback(); // Hace rollback en caso de error
+            if (em.getTransaction().isActive()) {
+                em.getTransaction().rollback(); // Hace rollback en caso de error
             }
             System.err.println("Error al actualizar comentario: " + e.getMessage());
         }
@@ -74,18 +75,19 @@ public class ComentarioDAO implements IComentarioDAO {
 
     @Override
     public void eliminarComentario(Comentario comentario) {
-        EntityTransaction tx = em.getTransaction(); // Inicia la transacción
+        EntityManager em = conexion.abrir();
+        em.getTransaction().begin();
         try {
-            tx.begin();
+            em.getTransaction().begin();
             // Busca el comentario por ID
             Comentario comentarioParaEliminar = em.find(Comentario.class, comentario.getIdComentario());
             if (comentarioParaEliminar != null) {
                 em.remove(comentarioParaEliminar); // Elimina el comentario
             }
-            tx.commit(); // Confirma la transacción
+            em.getTransaction().commit(); // Confirma la transacción
         } catch (Exception e) {
-            if (tx.isActive()) {
-                tx.rollback(); // Hace rollback en caso de error
+            if (em.getTransaction().isActive()) {
+                em.getTransaction().rollback(); // Hace rollback en caso de error
             }
             System.err.println("Error al eliminar comentario: " + e.getMessage());
         }
@@ -93,6 +95,8 @@ public class ComentarioDAO implements IComentarioDAO {
 
     @Override
     public Comentario consultarComentario(int id) {
+        EntityManager em = conexion.abrir();
+        em.getTransaction().begin();
         Comentario comentario = null;
         try {
             comentario = em.find(Comentario.class, id); // Busca el comentario por ID

@@ -13,7 +13,7 @@
     <title>Login y Registro</title>
 
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="/CSS/LogInstyle.css" />
+    <link rel="stylesheet" href="../CSS/LogInstyle.css" />
 </head>
 
 <body>
@@ -35,9 +35,9 @@
             <!--Formulario de Login y registro-->
             <div class="contenedor__login-register">
                 <!--Login-->
-                <form action="" method="post" class="formulario__login">
+                <form action="${pageContext.request.contextPath}/IniciarSesion_Servlet" method="GET" class="formulario__login">
                     <h2>Iniciar Sesión</h2>
-                    <input type="text" name="usuario" placeholder="Correo Electrónico" required />
+                    <input type="text" name="correo" placeholder="Correo Electrónico" required />
                     <br />
                     <input type="password" name="contrasena" placeholder="Contraseña" required />
                     <br />
@@ -45,7 +45,7 @@
                 </form>
 
                 <!--Registro enctype="multipart/form-data-->
-                <form action="${pageContext.request.contextPath}/Registrar_Servlet" class="formulario__register">
+                <form action="${pageContext.request.contextPath}/Registrar_Servlet" method="POST" class="formulario__register" enctype="multipart/form-data">
                     <h2>Regístrate</h2>
                     <!-- Contenedor de alerta para mensajes de registro -->
                     <div id="registro_alerta" style="display: none; text-align: center; font-weight: bold; margin-bottom: 20px;"></div>
@@ -74,7 +74,7 @@
         </div>
     </main>
 
-    <script src="JS/LogIn.js"></script>
+    <script src="../JS/LogIn.js"></script>
     
 </body>
 </html>

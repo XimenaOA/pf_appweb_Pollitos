@@ -4,15 +4,12 @@
  */
 package control;
 
-import java.util.List;
 
 /**
  *
  * @author haloa
  */
 import dominio.Comentario;
-import dominio.Estado;
-import dominio.Municipio;
 import dominio.Post;
 import dominio.Usuario;
 import factory.FactoryObjects;
@@ -104,9 +101,11 @@ public class Fachada implements IFachada{
     public List<Usuario> consultarUsuarios() {
         return factory.objectoUsuario().consultarUsuarios();
     }
-    
-    
-    
+
+    @Override
+    public boolean iniciarSesion(Usuario usuario) {
+        return factory.objectoUsuario().iniciarSesion(usuario);
+    }
 }
 
 

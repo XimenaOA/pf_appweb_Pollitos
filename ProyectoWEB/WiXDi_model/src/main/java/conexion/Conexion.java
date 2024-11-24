@@ -4,37 +4,24 @@
  */
 package conexion;
 
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
 
-import jakarta.persistence.EntityManager;
-import jakarta.persistence.EntityManagerFactory;
-import jakarta.persistence.Persistence;
 
 
 /**
  *
  * @author pollitos
  */
-public class Conexion {
-    private static EntityManagerFactory emf;
+public class Conexion implements IConexion {
 
-    // Inicializa el EntityManagerFactory
-    static {
-        try {
-            emf = Persistence.createEntityManagerFactory("com.mycompany_SportifyDAO_jar_1.0-SNAPSHOTPU");
-        } catch (Exception e) {
-            System.err.println("Error al crear el EntityManagerFactory: " + e.getMessage());
-        }
-    }
+    private EntityManagerFactory emf;
 
-    // Método para obtener el EntityManager
-    public EntityManager getEntityManager() {
-        return emf.createEntityManager();
-    }
-
-    // Método para cerrar el EntityManagerFactory
-    public  void close() {
-        if (emf != null && emf.isOpen()) {
-            emf.close();
-        }
+    @Override
+    public EntityManager abrir() {
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("ConexionPU");
+        EntityManager em = emf.createEntityManager();
+        return em;
     }
 }
