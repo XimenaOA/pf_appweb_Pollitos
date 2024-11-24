@@ -4,31 +4,18 @@
  */
 package Servlets;
 
-import control.Fachada;
-import control.IFachada;
-import dominio.Usuario;
-import jakarta.servlet.ServletConfig;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import jakarta.servlet.http.HttpSession;
 
 /**
  *
  * @author haloa
  */
-public class IniciarSesion_Servlet extends HttpServlet {
-
-    IFachada fachada;
-
-    @Override
-    public void init(ServletConfig config) throws ServletException {
-        super.init(config); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/OverriddenMethodBody
-        fachada = new Fachada();
-    }
+public class Menu_Servlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -41,19 +28,18 @@ public class IniciarSesion_Servlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet IniciarSesion_Servlet</title>");
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet IniciarSesion_Servlet at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
-        }
+         String action = request.getParameter("action");
+
+            switch (action) {
+                case "lol" ->
+                    response.sendRedirect("JSP/LeagueOfLegends_JSP.jsp");
+//                case "iniciarSesion" ->
+//                    iniciarSesion(request, response);
+//                case "cerrarSesion" ->
+//                    cerrarSesion(request, response);
+//                case "verificarCorreo" ->
+//                    verificarCorreo(request, response);
+            }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -68,25 +54,7 @@ public class IniciarSesion_Servlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        Usuario usuario;
-
-        // Obtener parámetros del formulario
-        String correo = request.getParameter("correo");
-
-        usuario = fachada.consultarUsuarioPorCorreo(correo);
-       
-        if (fachada.iniciarSesion(usuario)) {
-            System.out.println("Inicio de sesion correcto");
-            HttpSession objSesion = request.getSession(true);
-            objSesion.setAttribute("usuario", usuario);
-            response.sendRedirect("JSP/MenuPrincipal.jsp");
-        } else {
-            // Si el login falla, enviar un mensaje de error
-            System.out.println("Credenciales incorrectas");
-            request.setAttribute("error", "Correo o contraseña incorrectos.");
-            request.getRequestDispatcher("JSP/registrar.jsp").forward(request, response);
-        }
-
+        processRequest(request, response);
     }
 
     /**

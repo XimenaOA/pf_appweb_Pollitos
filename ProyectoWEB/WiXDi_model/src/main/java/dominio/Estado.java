@@ -64,4 +64,11 @@ public class Estado {
     public void setMunicipios(List<Municipio> municipios) {
         this.municipios = municipios;
     }
+
+    @Override
+    public String toString() {
+        return "Estado{" + "id=" + id + ", nombre=" + nombre + ", municipios=" + municipios + '}';
+    }
+    
+    
 }

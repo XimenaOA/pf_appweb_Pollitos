@@ -129,4 +129,40 @@ public class UsuarioDAO implements IUsuarioDAO {
         }
         return false;
     }
+
+    @Override
+    public Usuario consultarUsuarioPorCorreo(String correo) {
+        EntityManager em = conexion.abrir();
+        em.getTransaction().begin();
+        try {
+            // Crear consulta JPQL para obtener los datos del usuario por correo
+            String jpql = "SELECT u FROM Usuario u WHERE u.correo = :correo";
+            Usuario resultado = em.createQuery(jpql, Usuario.class)
+                    .setParameter("correo", correo)
+                    .getSingleResult(); // Obtén el resultado único
+
+            // Construir el usuario utilizando el constructor personalizado
+            return new Usuario(
+                    resultado.getNombre(),
+                    resultado.getApellidoPaterno(),
+                    resultado.getApellidoMaterno(),
+                    resultado.getCorreo(),
+                    resultado.getContrasenia(),
+                    resultado.getTelefono(),
+                    resultado.getImagen(),
+                    resultado.getFechaNacimiento(),
+                    resultado.getGenero(),
+                    resultado.getRol(),
+                    resultado.getMunicipio()
+            );
+
+        } catch (NoResultException e) {
+            // Manejar el caso donde no se encuentra el usuario
+            System.out.println("Usuario con correo " + correo + " no encontrado.");
+            return null;
+        } finally {
+            // Asegurarse de cerrar el EntityManager
+            em.close();
+        }
+    }
 }

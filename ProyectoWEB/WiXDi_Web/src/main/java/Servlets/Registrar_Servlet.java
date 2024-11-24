@@ -25,6 +25,13 @@ import java.util.Base64;
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.awt.image.BufferedImage;
+import java.io.ByteArrayOutputStream;
+import java.io.InputStream;
+import java.util.Base64;
+import javax.imageio.ImageIO;
+import java.awt.Graphics2D;
+import java.awt.image.RenderedImage;
 
 /**
  *
@@ -33,7 +40,7 @@ import java.util.logging.Logger;
 @MultipartConfig // Habilitar la carga de archivos
 public class Registrar_Servlet extends HttpServlet {
 
-   IFachada fachada;
+    IFachada fachada;
 
     @Override
     public void init(ServletConfig config) throws ServletException {
@@ -41,7 +48,6 @@ public class Registrar_Servlet extends HttpServlet {
         fachada = new Fachada();
     }
 
-    
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -66,6 +72,28 @@ public class Registrar_Servlet extends HttpServlet {
             out.println("</body>");
             out.println("</html>");
         }
+    }
+
+    // Método para comprimir la imagen (ajustar tamaño)
+    private BufferedImage compressImage(BufferedImage originalImage, int width, int height) {
+        // Redimensionar la imagen manteniendo la relación de aspecto
+        BufferedImage resizedImage = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
+        Graphics2D g2d = resizedImage.createGraphics();
+        g2d.drawImage(originalImage, 0, 0, width, height, null);
+        g2d.dispose();
+        return resizedImage;
+    }
+
+// Método para convertir la imagen comprimida a Base64
+    private String convertToBase64(BufferedImage image, String format) throws IOException {
+        ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+
+        // Convertir la imagen comprimida a JPEG (o el formato que desees)
+        ImageIO.write(image, format, byteArrayOutputStream);
+        byte[] imageBytes = byteArrayOutputStream.toByteArray();
+
+        // Convertir a Base64
+        return Base64.getEncoder().encodeToString(imageBytes);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -94,7 +122,7 @@ public class Registrar_Servlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-           Usuario usuario;
+        Usuario usuario;
 
         // Obtener parámetros del formulario
         String nombre = request.getParameter("nombre");
@@ -137,10 +165,15 @@ public class Registrar_Servlet extends HttpServlet {
         if (filePart != null && filePart.getSize() > 0) {
             // Leer los bytes del archivo
             InputStream inputStream = filePart.getInputStream();
-            byte[] avatarBytes = inputStream.readAllBytes();
 
-            // Convertir a Base64
-            avatar = Base64.getEncoder().encodeToString(avatarBytes);
+            // Crear una imagen a partir de los bytes
+            BufferedImage originalImage = ImageIO.read(inputStream);
+
+            // Comprimir la imagen (ajustando tamaño y calidad)
+            BufferedImage compressedImage = compressImage(originalImage, 800, 600); // Ajusta el tamaño según necesites
+
+            // Convertir la imagen comprimida a Base64
+            avatar = convertToBase64(compressedImage, "JPEG"); // Usamos formato JPEG para mayor compresión
         }
 
         // Crear el objeto Usuario
@@ -154,7 +187,6 @@ public class Registrar_Servlet extends HttpServlet {
         // Redirigir a la página de registro
         response.sendRedirect("JSP/Registrar.jsp");
     }
-
 
     /**
      * Returns a short description of the servlet.

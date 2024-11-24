@@ -106,6 +106,11 @@ public class Fachada implements IFachada{
     public boolean iniciarSesion(Usuario usuario) {
         return factory.objectoUsuario().iniciarSesion(usuario);
     }
+
+    @Override
+    public Usuario consultarUsuarioPorCorreo(String correo) {
+        return factory.objectoUsuario().consultarUsuarioPorCorreo(correo);
+    }
 }
 
 

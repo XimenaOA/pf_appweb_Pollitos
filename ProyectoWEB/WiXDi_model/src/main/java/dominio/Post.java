@@ -22,17 +22,12 @@ public class Post {
     public Post() {
     }
 
-    
-    
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idPost;
 
     @Temporal(TemporalType.DATE)
     private Date fechaHoraCreacion;
-
-    @Column(nullable = false, length = 100)
-    private String titulo;
 
     @Column(nullable = false, length = 255)
     private String contenido;
@@ -57,14 +52,6 @@ public class Post {
 
     public void setFechaHoraCreacion(Date fechaHoraCreacion) {
         this.fechaHoraCreacion = fechaHoraCreacion;
-    }
-
-    public String getTitulo() {
-        return titulo;
-    }
-
-    public void setTitulo(String titulo) {
-        this.titulo = titulo;
     }
 
     public String getContenido() {

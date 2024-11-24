@@ -1,0 +1,100 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f5f5f5;
+}
+
+header {
+    background-color: white;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+    color: #2a8457;
+}
+
+nav ul {
+    list-style-type: none;
+    display: flex;
+}
+
+nav ul li {
+    margin-right: 20px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #333;
+}
+
+nav ul li a.active {
+    color: #0f3b13;
+    border-bottom: 2px solid #1c9358;
+}
+
+.user-actions {
+    display: flex;
+}
+
+.icon-button {
+    margin-left: 15px;
+    text-decoration: none;
+    font-size: 20px;
+}
+
+main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: calc(100vh - 70px); /* Resta la altura del header */
+    background-color: #f5f5f5;
+}
+
+.profile-container {
+    display: flex;
+    align-items: center;
+    background-color: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    gap: 30px;
+    width: 80%;
+    max-width: 900px;
+}
+
+.profile-avatar {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%; /* Hace que la imagen sea circular */
+    object-fit: cover;
+    border: 5px solid #2a8457; /* Añade un borde */
+}
+
+.profile-info {
+    text-align: left;
+    width: 100%;
+}
+
+.profile-info h2 {
+    font-size: 32px;
+    color: black;
+    margin-bottom: 15px;
+}
+
+.profile-info p {
+    color: gray;
+    font-size: 16px;
+    line-height: 1.5;
+    margin-bottom: 10px;
+}
+
+.profile-info p strong {
+    color: black;
+}

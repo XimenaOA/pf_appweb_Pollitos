@@ -121,14 +121,6 @@ public class Usuario {
         this.idUsuario = idUsuario;
     }
 
-    public String getNombres() {
-        return nombre;
-    }
-
-    public void setNombres(String nombres) {
-        this.nombre = nombres;
-    }
-
     public String getApellidoPaterno() {
         return apellidoPaterno;
     }
@@ -201,4 +193,11 @@ public class Usuario {
     public void setRol(Rol rol) {
         this.rol = rol;
     }
+
+    @Override
+    public String toString() {
+        return "Usuario{" + "idUsuario=" + idUsuario + ", nombre=" + nombre + ", apellidoPaterno=" + apellidoPaterno + ", apellidoMaterno=" + apellidoMaterno + ", correo=" + correo + ", contrasenia=" + contrasenia + ", telefono=" + telefono + ", fechaNacimiento: " + fechaNacimiento + ", genero=" + genero + ", rol=" + rol + ", municipio=" + municipio + '}';
+    }
+    
+    
 }

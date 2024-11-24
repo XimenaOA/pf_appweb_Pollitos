@@ -76,4 +76,10 @@ public class Municipio {
         this.estado = estado;
     }
 
+    @Override
+    public String toString() {
+        return "Municipio{" + "id=" + id + ", nombre=" + nombre + ", estado=" + estado + ", usuarios=" + usuarios + '}';
+    }
+
+    
 }

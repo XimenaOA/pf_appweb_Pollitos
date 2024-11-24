@@ -8,6 +8,10 @@
         <servlet-name>IniciarSesion_Servlet</servlet-name>
         <servlet-class>Servlets.IniciarSesion_Servlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>Menu_Servlet</servlet-name>
+        <servlet-class>Servlets.Menu_Servlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Registrar_Servlet</servlet-name>
         <url-pattern>/Registrar_Servlet</url-pattern>
@@ -15,6 +19,10 @@
     <servlet-mapping>
         <servlet-name>IniciarSesion_Servlet</servlet-name>
         <url-pattern>/IniciarSesion_Servlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Menu_Servlet</servlet-name>
+        <url-pattern>/Menu_Servlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

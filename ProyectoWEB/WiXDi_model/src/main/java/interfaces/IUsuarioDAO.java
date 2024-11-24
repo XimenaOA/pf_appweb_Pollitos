@@ -4,9 +4,7 @@
  */
 package interfaces;
 
-import dominio.Estado;
 import dominio.Usuario;
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -20,4 +18,5 @@ public interface IUsuarioDAO {
     public Usuario consultarUsuario(int id);
     public List<Usuario> consultarUsuarios();
     public boolean iniciarSesion(Usuario usuario);
+    public Usuario consultarUsuarioPorCorreo(String correo);
 }

@@ -32,4 +32,5 @@ public interface IFachada {
     public Usuario consultarUsuario(int id);
     public List<Usuario> consultarUsuarios();
     public boolean iniciarSesion(Usuario usuario);
+    public Usuario consultarUsuarioPorCorreo(String correo);
 }
