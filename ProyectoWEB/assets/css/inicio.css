@@ -51,156 +51,50 @@ nav ul li a.active {
 
 main {
     display: flex;
-    padding: 20px;
-    flex-direction: row; /* Alineación en filas para distribuir las columnas */
+    justify-content: center;
+    align-items: center;
+    height: calc(100vh - 70px); /* Resta la altura del header */
+    background-color: #f5f5f5;
 }
 
-.feed {
-    flex: 3;
-    margin-right: 20px;
-}
-
-.post-creator {
-    background-color: white;
-    padding: 15px;
-    border-radius: 8px;
+.profile-container {
     display: flex;
     align-items: center;
-    margin-bottom: 20px;
-}
-
-.avatar {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    margin-right: 10px;
-}
-
-.post-creator input {
-    flex-grow: 1;
-    border: none;
-    padding: 10px;
-    background-color: #f0f0f0;
-    border-radius: 20px;
-    outline: none;
-}
-
-.post-button {
-    background: none;
-    border: none;
-    font-size: 20px;
-    cursor: pointer;
-    margin-left: 10px;
-}
-
-.posts {
     background-color: white;
-    border-radius: 8px;
-    padding: 15px;
-}
-
-/* Estilos para el post */
-.post {
-    background-color: white;
-    padding: 15px;
-    border-radius: 8px;
-    margin-bottom: 20px;
-}
-
-.post-header {
-    display: flex;
-    align-items: center;
-}
-
-.post-header .avatar {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    margin-right: 10px;
-}
-
-.post-header .username {
-    font-weight: bold;
-    color: #333;
-}
-
-.post-content {
-    margin-top: 10px;
-}
-
-.post-content p {
-    font-size: 16px;
-    color: #333;
-}
-
-.post-content .post-image {
-    width: 100%;
-    border-radius: 8px;
-    margin-top: 10px;
-}
-
-/* Estilos para Communities y Amistades */
-.communities, .Amistades {
-    flex: 1; /* Hace que se distribuyan proporcionalmente */
-    border-radius: 15px;
-    padding: 15px;
-    background-color: white;
+    padding: 30px;
+    border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    margin-bottom: 20px;
-    text-align: center; /* Centrar el contenido */
-    display: flex;
-    flex-direction: column;
-    gap: 20px; /* Espacio entre las secciones */
-}
-
-.profile-card {
-    background-color: white;
-    border-radius: 15px;
-    padding: 60px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    gap: 30px;
+    width: 80%;
+    max-width: 900px;
 }
 
 .profile-avatar {
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%; /* Hace que la imagen sea circular */
+    object-fit: cover;
+    border: 5px solid #2a8457; /* Añade un borde */
+}
+
+.profile-info {
+    text-align: left;
+    width: 100%;
+}
+
+.profile-info h2 {
+    font-size: 32px;
+    color: black;
     margin-bottom: 15px;
 }
 
-.profile-card h2 {
-    font-size: 24px;
-    color: black;
+.profile-info p {
+    color: gray;
+    font-size: 16px;
+    line-height: 1.5;
     margin-bottom: 10px;
 }
 
-.profile-card p {
-    color: gray;
-    font-size: 14px;
-}
-
-/* Estilos para la lista de Amistades */
-.Amistades-lista ul {
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
-}
-
-.Amistades-lista ul li {
-    padding: 10px 0;
-    font-size: 14px;
-    color: gray;
-}
-
-
-                                    
-                                                .post-creator input:focus {
-                                                    background-color: #e0f7e0;
-                                                    box-shadow: 0 0 5px #2a8457;
-                                                }
-
-
-                                
-.profile-card:hover, .Amistades-lista ul li:hover {
-    transform: translateY(-3px);
-    transition: 0.3s ease;
+.profile-info p strong {
+    color: black;
 }
