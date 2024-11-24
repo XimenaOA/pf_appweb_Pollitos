@@ -4,8 +4,9 @@
  */
 package dominio;
 
-
-import java.util.Calendar;
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -21,40 +22,52 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
-
 @Entity
 @Table(name = "Comentario")
-public class Comentario {
+public class Comentario implements Serializable {
 
     public Comentario() {
     }
 
-    
-    
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idComentario;
 
     @Temporal(TemporalType.TIMESTAMP)
-    private Calendar fechaHora;
+    private Date fechaHora;
 
     @Column(nullable = false, length = 255)
     private String contenido;
 
     @ManyToOne
-    @JoinColumn(name = "id_usuario", foreignKey = @ForeignKey(name = "fk_usuario_comentario"))
+    @JoinColumn(name = "idUsuario", nullable = false)
     private Usuario usuario;
 
     @ManyToOne
-    @JoinColumn(name = "id_comentado", foreignKey = @ForeignKey(name = "fk_comentado_comentario"))
-    private Usuario comentado;
-
-    @ManyToOne
-    @JoinColumn(name = "id_comentario_padre", foreignKey = @ForeignKey(name = "fk_comentario_padre"))
+    @JoinColumn(name = "idComentarioPadre", referencedColumnName = "idComentario", foreignKey = @ForeignKey(name = "FK_Comentario_idComentarioPadre"))
     private Comentario comentarioPadre;
 
-    @OneToMany(mappedBy = "comentarioPadre", cascade = CascadeType.ALL)
-    private List<Comentario> respuestas;
+    @OneToMany(mappedBy = "comentarioPadre", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Comentario> respuestas = new ArrayList<>();
+
+    @ManyToOne
+    @JoinColumn(name = "idPost", nullable = false)
+    private Post post;
+
+    public Comentario(Date fechaHora, String contenido, Usuario usuario) {
+        this.fechaHora = fechaHora;
+        this.contenido = contenido;
+        this.usuario = usuario;
+    }
+
+    public Comentario(Date fechaHora, String contenido, Usuario usuario, Post post, Comentario comentarioPadre, List<Comentario> respuestas) {
+        this.fechaHora = fechaHora;
+        this.contenido = contenido;
+        this.usuario = usuario;
+        this.post = post;
+        this.comentarioPadre = comentarioPadre;
+        this.respuestas = respuestas;
+    }
 
     public int getIdComentario() {
         return idComentario;
@@ -64,11 +77,11 @@ public class Comentario {
         this.idComentario = idComentario;
     }
 
-    public Calendar getFechaHora() {
+    public Date getFechaHora() {
         return fechaHora;
     }
 
-    public void setFechaHora(Calendar fechaHora) {
+    public void setFechaHora(Date fechaHora) {
         this.fechaHora = fechaHora;
     }
 
@@ -88,12 +101,12 @@ public class Comentario {
         this.usuario = usuario;
     }
 
-    public Usuario getComentado() {
-        return comentado;
+    public Post getPost() {
+        return post;
     }
 
-    public void setComentado(Usuario comentado) {
-        this.comentado = comentado;
+    public void setPost(Post post) {
+        this.post = post;
     }
 
     public Comentario getComentarioPadre() {
@@ -111,4 +124,5 @@ public class Comentario {
     public void setRespuestas(List<Comentario> respuestas) {
         this.respuestas = respuestas;
     }
+
 }

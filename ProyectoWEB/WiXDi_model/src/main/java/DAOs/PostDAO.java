@@ -36,6 +36,9 @@ public class PostDAO implements IPostDAO{
                 em.getTransaction().rollback();
             }
             throw e; // Lanza la excepción para manejarla en otro lugar
+        } finally {
+            // Asegurarse de cerrar el EntityManager
+            em.close();
         }
     }
 
@@ -52,6 +55,9 @@ public class PostDAO implements IPostDAO{
                 em.getTransaction().rollback();
             }
             throw e; // Lanza la excepción para manejarla en otro lugar
+        }finally {
+            // Asegurarse de cerrar el EntityManager
+            em.close();
         }
     }
 
@@ -71,6 +77,9 @@ public class PostDAO implements IPostDAO{
                 em.getTransaction().rollback();
             }
             throw e; // Lanza la excepción para manejarla en otro lugar
+        }finally {
+            // Asegurarse de cerrar el EntityManager
+            em.close();
         }
     }
 
@@ -98,6 +107,9 @@ public class PostDAO implements IPostDAO{
                 em.getTransaction().rollback();
             }
             throw e; // Lanza la excepción para manejarla en otro lugar
+        }finally {
+            // Asegurarse de cerrar el EntityManager
+            em.close();
         }
     }
     

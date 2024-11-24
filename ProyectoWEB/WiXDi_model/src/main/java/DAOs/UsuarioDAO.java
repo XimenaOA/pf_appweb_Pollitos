@@ -143,6 +143,7 @@ public class UsuarioDAO implements IUsuarioDAO {
 
             // Construir el usuario utilizando el constructor personalizado
             return new Usuario(
+                    resultado.getIdUsuario(),
                     resultado.getNombre(),
                     resultado.getApellidoPaterno(),
                     resultado.getApellidoMaterno(),

@@ -4,7 +4,9 @@
  */
 package dominio;
 
+import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -15,6 +17,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -23,7 +26,7 @@ import javax.persistence.TemporalType;
 
 @Entity
 @Table(name = "Usuario")
-public class Usuario {
+public class Usuario implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -38,13 +41,13 @@ public class Usuario {
     @Column(nullable = false, length = 50)
     private String apellidoMaterno;
 
-    @Column(nullable = false, length = 255)
+    @Column(unique = true, nullable = false, length = 255)
     private String correo;
 
     @Column(nullable = false, length = 255)
     private String contrasenia;
 
-    @Column(unique = true, length = 13)
+    @Column(unique = false, length = 10)
     private String telefono;
 
     @Column(nullable = true)
@@ -64,7 +67,9 @@ public class Usuario {
     @ManyToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(name = "idMunicipio", nullable = false)
     private Municipio municipio;
-
+    
+    
+    
     public Usuario() {
     }
 
@@ -72,6 +77,38 @@ public class Usuario {
         this.correo = correo;
         this.contrasenia = contrasenia;
     }
+
+    public Usuario(int idUsuario, String nombre, String apellidoPaterno, String apellidoMaterno, String correo, String contrasenia, String telefono, String imagen, Date fechaNacimiento, Genero genero, Rol rol, Municipio municipio) {
+        this.idUsuario = idUsuario;
+        this.nombre = nombre;
+        this.apellidoPaterno = apellidoPaterno;
+        this.apellidoMaterno = apellidoMaterno;
+        this.correo = correo;
+        this.contrasenia = contrasenia;
+        this.telefono = telefono;
+        this.imagen = imagen;
+        this.fechaNacimiento = fechaNacimiento;
+        this.genero = genero;
+        this.rol = rol;
+        this.municipio = municipio;
+    }
+
+    public Usuario(int idUsuario, String nombre, String apellidoPaterno, String apellidoMaterno, String correo, String contrasenia, String telefono, String imagen, Date fechaNacimiento, Genero genero, Rol rol, Municipio municipio, List<Post> posts, List<Comentario> comentarios) {
+        this.idUsuario = idUsuario;
+        this.nombre = nombre;
+        this.apellidoPaterno = apellidoPaterno;
+        this.apellidoMaterno = apellidoMaterno;
+        this.correo = correo;
+        this.contrasenia = contrasenia;
+        this.telefono = telefono;
+        this.imagen = imagen;
+        this.fechaNacimiento = fechaNacimiento;
+        this.genero = genero;
+        this.rol = rol;
+        this.municipio = municipio;
+    }
+    
+    
     
     public Usuario(String nombre, String apellidoPaterno, String apellidoMaterno, String correo, String contrasenia, String telefono, String imagen, Date fechaNacimiento, Genero genero, Rol rol, Municipio municipio) {
         this.nombre = nombre;
@@ -94,8 +131,6 @@ public class Usuario {
     public void setImagen(String imagen) {
         this.imagen = imagen;
     }
-
-    
     
     public Municipio getMunicipio() {
         return municipio;

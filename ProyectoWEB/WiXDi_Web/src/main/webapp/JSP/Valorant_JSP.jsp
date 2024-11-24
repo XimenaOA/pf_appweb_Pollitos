@@ -47,7 +47,7 @@
                     <%
                     } else {
                     %>
-                    <img src="../imagenes/icon.png" alt="Avatar por defecto" class="profile-avatar">
+                    <img src="../imagenes/icon.png" alt="Avatar por defecto" class="avatar">
                     <%
                         }
                     %>
