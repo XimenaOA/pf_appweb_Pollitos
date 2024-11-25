@@ -68,17 +68,19 @@ public class IniciarSesion_Servlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        Usuario usuario;
+        
 
         // Obtener parámetros del formulario
         String correo = request.getParameter("correo");
+        String contrasenia = request.getParameter("contrasena");
 
-        usuario = fachada.consultarUsuarioPorCorreo(correo);
+        Usuario usuario = new Usuario(correo, contrasenia);
        
         if (fachada.iniciarSesion(usuario)) {
             System.out.println("Inicio de sesion correcto");
+            Usuario usuarioCompleto = fachada.consultarUsuarioPorCorreo(correo);
             HttpSession objSesion = request.getSession(true);
-            objSesion.setAttribute("usuario", usuario);
+            objSesion.setAttribute("usuario", usuarioCompleto);
             response.sendRedirect("JSP/MenuPrincipal.jsp");
         } else {
             // Si el login falla, enviar un mensaje de error

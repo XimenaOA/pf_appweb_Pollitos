@@ -4,11 +4,12 @@
     Author     : haloa
 --%>
 
+<%@page import="org.apache.commons.text.StringEscapeUtils"%>
 <%@page import="dominio.Usuario"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%
     HttpSession objSesion = request.getSession(false);
-    Usuario usuario = (Usuario) objSesion.getAttribute("usuario");
+    Usuario usuario = objSesion != null ? (Usuario) objSesion.getAttribute("usuario") : null;
 %>
 <!DOCTYPE html>
 <html lang="es">
@@ -23,10 +24,10 @@
             <div class="logo">WiXDi Games</div>
             <nav>
                 <ul>
-                    <li><a href="#" onclick="window.location.href = 'MenuPrincipal.jsp';">Feed</a></li>
+                    <li><a href="#" onclick="window.location.href = 'MenuPrincipal.jsp';">Perfil</a></li>
                     <li><a href="#" onclick="window.location.href = 'Genshin_JSP.jsp';">Genshin Impact</a></li>
                     <li><a href="#" onclick="window.location.href = 'Valorant_JSP.jsp';">Valorant</a></li>
-                    <li><a href="#" class="active">League of Legends</a></li>
+                    <li><a href="#" onclick="window.location.href = 'LeagueOfLegends_JSP.jsp';" class="active">League of Legends</a></li>
                     <li><a href="#" onclick="window.location.href = 'Overwatch_JSP.jsp';">Overwatch</a></li>
                 </ul>
             </nav>
@@ -40,29 +41,61 @@
             <section class="feed">
                 <div class="post-creator">
                     <%
-                        if (usuario.getImagen() != null && !usuario.getImagen().isEmpty()) {
+                        if (usuario != null) {
+                            String avatar = (usuario.getImagen() != null && !usuario.getImagen().isEmpty())
+                                    ? "data:image/png;base64," + StringEscapeUtils.escapeHtml4(usuario.getImagen())
+                                    : "../imagenes/icon.png";
                     %>
-                    <img src="data:image/png;base64,<%= usuario.getImagen()%>" alt="User Avatar" class="avatar">
+                    <img src="<%= avatar %>" alt="User Avatar" class="avatar">
+                    <input type="text" placeholder="Escribe una publicación en WiXDi Games">
+                    <button class="post-button">📷</button>
                     <%
-                    } else {
+                        } else {
                     %>
-                    <img src="../imagenes/icon.png" alt="Avatar por defecto" class="avatar">
+                    <p>Usuario no autenticado. Por favor, inicie sesión.</p>
                     <%
                         }
                     %>
-                    <input type="text" placeholder="Escribe una publicación en WiXDi Games">
-                    <button class="post-button">📷</button>
                 </div>
 
                 <div class="posts">
                     <div class="post">
                         <div class="post-header">
-                            <img src="/assets/recursos/kinich genshin impact icon pfp.jpg" alt="Avatar" class="avatar">
-                            <span class="username">Usuario123</span>
+                            <img src="../imagenes/icon.png" alt="Avatar" class="avatar">
+                            <span class="username"><%= StringEscapeUtils.escapeHtml4("Usuario123") %></span>
                         </div>
                         <div class="post-content">
-                            <p>Vean Arcane porfa</p>
-                            <img src="/assets/recursos/Arcane.gif" alt="Imagen del post" class="post-image">
+                            <p><%= StringEscapeUtils.escapeHtml4("Primer post: ¡Hola a todos!") %></p>
+                            <img src="../imagenes/LoL.jpg" alt="Imagen del post" class="post-image">
+                        </div>
+                        <div class="comments-section">
+                            <div class="comments">
+                                <div class="comment">
+                                    <img src="../imagenes/icon.png" alt="User Avatar" class="avatar">
+                                    <div class="comment-content">
+                                        <div class="comment-username"><%= StringEscapeUtils.escapeHtml4("Usuario456") %></div>
+                                        <div class="comment-text"><%= StringEscapeUtils.escapeHtml4("¡Bienvenido a la comunidad! 🎮") %></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="comment-form">
+                                <%
+                                    if (usuario != null) {
+                                        String avatarComment = (usuario.getImagen() != null && !usuario.getImagen().isEmpty())
+                                                ? "data:image/png;base64," + StringEscapeUtils.escapeHtml4(usuario.getImagen())
+                                                : "../imagenes/icon.png";
+                                %>
+                                <img src="<%= avatarComment %>" alt="User Avatar" class="avatar">
+                                <input type="text" class="comment-input" placeholder="Escribe un comentario...">
+                                <button class="comment-button">Comentar</button>
+                                <%
+                                    } else {
+                                %>
+                                <p>Usuario no autenticado. Por favor, inicie sesión para comentar.</p>
+                                <%
+                                    }
+                                %>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -72,4 +105,3 @@
         <script src="../JS/script.js"></script>
     </body>
 </html>
-

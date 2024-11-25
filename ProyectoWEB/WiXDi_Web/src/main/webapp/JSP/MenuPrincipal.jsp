@@ -5,11 +5,12 @@
 --%>
 
 <%@page import="java.text.SimpleDateFormat"%>
+<%@page import="org.apache.commons.text.StringEscapeUtils"%>
 <%@page import="dominio.Usuario"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%
     HttpSession objSesion = request.getSession(false);
-    Usuario usuario = (Usuario) objSesion.getAttribute("usuario");
+    Usuario usuario = objSesion != null ? (Usuario) objSesion.getAttribute("usuario") : null;
 %>
 <!DOCTYPE html>
 <html lang="es">
@@ -26,7 +27,7 @@
             <div class="logo">WiXDi Games</div>
             <nav>
                 <ul>
-                    <li><a href="#" class="active">Feed</a></li>
+                    <li><a href="#" class="active">Perfil</a></li>
                     <li><a href="#" onclick="window.location.href='Genshin_JSP.jsp';">Genshin Impact</a></li>
                     <li><a href="#" onclick="window.location.href = 'Valorant_JSP.jsp';">Valorant</a></li>
                     <li><a href="#" onclick="window.location.href='LeagueOfLegends_JSP.jsp';">League of Legends</a></li>
@@ -43,38 +44,47 @@
         <main>
             <div class="profile-container">
                 <%
-                    if (usuario.getImagen() != null && !usuario.getImagen().isEmpty()) {
+                    if (usuario != null) {
+                        String avatar = (usuario.getImagen() != null && !usuario.getImagen().isEmpty()) 
+                                ? "data:image/png;base64," + StringEscapeUtils.escapeHtml4(usuario.getImagen()) 
+                                : "../imagenes/icon.png";
+                        String nombre = StringEscapeUtils.escapeHtml4(usuario.getNombre());
+                        String apellidoPaterno = StringEscapeUtils.escapeHtml4(usuario.getApellidoPaterno());
+                        String apellidoMaterno = StringEscapeUtils.escapeHtml4(usuario.getApellidoMaterno());
+                        String generoString = String.valueOf(usuario.getGenero());
+                        String genero = StringEscapeUtils.escapeHtml4(generoString);
+                        String correo = StringEscapeUtils.escapeHtml4(usuario.getCorreo());
+                        SimpleDateFormat formato = new SimpleDateFormat("dd-MM-yyyy");
+                        String fechaFormateada = formato.format(usuario.getFechaNacimiento());
                 %>
-                <img src="data:image/png;base64,<%= usuario.getImagen()%>" alt="Avatar" class="profile-avatar">
+                <img src="<%= avatar %>" alt="Avatar" class="profile-avatar">
+                <div class="profile-info">
+                    <!-- En h2 va el nombre -->
+                    <h2><%= nombre %> <%= apellidoPaterno %> <%= apellidoMaterno %></h2>
+                    <p><strong>Información:</strong></p>
+                    <p>Cumpleaños: </p>
+                    <!-- cumpleaños -->
+                    <p><%= StringEscapeUtils.escapeHtml4(fechaFormateada) %></p>
+                    <p>Género: </p>
+                    <!-- genero -->
+                    <p><%= genero %></p>
+                    <p>Contacto: </p>
+                    <!-- contacto -->
+                    <p><%= correo %></p>
+                </div>
                 <%
-                } else {
+                    } else {
                 %>
-                <img src="../imagenes/icon.png" alt="Avatar por defecto" class="profile-avatar">
+                <div class="profile-info">
+                    <h2>Usuario no autenticado</h2>
+                    <p>Por favor, inicie sesión.</p>
+                </div>
                 <%
                     }
                 %>
-                <div class="profile-info">
-                    <!-- En h2 va el nombre -->
-                    <h2><%=usuario.getNombre()%> <%=usuario.getApellidoPaterno()%> <%=usuario.getApellidoMaterno()%></h2>
-                    <p><strong>Informacion:</strong></p>
-                    <p>Cumpleaños: </p>
-                    <!-- cumpleaños -->
-                    <%
-                        SimpleDateFormat formato = new SimpleDateFormat("dd-MM-yyyy");
-                        String fechaFormateada = formato.format(usuario.getFechaNacimiento());
-                    %>
-                    <p><%=fechaFormateada%></p>
-                    <p>Genero: </p>
-                    <!-- genero -->
-                    <p><%=usuario.getGenero()%></p>
-                    <p>Contacto: </p>
-                    <!-- contacto -->
-                    <p><%=usuario.getCorreo()%></p>
-                </div>
             </div>
         </main>
 
         <script src="../JS/script.js"></script>
     </body>
 </html>
-

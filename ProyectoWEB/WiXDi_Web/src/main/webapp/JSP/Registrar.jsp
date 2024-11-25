@@ -4,6 +4,7 @@
     Author     : haloa
 --%>
 
+<%@page import="org.apache.commons.text.StringEscapeUtils"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="es">
@@ -34,36 +35,42 @@
 
                 <!--Formulario de Login y registro-->
                 <div class="contenedor__login-register">
-                    <title>Iniciar Sesión</title>
-                    
-                    </head>
-                    <body>
-                        <!--Login Form-->
-                        <form action="${pageContext.request.contextPath}/IniciarSesion_Servlet" method="GET" class="formulario__login">
-                            <h2>Iniciar Sesión</h2>
-                            <input type="text" name="correo" placeholder="Correo Electrónico" required />
-                            <br />
-                            <input type="password" name="contrasena" placeholder="Contraseña" required />
-                            <br />
-                            <button type="submit">Entrar</button>
-                        </form>
+                    <form action="${pageContext.request.contextPath}/IniciarSesion_Servlet" method="GET" class="formulario__login">
+                        <h2>Iniciar Sesión</h2>
+                        <input type="text" name="correo" placeholder="Correo Electrónico" 
+                               required 
+                               oninput="this.value = this.value.replace(/[<>'\"/&]/g, '')" />
+                        <br />
+                        <input type="password" name="contrasena" placeholder="Contraseña" required />
+                        <br />
+                        <button type="submit">Entrar</button>
+                    </form>
 
-                    <!--Registro enctype="multipart/form-data-->
+                    <!--Formulario de registro-->
                     <form action="${pageContext.request.contextPath}/Registrar_Servlet" method="POST" class="formulario__register" enctype="multipart/form-data">
                         <h2>Regístrate</h2>
                         <!-- Contenedor de alerta para mensajes de registro -->
                         <div id="registro_alerta" style="display: none; text-align: center; font-weight: bold; margin-bottom: 20px;"></div>
 
-                        <input type="text" name="nombre" placeholder="Nombre" required /><br />
-                        <input type="text" name="apellidoPaterno" placeholder="Apellido Paterno" required /><br />
-                        <input type="text" name="apellidoMaterno" placeholder="Apellido Materno" required /><br />
+                        <input type="text" name="nombre" placeholder="Nombre" 
+                               required 
+                               oninput="this.value = this.value.replace(/[<>'\"/&]/g, '')" /><br />
+                        <input type="text" name="apellidoPaterno" placeholder="Apellido Paterno" 
+                               required 
+                               oninput="this.value = this.value.replace(/[<>'\"/&]/g, '')" /><br />
+                        <input type="text" name="apellidoMaterno" placeholder="Apellido Materno" 
+                               required 
+                               oninput="this.value = this.value.replace(/[<>'\"/&]/g, '')" /><br />
                         <input type="email" name="correo" placeholder="Correo Electrónico" required /><br />
                         <input type="password" name="contrasena" placeholder="Contraseña" required /><br />
-                        <input type="tel" name="telefono" placeholder="Teléfono" /><br />
+                        <input type="tel" name="telefono" placeholder="Teléfono" 
+                               oninput="this.value = this.value.replace(/[<>'\"/&]/g, '')" /><br />
                         <label for="avatar">Avatar:</label>
-                        <input type="file" name="avatar" id="avatar" /><br />
-                        <input type="text" name="municipio" placeholder="Municipio" /><br />
-                        <input type="text" name="estado" placeholder="Estado" /><br />
+                        <input type="file" name="avatar" id="avatar" accept="image/*" /><br />
+                        <input type="text" name="municipio" placeholder="Municipio" 
+                               oninput="this.value = this.value.replace(/[<>'\"/&]/g, '')" /><br />
+                        <input type="text" name="estado" placeholder="Estado" 
+                               oninput="this.value = this.value.replace(/[<>'\"/&]/g, '')" /><br />
                         <label for="fechaNacimiento">Fecha de Nacimiento:</label>
                         <input type="date" name="fechaNacimiento" id="fechaNacimiento" /><br />
                         <label for="genero">Género:</label>
@@ -79,6 +86,5 @@
         </main>
 
         <script src="../JS/LogIn.js"></script>
-
-        z</body>
+    </body>
 </html>

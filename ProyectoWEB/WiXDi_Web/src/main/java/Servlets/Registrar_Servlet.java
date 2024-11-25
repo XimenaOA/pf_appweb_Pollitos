@@ -32,6 +32,7 @@ import java.util.Base64;
 import javax.imageio.ImageIO;
 import java.awt.Graphics2D;
 import java.awt.image.RenderedImage;
+import org.apache.commons.text.StringEscapeUtils;
 
 /**
  *
@@ -125,16 +126,16 @@ public class Registrar_Servlet extends HttpServlet {
         Usuario usuario;
 
         // Obtener parámetros del formulario
-        String nombre = request.getParameter("nombre");
-        String apellidoPaterno = request.getParameter("apellidoPaterno");
-        String apellidoMaterno = request.getParameter("apellidoMaterno");
-        String estado = request.getParameter("estado");
-        String municipio = request.getParameter("municipio");
-        String correo = request.getParameter("correo");
-        String contrasena = request.getParameter("contrasena");
-        String telefono = request.getParameter("telefono");
-        String genero = request.getParameter("genero");
-        String fechaNacimiento = request.getParameter("fechaNacimiento");
+        String nombre = StringEscapeUtils.escapeHtml4(request.getParameter("nombre"));
+        String apellidoPaterno = StringEscapeUtils.escapeHtml4(request.getParameter("apellidoPaterno"));
+        String apellidoMaterno = StringEscapeUtils.escapeHtml4(request.getParameter("apellidoMaterno"));
+        String estado = StringEscapeUtils.escapeHtml4(request.getParameter("estado"));
+        String municipio = StringEscapeUtils.escapeHtml4(request.getParameter("municipio"));
+        String correo = StringEscapeUtils.escapeHtml4(request.getParameter("correo"));
+        String contrasena = StringEscapeUtils.escapeHtml4(request.getParameter("contrasena"));
+        String telefono = StringEscapeUtils.escapeHtml4(request.getParameter("telefono"));
+        String genero = StringEscapeUtils.escapeHtml4(request.getParameter("genero"));
+        String fechaNacimiento = StringEscapeUtils.escapeHtml4(request.getParameter("fechaNacimiento"));
 
         // Procesar la fecha
         SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
