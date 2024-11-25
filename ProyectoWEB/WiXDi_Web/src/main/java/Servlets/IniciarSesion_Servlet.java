@@ -86,7 +86,7 @@ public class IniciarSesion_Servlet extends HttpServlet {
             // Si el login falla, enviar un mensaje de error
             System.out.println("Credenciales incorrectas");
             request.setAttribute("error", "Correo o contraseña incorrectos.");
-            request.getRequestDispatcher("JSP/registrar.jsp").forward(request, response);
+            request.getRequestDispatcher("/JSP/Registrar.jsp").forward(request, response);
         }
 
     }
