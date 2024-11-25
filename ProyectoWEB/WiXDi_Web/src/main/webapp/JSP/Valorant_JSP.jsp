@@ -16,7 +16,7 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>WiXDi - Genshin Impact</title>
+        <title>WiXDi - Valorant</title>
         <link rel="stylesheet" href="../CSS/Comunidades.css">
     </head>
     <body>
@@ -25,8 +25,8 @@
             <nav>
                 <ul>
                     <li><a href="#" onclick="window.location.href = 'MenuPrincipal.jsp';">Perfil</a></li>
-                    <li><a href="#" onclick="window.location.href = 'Genshin_JSP.jsp';" class="active">Genshin Impact</a></li>
-                    <li><a href="#" onclick="window.location.href = 'Valorant_JSP.jsp';">Valorant</a></li>
+                    <li><a href="#" onclick="window.location.href = 'Genshin_JSP.jsp';" >Genshin Impact</a></li>
+                    <li><a href="#" onclick="window.location.href = 'Valorant_JSP.jsp';" class="active">Valorant</a></li>
                     <li><a href="#" onclick="window.location.href = 'LeagueOfLegends_JSP.jsp';">League of Legends</a></li>
                     <li><a href="#" onclick="window.location.href = 'Overwatch_JSP.jsp';">Overwatch</a></li>
                 </ul>
@@ -67,7 +67,7 @@
                         </div>
                         <div class="post-content">
                             <p>Primer post: ¡Hola a todos!</p>
-                            <img src="../imagenes/Genshin.jpg" alt="Imagen del post" class="post-image">
+                            <img src="../imagenes/Valorant.jpg" alt="Imagen del post" class="post-image">
                         </div>
                         <div class="comments-section">
                             <div class="comments">
