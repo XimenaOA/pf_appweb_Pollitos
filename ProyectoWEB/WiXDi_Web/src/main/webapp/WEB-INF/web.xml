@@ -38,5 +38,15 @@
         <location>/Errores/codigo-excepcion.jsp</location>
     </error-page>
     
+    <filter>
+        <filter-name>AutenticadorFiltro</filter-name>
+        <filter-class>Autenticador.AutenticadorFiltro</filter-class>
+    </filter>
+
+    <filter-mapping>
+        <filter-name>AutenticadorFiltro</filter-name>
+        <url-pattern>/JSP/*</url-pattern>
+    </filter-mapping>
+
 
 </web-app>

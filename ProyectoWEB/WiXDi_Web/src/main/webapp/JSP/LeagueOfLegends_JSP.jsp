@@ -62,7 +62,7 @@
                     <div class="post">
                         <div class="post-header">
                             <img src="../imagenes/icon.png" alt="Avatar" class="avatar">
-                            <span class="username"><%= StringEscapeUtils.escapeHtml4("Usuario123") %></span>
+                            <span class="username"><%= StringEscapeUtils.escapeHtml4("Payo") %></span>
                         </div>
                         <div class="post-content">
                             <p><%= StringEscapeUtils.escapeHtml4("Primer post: ¡Hola a todos!") %></p>
