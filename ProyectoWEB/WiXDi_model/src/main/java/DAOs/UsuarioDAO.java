@@ -6,6 +6,8 @@ package DAOs;
 
 import conexion.Conexion;
 import conexion.IConexion;
+import dominio.Estado;
+import dominio.Municipio;
 import dominio.Usuario;
 import interfaces.IUsuarioDAO;
 import java.util.ArrayList;
@@ -156,7 +158,7 @@ public class UsuarioDAO implements IUsuarioDAO {
                     resultado.getRol(),
                     resultado.getMunicipio()
             );
-
+            
         } catch (NoResultException e) {
             // Manejar el caso donde no se encuentra el usuario
             System.out.println("Usuario con correo " + correo + " no encontrado.");

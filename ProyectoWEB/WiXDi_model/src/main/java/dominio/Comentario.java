@@ -29,52 +29,47 @@ public class Comentario implements Serializable {
     public Comentario() {
     }
 
-    @Id
+     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int idComentario;
+    private Long id;
 
-    @Temporal(TemporalType.TIMESTAMP)
+    @Column(name = "fechaHora", nullable = false)
     private Date fechaHora;
 
-    @Column(nullable = false, length = 255)
+    @Column(name = "contenido", nullable = false)
     private String contenido;
 
     @ManyToOne
-    @JoinColumn(name = "idUsuario", nullable = false)
+    @JoinColumn(name = "usuario_id")
     private Usuario usuario;
 
     @ManyToOne
-    @JoinColumn(name = "idComentarioPadre", referencedColumnName = "idComentario", foreignKey = @ForeignKey(name = "FK_Comentario_idComentarioPadre"))
+    @JoinColumn(name = "post_id", nullable = false) 
+    private Post post;
+
+    @ManyToOne
+    @JoinColumn(nullable = true ,name = "comentario_padre_id")
     private Comentario comentarioPadre;
 
     @OneToMany(mappedBy = "comentarioPadre", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Comentario> respuestas = new ArrayList<>();
+    private List<Comentario> comentariosHijos = new ArrayList<>();
 
-    @ManyToOne
-    @JoinColumn(name = "idPost", nullable = false)
-    private Post post;
-
-    public Comentario(Date fechaHora, String contenido, Usuario usuario) {
-        this.fechaHora = fechaHora;
-        this.contenido = contenido;
-        this.usuario = usuario;
-    }
-
-    public Comentario(Date fechaHora, String contenido, Usuario usuario, Post post, Comentario comentarioPadre, List<Comentario> respuestas) {
+    public Comentario(Date fechaHora, String contenido, Usuario usuario, Post post, Comentario comentarioPadre) {
         this.fechaHora = fechaHora;
         this.contenido = contenido;
         this.usuario = usuario;
         this.post = post;
         this.comentarioPadre = comentarioPadre;
-        this.respuestas = respuestas;
     }
 
-    public int getIdComentario() {
-        return idComentario;
+    
+    
+    public Long getId() {
+        return id;
     }
 
-    public void setIdComentario(int idComentario) {
-        this.idComentario = idComentario;
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public Date getFechaHora() {
@@ -117,12 +112,15 @@ public class Comentario implements Serializable {
         this.comentarioPadre = comentarioPadre;
     }
 
-    public List<Comentario> getRespuestas() {
-        return respuestas;
+    public List<Comentario> getComentariosHijos() {
+        return comentariosHijos;
     }
 
-    public void setRespuestas(List<Comentario> respuestas) {
-        this.respuestas = respuestas;
+    public void setComentariosHijos(List<Comentario> comentariosHijos) {
+        this.comentariosHijos = comentariosHijos;
     }
+
+    
+  
 
 }

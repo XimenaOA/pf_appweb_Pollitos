@@ -75,7 +75,7 @@ public class IniciarSesion_Servlet extends HttpServlet {
         String contrasenia = request.getParameter("contrasena");
 
         Usuario usuario = new Usuario(correo, contrasenia);
-       
+        System.out.println("Entro al Servlet de Iniciar sesion");
         if (fachada.iniciarSesion(usuario)) {
             System.out.println("Inicio de sesion correcto");
             Usuario usuarioCompleto = fachada.consultarUsuarioPorCorreo(correo);
@@ -86,7 +86,7 @@ public class IniciarSesion_Servlet extends HttpServlet {
             // Si el login falla, enviar un mensaje de error
             System.out.println("Credenciales incorrectas");
             request.setAttribute("error", "Correo o contraseña incorrectos.");
-            request.getRequestDispatcher("/JSP/Registrar.jsp").forward(request, response);
+            request.getRequestDispatcher("JSP/Registrar.jsp").forward(request, response);
         }
 
     }

@@ -4,12 +4,18 @@
  */
 package dominio;
 
+import enums.Categoria;
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -37,57 +43,40 @@ public class Post implements Serializable {
 
     @Column(nullable = false, length = 255)
     private String contenido;
-    
-    @Column(nullable = true)
-    private String imagen;
-    
-    @Column(nullable = true)
-    private String categoria;
 
-    @Column(nullable = true)
+    @Column(nullable = false)
     private boolean isAnclado;
     
-    @ManyToOne
-    @JoinColumn(name = "idUsuario")
-    private Usuario usuario;
+    @Column(nullable = true ,length = 255)
+    private String imagen;
 
-    public Post(Date fechaHoraCreacion, String contenido, String imagen, boolean isAnclado, List<Comentario> comentarios) {
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false)
+    private Categoria categoria;
+    
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "idUsuario", nullable = false)
+    private Usuario autor;
+    
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    @JoinColumn(name = "post_id") // Crea la clave foránea en Comentario
+    private List<Comentario> comentarios = new ArrayList<>();
+
+    public Post(Date fechaHoraCreacion, String contenido, boolean isAnclado, String imagen, Categoria categoria, Usuario autor) {
         this.fechaHoraCreacion = fechaHoraCreacion;
         this.contenido = contenido;
-        this.imagen = imagen;
         this.isAnclado = isAnclado;
-    }
-
-    public String getCategoria() {
-        return categoria;
-    }
-
-    public void setCategoria(String categoria) {
-        this.categoria = categoria;
-    }
-
-    public String getImagen() {
-        return imagen;
-    }
-
-    public void setImagen(String imagen) {
         this.imagen = imagen;
+        this.categoria = categoria;
+        this.autor = autor;
     }
 
-    public Usuario getUsuario() {
-        return usuario;
+    public List<Comentario> getComentarios() {
+        return comentarios;
     }
 
-    public void setUsuario(Usuario usuario) {
-        this.usuario = usuario;
-    }
-    
-    public int getIdPost() {
-        return idPost;
-    }
-
-    public void setIdPost(int idPost) {
-        this.idPost = idPost;
+    public void setComentarios(List<Comentario> comentarios) {
+        this.comentarios = comentarios;
     }
 
     public Date getFechaHoraCreacion() {
@@ -96,6 +85,40 @@ public class Post implements Serializable {
 
     public void setFechaHoraCreacion(Date fechaHoraCreacion) {
         this.fechaHoraCreacion = fechaHoraCreacion;
+    }
+
+    public String getFoto() {
+        return imagen;
+    }
+
+    public void setFoto(String imagen) {
+        this.imagen = imagen;
+    }
+
+    public Categoria getCategoria() {
+        return categoria;
+    }
+
+    public void setCategoria(Categoria categoria) {
+        this.categoria = categoria;
+    }
+
+    public Usuario getAutor() {
+        return autor;
+    }
+
+    public void setAutor(Usuario autor) {
+        this.autor = autor;
+    }
+
+    
+    
+    public int getIdPost() {
+        return idPost;
+    }
+
+    public void setIdPost(int idPost) {
+        this.idPost = idPost;
     }
 
     public String getContenido() {

@@ -12,6 +12,7 @@ package control;
 import dominio.Comentario;
 import dominio.Post;
 import dominio.Usuario;
+import enums.Categoria;
 import factory.FactoryObjects;
 import factory.IFactoryObjects;
 import java.util.List;
@@ -110,6 +111,16 @@ public class Fachada implements IFachada{
     @Override
     public Usuario consultarUsuarioPorCorreo(String correo) {
         return factory.objectoUsuario().consultarUsuarioPorCorreo(correo);
+    }
+
+    @Override
+    public List<Post> consultarPostsUsuario(Usuario userId, Categoria categoria) {
+        return factory.obejctoPost().consultarPostsUsuario(userId, categoria);
+    }
+
+    @Override
+    public List<Post> consultarPostsCategoria(Categoria categoria) {
+        return factory.obejctoPost().consultarPostsCategoria(categoria);
     }
 }
 

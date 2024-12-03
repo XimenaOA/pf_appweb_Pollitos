@@ -59,8 +59,8 @@ function register() {
 }
 
 
-// Agregar evento al boton Entrar del formulario de inicio de sesion
-document.querySelector(".formulario__login button").addEventListener("click", function(event) {
-    event.preventDefault(); // Evita el envio
-    window.location.href = "/registrar.jsp"; // Redirige a la comunidad inicio
-});
+//// Agregar evento al boton Entrar del formulario de inicio de sesion
+//document.querySelector(".formulario__login button").addEventListener("click", function(event) {
+//    event.preventDefault(); // Evita el envio
+//    window.location.href = "../JSP/Registrar.jsp"; // Redirige a la comunidad inicio
+//});

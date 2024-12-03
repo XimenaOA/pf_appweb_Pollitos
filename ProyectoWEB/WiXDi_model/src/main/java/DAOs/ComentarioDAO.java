@@ -26,7 +26,6 @@ public class ComentarioDAO implements IComentarioDAO {
     @Override
     public void agregarComentario(Comentario comentario) {
         EntityManager em = conexion.abrir();
-        em.getTransaction().begin();
         try {
             em.getTransaction().begin();
             em.persist(comentario); // Persiste el nuevo comentario
@@ -42,7 +41,6 @@ public class ComentarioDAO implements IComentarioDAO {
     @Override
     public void agregarComentarioAComentario(Comentario comentario, Comentario comentarioNuevo) {
         EntityManager em = conexion.abrir();
-        em.getTransaction().begin();
         try {
             em.getTransaction().begin();
             // Aquí asumimos que 'comentarioNuevo' es una respuesta al 'comentario' existente
@@ -60,7 +58,6 @@ public class ComentarioDAO implements IComentarioDAO {
     @Override
     public void actualizarComentario(Comentario comentario) {
         EntityManager em = conexion.abrir();
-        em.getTransaction().begin();
         try {
             em.getTransaction().begin();
             em.merge(comentario); // Actualiza el comentario existente
@@ -76,11 +73,10 @@ public class ComentarioDAO implements IComentarioDAO {
     @Override
     public void eliminarComentario(Comentario comentario) {
         EntityManager em = conexion.abrir();
-        em.getTransaction().begin();
         try {
             em.getTransaction().begin();
             // Busca el comentario por ID
-            Comentario comentarioParaEliminar = em.find(Comentario.class, comentario.getIdComentario());
+            Comentario comentarioParaEliminar = em.find(Comentario.class, comentario.getId());
             if (comentarioParaEliminar != null) {
                 em.remove(comentarioParaEliminar); // Elimina el comentario
             }

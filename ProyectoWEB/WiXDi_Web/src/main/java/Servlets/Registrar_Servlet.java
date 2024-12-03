@@ -137,6 +137,7 @@ public class Registrar_Servlet extends HttpServlet {
         String genero = StringEscapeUtils.escapeHtml4(request.getParameter("genero"));
         String fechaNacimiento = StringEscapeUtils.escapeHtml4(request.getParameter("fechaNacimiento"));
 
+
         // Procesar la fecha
         SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
         Date fecha = null;
@@ -178,9 +179,7 @@ public class Registrar_Servlet extends HttpServlet {
         }
 
         // Crear el objeto Usuario
-        usuario = new Usuario(nombre, apellidoPaterno, apellidoMaterno, correo, contrasena, telefono, avatar, fecha, gen, rol,
-                new Municipio(municipio, new Estado(estado)));
-
+        usuario = new Usuario(nombre, apellidoPaterno, apellidoMaterno, correo, contrasena, telefono, avatar, fecha, gen, rol, new Municipio(municipio, new Estado(estado)));
         // Registrar el usuario en la base de datos
         System.out.println("Se creo el usuario");
         fachada.agregarUsuario(usuario);

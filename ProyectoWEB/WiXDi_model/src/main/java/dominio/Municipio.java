@@ -5,6 +5,7 @@
 package dominio;
 
 
+import java.io.Serializable;
 import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -19,7 +20,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "Municipio")
-public class Municipio {
+public class Municipio implements Serializable {
 
     public Municipio() {
     }

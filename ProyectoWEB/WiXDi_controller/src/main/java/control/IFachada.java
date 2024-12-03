@@ -5,9 +5,9 @@
 package control;
 
 import dominio.Comentario;
-import dominio.Municipio;
 import dominio.Post;
 import dominio.Usuario;
+import enums.Categoria;
 import java.util.List;
 /**
  *
@@ -33,4 +33,7 @@ public interface IFachada {
     public List<Usuario> consultarUsuarios();
     public boolean iniciarSesion(Usuario usuario);
     public Usuario consultarUsuarioPorCorreo(String correo);
+    
+    public List<Post> consultarPostsUsuario(Usuario userId, Categoria categoria);
+    public List<Post> consultarPostsCategoria(Categoria categoria);
 }

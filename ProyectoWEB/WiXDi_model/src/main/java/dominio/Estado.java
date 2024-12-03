@@ -1,6 +1,7 @@
 package dominio;
 
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.CascadeType;
@@ -14,7 +15,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "Estado")
-public class Estado {
+public class Estado implements Serializable {
 
     
     
@@ -39,6 +40,8 @@ public class Estado {
         this.nombre = nombre;
         this.municipios = new ArrayList<>();  // Inicialización de la lista para evitar NullPointerException
     }
+    
+    
 
     // Getters y Setters
     public Long getId() {

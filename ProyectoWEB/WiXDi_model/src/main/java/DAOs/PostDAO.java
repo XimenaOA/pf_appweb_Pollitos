@@ -7,26 +7,29 @@ package DAOs;
 import conexion.Conexion;
 import conexion.IConexion;
 import dominio.Post;
+import dominio.Usuario;
+import enums.Categoria;
 import interfaces.IPostDAO;
+import java.util.ArrayList;
+import java.util.List;
 import javax.persistence.EntityManager;
-
+import javax.persistence.TypedQuery;
 
 /**
  *
  * @author si
  */
-public class PostDAO implements IPostDAO{
-    
+public class PostDAO implements IPostDAO {
+
     private IConexion conexion;
 
     public PostDAO() {
         this.conexion = new Conexion();
     }
-    
+
     @Override
     public void agregarPost(Post post) {
         EntityManager em = conexion.abrir();
-        em.getTransaction().begin();
         try {
             em.getTransaction().begin();
             em.persist(post);
@@ -45,7 +48,6 @@ public class PostDAO implements IPostDAO{
     @Override
     public void actualizarPost(Post post) {
         EntityManager em = conexion.abrir();
-        em.getTransaction().begin();
         try {
             em.getTransaction().begin();
             em.merge(post);
@@ -55,7 +57,7 @@ public class PostDAO implements IPostDAO{
                 em.getTransaction().rollback();
             }
             throw e; // Lanza la excepción para manejarla en otro lugar
-        }finally {
+        } finally {
             // Asegurarse de cerrar el EntityManager
             em.close();
         }
@@ -64,7 +66,6 @@ public class PostDAO implements IPostDAO{
     @Override
     public void eliminarPost(Post post) {
         EntityManager em = conexion.abrir();
-        em.getTransaction().begin();
         try {
             em.getTransaction().begin();
             Post postToRemove = em.find(Post.class, post.getIdPost());
@@ -77,7 +78,7 @@ public class PostDAO implements IPostDAO{
                 em.getTransaction().rollback();
             }
             throw e; // Lanza la excepción para manejarla en otro lugar
-        }finally {
+        } finally {
             // Asegurarse de cerrar el EntityManager
             em.close();
         }
@@ -92,8 +93,7 @@ public class PostDAO implements IPostDAO{
 
     @Override
     public void anclarPost(Post post) {
-       EntityManager em = conexion.abrir();
-        em.getTransaction().begin();
+        EntityManager em = conexion.abrir();
         try {
             em.getTransaction().begin();
             Post postToUpdate = em.find(Post.class, post.getIdPost());
@@ -107,11 +107,52 @@ public class PostDAO implements IPostDAO{
                 em.getTransaction().rollback();
             }
             throw e; // Lanza la excepción para manejarla en otro lugar
-        }finally {
+        } finally {
             // Asegurarse de cerrar el EntityManager
             em.close();
         }
     }
-    
-    
+
+    @Override
+    public List<Post> consultarPostsUsuario(Usuario userId, Categoria categoria) {
+        EntityManager em = conexion.abrir();
+        try {
+            em.getTransaction().begin();
+            String jpql = "SELECT p FROM Post p WHERE p.autor = :userId AND p.categoria = :categoria";
+            TypedQuery<Post> query = em.createQuery(jpql, Post.class);
+            query.setParameter("userId", userId);
+            query.setParameter("categoria", categoria);
+            return query.getResultList();
+        } catch (RuntimeException e) {
+            if (em.getTransaction().isActive()) {
+                em.getTransaction().rollback();
+            }
+            throw e; // Lanza la excepción para manejarla en otro lugar
+        } finally {
+            // Asegurarse de cerrar el EntityManager
+            em.close();
+        }
+
+    }
+
+    @Override
+    public List<Post> consultarPostsCategoria(Categoria categoria) {
+        EntityManager em = conexion.abrir();
+        try {
+            em.getTransaction().begin();
+            String jpql = "SELECT p FROM Post p WHERE p.categoria = :categoria";
+            TypedQuery<Post> query = em.createQuery(jpql, Post.class);
+            query.setParameter("categoria", categoria);
+            return query.getResultList();
+        } catch (RuntimeException e) {
+            if (em.getTransaction().isActive()) {
+                em.getTransaction().rollback();
+            }
+            throw e; // Lanza la excepción para manejarla en otro lugar
+        } finally {
+            // Asegurarse de cerrar el EntityManager
+            em.close();
+        }
+    }
+
 }

@@ -43,23 +43,23 @@ public class EstadoDAO implements IEstadoDAO{
 
     @Override
     public void agregarMunicipio(Estado estado, Municipio municipio) {
-        EntityManager em = conexion.abrir();
-        em.getTransaction().begin();
-        try {
-            em.getTransaction().begin();
-            // Aquí podrías añadir lógica para agregar un municipio al estado
-            // Por ejemplo, agregar el municipio a una lista de municipios en Estado
-            estado.getMunicipios().add(municipio); // Suponiendo que Estado tiene una lista de Municipios
-            municipio.setEstado(estado); // Establece la relación en el municipio
-            em.persist(municipio); // Persiste el nuevo municipio
-            em.merge(estado); // Actualiza el estado para incluir el nuevo municipio
-            em.getTransaction().commit();
-        } catch (Exception e) {
-            if (em.getTransaction().isActive()) {
-                em.getTransaction().rollback();
-            }
-            System.err.println("Error al agregar municipio: " + e.getMessage());
-        }
+//        EntityManager em = conexion.abrir();
+//        em.getTransaction().begin();
+//        try {
+//            em.getTransaction().begin();
+//            // Aquí podrías añadir lógica para agregar un municipio al estado
+//            // Por ejemplo, agregar el municipio a una lista de municipios en Estado
+//            estado.getMunicipios().add(municipio); // Suponiendo que Estado tiene una lista de Municipios
+//            municipio.setEstado(estado); // Establece la relación en el municipio
+//            em.persist(municipio); // Persiste el nuevo municipio
+//            em.merge(estado); // Actualiza el estado para incluir el nuevo municipio
+//            em.getTransaction().commit();
+//        } catch (Exception e) {
+//            if (em.getTransaction().isActive()) {
+//                em.getTransaction().rollback();
+//            }
+//            System.err.println("Error al agregar municipio: " + e.getMessage());
+//        }
     }
 
     @Override
