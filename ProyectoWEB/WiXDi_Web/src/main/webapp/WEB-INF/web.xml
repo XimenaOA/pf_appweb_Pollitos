@@ -12,6 +12,10 @@
         <servlet-name>Menu_Servlet</servlet-name>
         <servlet-class>Servlets.Menu_Servlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>CrearPostServlet</servlet-name>
+        <servlet-class>Servlets.CrearPostServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Registrar_Servlet</servlet-name>
         <url-pattern>/Registrar_Servlet</url-pattern>
@@ -23,6 +27,10 @@
     <servlet-mapping>
         <servlet-name>Menu_Servlet</servlet-name>
         <url-pattern>/Menu_Servlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CrearPostServlet</servlet-name>
+        <url-pattern>/CrearPostServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
@@ -37,16 +45,12 @@
         <exception-type>java.lang.Exception</exception-type>
         <location>/Errores/codigo-excepcion.jsp</location>
     </error-page>
-    
     <filter>
         <filter-name>AutenticadorFiltro</filter-name>
         <filter-class>Autenticador.AutenticadorFiltro</filter-class>
     </filter>
-
     <filter-mapping>
         <filter-name>AutenticadorFiltro</filter-name>
         <url-pattern>/JSP/*</url-pattern>
     </filter-mapping>
-
-
 </web-app>

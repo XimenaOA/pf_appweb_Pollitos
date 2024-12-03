@@ -6,10 +6,9 @@ package DAOs;
 
 import conexion.Conexion;
 import dominio.Comentario;
+import dominio.Post;
 import interfaces.IComentarioDAO;
 import javax.persistence.EntityManager;
-
-
 
 /**
  *
@@ -24,19 +23,39 @@ public class ComentarioDAO implements IComentarioDAO {
     }
 
     @Override
-    public void agregarComentario(Comentario comentario) {
-        EntityManager em = conexion.abrir();
-        try {
-            em.getTransaction().begin();
-            em.persist(comentario); // Persiste el nuevo comentario
-            em.getTransaction().commit(); // Confirma la transacción
-        } catch (Exception e) {
-            if (em.getTransaction().isActive()) {
-                em.getTransaction().rollback(); // Hace rollback en caso de error
-            }
-            System.err.println("Error al agregar comentario: " + e.getMessage());
+public void agregarComentario(Comentario comentario, Post post) {
+    EntityManager em = conexion.abrir();
+    try {
+        em.getTransaction().begin();
+
+        // Recuperar el Post gestionado si no lo está
+        Post postGestionado = em.find(Post.class, post.getIdPost());
+        if (postGestionado == null) {
+            throw new IllegalArgumentException("El Post asociado no existe en la base de datos.");
         }
+
+        // Asociar el comentario al Post
+        comentario.setPost(postGestionado);
+
+        // Agregar el comentario a la lista de comentarios del Post
+        postGestionado.getComentarios().add(comentario);
+
+        // Persistir el nuevo comentario
+        em.persist(comentario);
+
+        // JPA sincroniza automáticamente los cambios en el Post gestionado
+        em.getTransaction().commit();
+    } catch (Exception e) {
+        if (em.getTransaction().isActive()) {
+            em.getTransaction().rollback(); // Rollback en caso de error
+        }
+        System.err.println("Error al agregar comentario: " + e.getMessage());
+        e.printStackTrace();
+    } finally {
+        em.close(); // Cerrar el EntityManager
     }
+}
+
 
     @Override
     public void agregarComentarioAComentario(Comentario comentario, Comentario comentarioNuevo) {

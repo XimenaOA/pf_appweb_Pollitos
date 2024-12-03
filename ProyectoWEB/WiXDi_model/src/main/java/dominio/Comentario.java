@@ -26,14 +26,12 @@ import javax.persistence.TemporalType;
 @Table(name = "Comentario")
 public class Comentario implements Serializable {
 
-    public Comentario() {
-    }
-
-     @Id
+    @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(name = "fechaHora", nullable = false)
+    @Temporal(TemporalType.DATE)
     private Date fechaHora;
 
     @Column(name = "contenido", nullable = false)
@@ -44,11 +42,11 @@ public class Comentario implements Serializable {
     private Usuario usuario;
 
     @ManyToOne
-    @JoinColumn(name = "post_id", nullable = false) 
+    @JoinColumn(name = "post_id", nullable = false) // El propietario de la relación
     private Post post;
 
     @ManyToOne
-    @JoinColumn(nullable = true ,name = "comentario_padre_id")
+    @JoinColumn(nullable = true, name = "comentario_padre_id")
     private Comentario comentarioPadre;
 
     @OneToMany(mappedBy = "comentarioPadre", cascade = CascadeType.ALL, orphanRemoval = true)
@@ -60,10 +58,14 @@ public class Comentario implements Serializable {
         this.usuario = usuario;
         this.post = post;
         this.comentarioPadre = comentarioPadre;
+        comentariosHijos = new ArrayList<>();
     }
 
+    public Comentario() {
+    }
     
     
+
     public Long getId() {
         return id;
     }
@@ -120,7 +122,9 @@ public class Comentario implements Serializable {
         this.comentariosHijos = comentariosHijos;
     }
 
-    
-  
+    @Override
+    public String toString() {
+        return "Comentario{" + "id=" + id + ", fechaHora=" + fechaHora + ", contenido=" + contenido + ", usuario=" + usuario + ", post=" + post + ", comentarioPadre=" + comentarioPadre + ", comentariosHijos=" + comentariosHijos + '}';
+    }
 
 }

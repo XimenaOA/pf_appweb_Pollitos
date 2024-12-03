@@ -26,13 +26,9 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
-
 @Entity
 @Table(name = "Post")
 public class Post implements Serializable {
-
-    public Post() {
-    }
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -46,20 +42,19 @@ public class Post implements Serializable {
 
     @Column(nullable = false)
     private boolean isAnclado;
-    
-    @Column(nullable = true ,length = 255)
+
+    @Column(nullable = true, length = 255)
     private String imagen;
 
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
     private Categoria categoria;
-    
+
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "idUsuario", nullable = false)
     private Usuario autor;
-    
-    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
-    @JoinColumn(name = "post_id") // Crea la clave foránea en Comentario
+
+    @OneToMany(mappedBy = "post", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Comentario> comentarios = new ArrayList<>();
 
     public Post(Date fechaHoraCreacion, String contenido, boolean isAnclado, String imagen, Categoria categoria, Usuario autor) {
@@ -69,8 +64,12 @@ public class Post implements Serializable {
         this.imagen = imagen;
         this.categoria = categoria;
         this.autor = autor;
+        comentarios = new ArrayList<>();
     }
 
+    public Post() {
+    }
+    
     public List<Comentario> getComentarios() {
         return comentarios;
     }
@@ -111,8 +110,6 @@ public class Post implements Serializable {
         this.autor = autor;
     }
 
-    
-    
     public int getIdPost() {
         return idPost;
     }
@@ -136,7 +133,10 @@ public class Post implements Serializable {
     public void setIsAnclado(boolean isAnclado) {
         this.isAnclado = isAnclado;
     }
-    
-    
-    
+
+    @Override
+    public String toString() {
+        return "Post{" + "idPost=" + idPost + ", fechaHoraCreacion=" + fechaHoraCreacion + ", contenido=" + contenido + ", isAnclado=" + isAnclado + ", imagen=" + imagen + ", categoria=" + categoria + ", autor=" + autor + ", comentarios=" + comentarios + '}';
+    }
+
 }

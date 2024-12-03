@@ -46,36 +46,33 @@
         <main>
             <section class="feed">
                 <div class="post-creator">
-                    <%
-                        if (usuario != null) {
+                    <% if (usuario != null) {
                             String avatar = (usuario.getImagen() != null && !usuario.getImagen().isEmpty())
                                     ? "data:image/png;base64," + StringEscapeUtils.escapeHtml4(usuario.getImagen())
                                     : "../imagenes/icon.png";
                     %>
                     <img src="<%= avatar%>" alt="Avatar" class="avatar">
-                    <input type="text" placeholder="Escribe una publicación en WiXDi Games">
-                    <button class="post-button">📷</button>
-                    <%
-                    } else {
-                    %>
-                    <p>Usuario no autenticado. Por favor, inicie sesión.</p>
-                    <%
-                        }
-                    %>
+                    <!-- Campo de texto para la publicación -->
+                    <input type="text" placeholder="Escribe una publicación en WiXDi Games" class="post-input">
+                    <!-- Botón para subir una imagen -->
+                    <button type="button" class="post-button">📷</button>
+                    <% } %>
                 </div>
 
-                <%
-                    for (int idx = 0; idx < posts.size(); idx++) {
-                %>
+
+                <script src="../JS/PostCreator.js"></script>
                 <div class="posts">
+
                     <div class="post">
+                        <%
+                            for (int idx = 0; idx < posts.size(); idx++) {
+                        %>
                         <div class="post-header">
                             <%
                                 if (posts.get(idx).getAutor() != null) {
                                     String avatar = (posts.get(idx).getAutor().getImagen() != null && !posts.get(idx).getAutor().getImagen().isEmpty())
                                             ? "data:image/png;base64," + StringEscapeUtils.escapeHtml4(posts.get(idx).getAutor().getImagen())
                                             : "../imagenes/icon.png";
-
                             %>
                             <img src="<%= avatar%>" alt="Avatar" class="avatar">
                             <%
@@ -118,7 +115,9 @@
                             for (int i = 0; i < posts.get(idx).getComentarios().size(); i++) {
                         %>
                         <div class="comments-section">
+
                             <div class="comments">
+
                                 <div class="comment">
                                     <%
                                         if (posts.get(idx).getComentarios().get(i) != null) {
@@ -133,24 +132,26 @@
                                     <%
                                         if (posts.get(idx).getComentarios().get(i).getUsuario().getNombre() != null) {
                                             String nombreUserComentario = StringEscapeUtils.escapeHtml4("" + posts.get(idx).getComentarios().get(i).getUsuario().getNombre());
+                                            String comentariosPadres = StringEscapeUtils.escapeHtml4("" + posts.get(idx).getComentarios().get(i).getContenido());
+
                                     %>
                                     <div class="comment-content">
                                         <div class="comment-username"><%= nombreUserComentario%></div>
-                                        <div class="comment-text">¡Bienvenido a la comunidad! 🎮</div>
+                                        <div class="comment-text"> <%= comentariosPadres%> </div>
+                                        <%
+                                            }
+                                        %>
                                     </div>
                                 </div>
                             </div>
                             <%
-                                        }
-                                    }
                                 }
+
                             %>
 
 
-
                             <div class="comment-form">
-                                <%
-                                    if (usuario != null) {
+                                <%                                    if (usuario != null) {
                                         String avatarComment = (usuario.getImagen() != null && !usuario.getImagen().isEmpty())
                                                 ? "data:image/png;base64," + StringEscapeUtils.escapeHtml4(usuario.getImagen())
                                                 : "../imagenes/icon.png";
@@ -159,17 +160,16 @@
                                 <img src="<%= avatarComment%>" alt="User Avatar" class="avatar">
                                 <input type="text" class="comment-input" placeholder="Escribe un comentario...">
                                 <button class="comment-button">Comentar</button>
-                                <%
-                                } else {
-                                %>
-                                <p>Usuario no autenticado. Por favor, inicie sesión para comentar.</p>
-                                <%
-                                    }
-                                %>
                             </div>
                         </div>
                     </div>
                 </div>
+                <%
+
+                        }
+                    }
+                %>
+
             </section>
         </main>
 

@@ -29,8 +29,8 @@ public class Fachada implements IFachada{
     }
 
     @Override
-    public void agregarComentario(Comentario comentario) {
-        factory.objectoComentario().agregarComentario(comentario);
+    public void agregarComentario(Comentario comentario, Post post) {
+        factory.objectoComentario().agregarComentario(comentario, post);
     }
 
     @Override

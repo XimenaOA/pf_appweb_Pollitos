@@ -5,6 +5,7 @@
 package interfaces;
 
 import dominio.Comentario;
+import dominio.Post;
 
 /**
  *
@@ -12,7 +13,7 @@ import dominio.Comentario;
  */
 public interface IComentarioDAO {
     
-     public void agregarComentario(Comentario comentario);
+     public void agregarComentario(Comentario comentario, Post post);
      public void agregarComentarioAComentario(Comentario comentario, Comentario comentarioNuevo);
      public void actualizarComentario(Comentario comentario);
      public void eliminarComentario(Comentario comentario);
