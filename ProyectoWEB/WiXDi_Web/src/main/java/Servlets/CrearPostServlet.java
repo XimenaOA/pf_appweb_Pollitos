@@ -13,6 +13,7 @@ import dominio.Usuario;
 import enums.Categoria;
 import jakarta.servlet.ServletConfig;
 import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.MultipartConfig;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -35,6 +36,7 @@ import javax.imageio.ImageIO;
  *
  * @author haloa
  */
+@MultipartConfig // Habilitar la carga de archivos
 public class CrearPostServlet extends HttpServlet {
 
     IFachada fachada;
@@ -103,25 +105,21 @@ public class CrearPostServlet extends HttpServlet {
 
         // Obtener el archivo de la imagen
         Part filePart = request.getPart("image"); // Esto es el archivo enviado
+        String base64Image = "";
+        if (filePart != null && filePart.getSize() > 0) {
         InputStream fileContent = filePart.getInputStream();
 
         // Llamar a tus métodos para comprimir la imagen y convertirla a Base64
         BufferedImage image = ImageIO.read(fileContent);
         BufferedImage compressedImage = compressImage(image, 800, 600); // Ajusta el tamaño de la imagen
-        String base64Image = convertToBase64(compressedImage, "JPEG");
+        base64Image = convertToBase64(compressedImage, "JPEG");
+        }
 
         HttpSession objSesion = request.getSession(false);
         Usuario usuario = objSesion != null ? (Usuario) objSesion.getAttribute("usuario") : null;
 
         // Crear el objeto Post y agregarlo a la base de datos
-        Post newPost = new Post(
-                new Date(),
-                content,
-                false,
-                base64Image,
-                Categoria.Valorant,
-                usuario // Asegúrate de obtener el usuario desde la sesión
-        );
+        Post newPost = new Post(new Date(), content, true, base64Image, Categoria.Valorant, usuario);
 
         // Agregar el post a la base de datos
         fachada.agregarPost(newPost);
@@ -132,20 +130,25 @@ public class CrearPostServlet extends HttpServlet {
     }
     // Método para comprimir la imagen (ajustar tamaño)
 
+    // Método para comprimir la imagen (ajustar tamaño)
     private BufferedImage compressImage(BufferedImage originalImage, int width, int height) {
+        // Redimensionar la imagen manteniendo la relación de aspecto
         BufferedImage resizedImage = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
         Graphics2D g2d = resizedImage.createGraphics();
-        g2d.setRenderingHint(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_BILINEAR);
         g2d.drawImage(originalImage, 0, 0, width, height, null);
         g2d.dispose();
         return resizedImage;
     }
 
-    // Método para convertir la imagen comprimida a Base64
+// Método para convertir la imagen comprimida a Base64
     private String convertToBase64(BufferedImage image, String format) throws IOException {
         ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+
+        // Convertir la imagen comprimida a JPEG (o el formato que desees)
         ImageIO.write(image, format, byteArrayOutputStream);
         byte[] imageBytes = byteArrayOutputStream.toByteArray();
+
+        // Convertir a Base64
         return Base64.getEncoder().encodeToString(imageBytes);
     }
 
