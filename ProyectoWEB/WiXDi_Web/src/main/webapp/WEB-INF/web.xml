@@ -16,6 +16,10 @@
         <servlet-name>CrearPostServlet</servlet-name>
         <servlet-class>Servlets.CrearPostServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ObtenerPostsServlet_Valorant</servlet-name>
+        <servlet-class>Servlets.ObtenerPostsServlet_Valorant</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Registrar_Servlet</servlet-name>
         <url-pattern>/Registrar_Servlet</url-pattern>
@@ -31,6 +35,10 @@
     <servlet-mapping>
         <servlet-name>CrearPostServlet</servlet-name>
         <url-pattern>/CrearPostServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ObtenerPostsServlet_Valorant</servlet-name>
+        <url-pattern>/ObtenerPostsServlet_Valorant</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

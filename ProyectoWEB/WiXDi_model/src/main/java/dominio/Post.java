@@ -4,6 +4,8 @@
  */
 package dominio;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import enums.Categoria;
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -52,9 +54,11 @@ public class Post implements Serializable {
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "idUsuario", nullable = false)
+    @JsonManagedReference // Serializa el autor
     private Usuario autor;
 
     @OneToMany(mappedBy = "post", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonManagedReference // Maneja la relación con Comentario
     private List<Comentario> comentarios = new ArrayList<>();
 
     public Post(Date fechaHoraCreacion, String contenido, boolean isAnclado, String imagen, Categoria categoria, Usuario autor) {
@@ -69,7 +73,7 @@ public class Post implements Serializable {
 
     public Post() {
     }
-    
+
     public List<Comentario> getComentarios() {
         return comentarios;
     }

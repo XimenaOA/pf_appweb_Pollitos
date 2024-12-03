@@ -4,6 +4,8 @@
  */
 package dominio;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
@@ -39,17 +41,20 @@ public class Comentario implements Serializable {
 
     @ManyToOne
     @JoinColumn(name = "usuario_id")
-    private Usuario usuario;
+    private Usuario usuario; // Aquí no es necesario usar @JsonBackReference
 
     @ManyToOne
-    @JoinColumn(name = "post_id", nullable = false) // El propietario de la relación
+    @JoinColumn(name = "post_id", nullable = false)
+    @JsonBackReference // Evita ciclos en la relación con Post
     private Post post;
 
     @ManyToOne
     @JoinColumn(nullable = true, name = "comentario_padre_id")
+    @JsonBackReference // Evita ciclos en la relación con el comentario padre
     private Comentario comentarioPadre;
 
     @OneToMany(mappedBy = "comentarioPadre", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonManagedReference // Maneja la relación con los comentarios hijos
     private List<Comentario> comentariosHijos = new ArrayList<>();
 
     public Comentario(Date fechaHora, String contenido, Usuario usuario, Post post, Comentario comentarioPadre) {
@@ -63,8 +68,6 @@ public class Comentario implements Serializable {
 
     public Comentario() {
     }
-    
-    
 
     public Long getId() {
         return id;

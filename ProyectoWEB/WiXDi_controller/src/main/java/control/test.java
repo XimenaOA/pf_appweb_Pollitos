@@ -21,16 +21,15 @@ public class test {
         f = new Fachada();
         Usuario usuario = f.consultarUsuarioPorCorreo("d@gmail.com");
  
-//        Post post = new Post(new Date(), "Post de prueba", false, null, Categoria.Valorant, usuario);
-//        
-//        f.agregarPost(post);
+//        Post post = new Post(new Date(), "hey muy buenas a todos guapisimos aqui vegetta 700 te la meteeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee", false, null, Categoria.Valorant, usuario);
+        
         Post post = f.consultarPost(1);
-        Comentario comentario = new Comentario(new Date(), "Muy buenas a todos papois!!", usuario, post, null);
-        Comentario comentario2 = new Comentario(new Date(), "Holaaa!!", usuario, post, null);
+        Comentario comentario = new Comentario(new Date(), "SImon", usuario, post, null);
+        Comentario comentario2 = new Comentario(new Date(), "no", usuario, post, null);
 
         f.agregarComentario(comentario, post);
         f.agregarComentario(comentario2, post);
 
-        System.out.println(post);
+        System.out.println(comentario.getUsuario().getIdUsuario());
     }
 }

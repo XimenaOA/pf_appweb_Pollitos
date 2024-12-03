@@ -101,32 +101,45 @@ public class CrearPostServlet extends HttpServlet {
             throws ServletException, IOException {
         // Obtener los parámetros del formulario
         System.out.println("Ya entro al Ssrvlet de publicaciones");
-        String content = request.getParameter("content");
+        try {
+            // Obtener los parámetros del formulario
+            String content = request.getParameter("content");
 
-        // Obtener el archivo de la imagen
-        Part filePart = request.getPart("image"); // Esto es el archivo enviado
-        String base64Image = "";
-        if (filePart != null && filePart.getSize() > 0) {
-        InputStream fileContent = filePart.getInputStream();
+            // Obtener el archivo de la imagen
+            Part filePart = request.getPart("image"); // Esto es el archivo enviado
+            String base64Image = "";
+            if (filePart != null && filePart.getSize() > 0) {
+                InputStream fileContent = filePart.getInputStream();
 
-        // Llamar a tus métodos para comprimir la imagen y convertirla a Base64
-        BufferedImage image = ImageIO.read(fileContent);
-        BufferedImage compressedImage = compressImage(image, 800, 600); // Ajusta el tamaño de la imagen
-        base64Image = convertToBase64(compressedImage, "JPEG");
+                // Llamar a tus métodos para comprimir la imagen y convertirla a Base64
+                BufferedImage image = ImageIO.read(fileContent);
+                BufferedImage compressedImage = compressImage(image, 800, 800); // Ajusta el tamaño de la imagen
+                base64Image = convertToBase64(compressedImage, "JPEG");
+            }
+
+            HttpSession objSesion = request.getSession(false);
+            Usuario usuario = objSesion != null ? (Usuario) objSesion.getAttribute("usuario") : null;
+
+            // Crear el objeto Post y agregarlo a la base de datos
+            Post newPost = new Post(new Date(), content, false, base64Image, Categoria.Valorant, usuario);
+
+            // Agregar el post a la base de datos
+            fachada.agregarPost(newPost);
+
+            // Responder con solo un campo de éxito
+            
+            response.setContentType("application/json");
+            response.getWriter().write("{\"success\": true}");
+                        System.out.println("Se manda el seccess true");
+
+        } catch (ServletException | IOException e) {
+            // En caso de error, responder con un mensaje de error adecuado
+            System.out.println("Esta cayendo en el catch");
+            response.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
+            response.setContentType("application/json");
+            response.getWriter().write("{\"success\": false, \"error\": \"Hubo un problema al crear el post.\"}");
         }
 
-        HttpSession objSesion = request.getSession(false);
-        Usuario usuario = objSesion != null ? (Usuario) objSesion.getAttribute("usuario") : null;
-
-        // Crear el objeto Post y agregarlo a la base de datos
-        Post newPost = new Post(new Date(), content, true, base64Image, Categoria.Valorant, usuario);
-
-        // Agregar el post a la base de datos
-        fachada.agregarPost(newPost);
-
-        // Responder al cliente
-        response.setContentType("application/json");
-        response.getWriter().write("{\"message\": \"Post creado exitosamente.\"}");
     }
     // Método para comprimir la imagen (ajustar tamaño)
 

@@ -4,7 +4,11 @@
  */
 package dominio;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import dominio.Post;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import javax.persistence.CascadeType;
@@ -17,11 +21,10 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-
-
 
 @Entity
 @Table(name = "Usuario")
@@ -67,6 +70,10 @@ public class Usuario implements Serializable {
     @JoinColumn(name = "idMunicipio", nullable = false)
     private Municipio municipio;
 
+    @OneToMany(mappedBy = "autor", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonBackReference // Evita la serialización infinita
+    private List<Post> posts;
+
     public Usuario() {
     }
 
@@ -104,9 +111,7 @@ public class Usuario implements Serializable {
         this.rol = rol;
         this.municipio = municipio;
     }
-    
-    
-    
+
     public Usuario(String nombre, String apellidoPaterno, String apellidoMaterno, String correo, String contrasenia, String telefono, String imagen, Date fechaNacimiento, Genero genero, Rol rol, Municipio municipio) {
         this.nombre = nombre;
         this.apellidoPaterno = apellidoPaterno;
@@ -121,6 +126,14 @@ public class Usuario implements Serializable {
         this.municipio = municipio;
     }
 
+    public List<Post> getPosts() {
+        return posts;
+    }
+
+    public void setPosts(List<Post> posts) {
+        this.posts = posts;
+    }
+
     public String getImagen() {
         return imagen;
     }
@@ -128,7 +141,7 @@ public class Usuario implements Serializable {
     public void setImagen(String imagen) {
         this.imagen = imagen;
     }
-    
+
     public Municipio getMunicipio() {
         return municipio;
     }
@@ -201,7 +214,6 @@ public class Usuario implements Serializable {
         this.nombre = nombre;
     }
 
-
     public Date getFechaNacimiento() {
         return fechaNacimiento;
     }
@@ -230,6 +242,5 @@ public class Usuario implements Serializable {
     public String toString() {
         return "Usuario{" + "idUsuario=" + idUsuario + ", nombre=" + nombre + ", apellidoPaterno=" + apellidoPaterno + ", apellidoMaterno=" + apellidoMaterno + ", correo=" + correo + ", contrasenia=" + contrasenia + ", telefono=" + telefono + ", fechaNacimiento: " + fechaNacimiento + ", genero=" + genero + ", rol=" + rol + ", municipio=" + municipio + '}';
     }
-    
-    
+
 }

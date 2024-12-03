@@ -39,9 +39,6 @@ public class Municipio implements Serializable {
     @JoinColumn(name = "idEstado", referencedColumnName = "idEstado", nullable = false)
     private Estado estado;
 
-    @OneToMany(mappedBy = "municipio")
-    private List<Usuario> usuarios;
-
     public Municipio(String nombre, Estado estado) {
         this.nombre = nombre;
         this.estado = estado;
@@ -50,7 +47,6 @@ public class Municipio implements Serializable {
     public Municipio(String nombre, Estado estado, List<Usuario> usuarios) {
         this.nombre = nombre;
         this.estado = estado;
-        this.usuarios = usuarios;
     }
 
     public Long getId() {
@@ -79,7 +75,7 @@ public class Municipio implements Serializable {
 
     @Override
     public String toString() {
-        return "Municipio{" + "id=" + id + ", nombre=" + nombre + ", estado=" + estado + ", usuarios=" + usuarios + '}';
+        return "Municipio{" + "id=" + id + ", nombre=" + nombre + ", estado=" + estado;
     }
 
     
