@@ -33,7 +33,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 alert("El contenido del post no puede estar vacío.");
                 return;
             }
-
+ 
             const formData = new FormData();
             formData.append("content", content);
             if (selectedImageFile) {
@@ -47,6 +47,9 @@ document.addEventListener("DOMContentLoaded", () => {
                     .then((response) => response.json()) // El servidor responde con JSON
                     .then((data) => {
                         if (data.success) {
+                            
+                            cargarPosts();
+                            
                             // Mostrar alerta animada de éxito
                             Swal.fire({
                                 title: "¡Éxito!",
@@ -56,6 +59,8 @@ document.addEventListener("DOMContentLoaded", () => {
                                 timer: 3000, // Tiempo de la alerta (3 segundos)
                                 timerProgressBar: true, // Barra de progreso en la alerta
                             });
+                            
+                          
 
                             postInput.value = ""; // Limpiar el input
                             selectedImageFile = null; // Reiniciar la imagen seleccionada

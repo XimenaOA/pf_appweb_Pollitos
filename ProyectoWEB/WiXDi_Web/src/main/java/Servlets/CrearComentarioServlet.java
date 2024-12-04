@@ -13,6 +13,7 @@ import jakarta.servlet.ServletConfig;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.MultipartConfig;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -23,6 +24,7 @@ import java.util.Date;
  *
  * @author haloa
  */
+@MultipartConfig // Habilitar la carga de archivos
 public class CrearComentarioServlet extends HttpServlet {
 
     IFachada fachada;
@@ -90,17 +92,19 @@ public class CrearComentarioServlet extends HttpServlet {
 
         try {
             // Obtener el contenido del comentario
-            String content = request.getParameter("contenido");
-            int postId = Integer.parseInt(request.getParameter("postId")); // ID del post al que pertenece el comentario
+            String content = request.getParameter("comentario");
+            int postId = Integer.parseInt(request.getParameter("postID")); // ID del post al que pertenece el comentario
 
             // Obtener la sesión y el usuario autenticado
             HttpSession objSesion = request.getSession(false);
             Usuario usuario = objSesion != null ? (Usuario) objSesion.getAttribute("usuario") : null;
-
+            
+            System.out.println("hasta aqui todo bien");
+            
             if (usuario == null) {
                 response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
                 response.setContentType("application/json");
-                response.getWriter().write("{\"success\": false, \"error\": \"Usuario no autenticado\"}");
+                response.getWriter().write("{\"success\": false}");
                 return;
             }
 
@@ -110,21 +114,18 @@ public class CrearComentarioServlet extends HttpServlet {
             if (post == null) {
                 response.setStatus(HttpServletResponse.SC_NOT_FOUND);
                 response.setContentType("application/json");
-                response.getWriter().write("{\"success\": false, \"error\": \"Post no encontrado\"}");
+                response.getWriter().write("{\"success\": false}");
                 return;
             }
 
             // Crear el objeto Comentario
-            Comentario newComentario = new Comentario();
-            newComentario.setContenido(content);
-            newComentario.setPost(post);
-            newComentario.setUsuario(usuario);
-
             Comentario comentatio = new Comentario(new Date(), content, usuario, post, null);
 
             // Usar la fachada de comentarios para agregar el comentario
             fachada.agregarComentario(comentatio, post);
-
+            
+            System.out.println("Se manda a la base de datos el comentario");
+            
             // Responder con éxito
             response.setContentType("application/json");
             response.getWriter().write("{\"success\": true}");
@@ -135,7 +136,7 @@ public class CrearComentarioServlet extends HttpServlet {
             System.out.println("Error al crear el comentario: " + e.getMessage());
             response.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
             response.setContentType("application/json");
-            response.getWriter().write("{\"success\": false, \"error\": \"Hubo un problema al crear el comentario.\"}");
+            response.getWriter().write("{\"success\": false}");
         }
     }
 
