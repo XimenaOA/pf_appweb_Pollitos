@@ -5,7 +5,9 @@
 
 // Función para cargar posts
 function cargarPosts() {
-    fetch("http://localhost:8080/WiXDi_Web/ObtenerPostsServlet_Valorant")
+        const url = `http://localhost:8080/WiXDi_Web/ObtenerPostsServlet_Valorant?categoria=${encodeURIComponent(currentGame)}`;
+
+    fetch(url)
             .then((response) => response.json())
             .then((posts) => {
                 console.log(posts);  // Verifica qué datos están llegando

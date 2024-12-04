@@ -25,15 +25,16 @@ import jakarta.servlet.http.HttpServletResponse;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Collections;
+import org.apache.commons.lang3.StringUtils;
 
 /**
  *
  * @author haloa
  */
 public class ObtenerPostsServlet_Valorant extends HttpServlet {
-    
+
     IFachada fachada;
-    
+
     @Override
     public void init(ServletConfig config) throws ServletException {
         super.init(config); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/OverriddenMethodBody
@@ -78,13 +79,25 @@ public class ObtenerPostsServlet_Valorant extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
+
         response.setContentType("application/json");
         response.setCharacterEncoding("UTF-8");
-        
+        String categoria = request.getParameter("categoria");
+
+        Categoria juego = null;
+        if (categoria.equalsIgnoreCase("Valorant")) {
+            juego = Categoria.Valorant;
+        } else if (categoria.equalsIgnoreCase("Genshin")){
+            juego = Categoria.Genshin;
+        } else if (categoria.equalsIgnoreCase("Overwatch")) {
+            juego = Categoria.Overwatch;
+        } else if (categoria.equalsIgnoreCase("LOL")) {
+            juego = Categoria.LOL;
+        }
+
         try {
             // Obtén los posts de la fachada
-            List<Post> posts = fachada.consultarPostsCategoria(Categoria.Valorant);
+            List<Post> posts = fachada.consultarPostsCategoria(juego);
             Collections.reverse(posts);
             // Configura Jackson ObjectMapper
             ObjectMapper objectMapper = new ObjectMapper();
@@ -96,7 +109,7 @@ public class ObtenerPostsServlet_Valorant extends HttpServlet {
 
             // Escribe la respuesta JSON
             response.getWriter().write(jsonPosts);
-            
+
         } catch (Exception e) {
             e.printStackTrace();
 

@@ -101,6 +101,18 @@ public class CrearPostServlet extends HttpServlet {
             throws ServletException, IOException {
         // Obtener los parámetros del formulario
         System.out.println("Ya entro al Ssrvlet de publicaciones");
+        
+        String categoria = request.getParameter("categoria");
+        Categoria juego = null;
+        if (categoria.equalsIgnoreCase("Valorant")) {
+            juego = Categoria.Valorant;
+        } else if (categoria.equalsIgnoreCase("Genshin")){
+            juego = Categoria.Genshin;
+        } else if (categoria.equalsIgnoreCase("Overwatch")) {
+            juego = Categoria.Overwatch;
+        } else if (categoria.equalsIgnoreCase("LOL")) {
+            juego = Categoria.LOL;
+        }
         try {
             // Obtener los parámetros del formulario
             String content = request.getParameter("content");
@@ -121,7 +133,7 @@ public class CrearPostServlet extends HttpServlet {
             Usuario usuario = objSesion != null ? (Usuario) objSesion.getAttribute("usuario") : null;
 
             // Crear el objeto Post y agregarlo a la base de datos
-            Post newPost = new Post(new Date(), content, false, base64Image, Categoria.Valorant, usuario);
+            Post newPost = new Post(new Date(), content, false, base64Image, juego, usuario);
 
             // Agregar el post a la base de datos
             fachada.agregarPost(newPost);

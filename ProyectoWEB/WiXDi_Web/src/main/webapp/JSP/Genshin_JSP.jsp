@@ -10,6 +10,7 @@
 <%
     HttpSession objSesion = request.getSession(false);
     Usuario usuario = objSesion != null ? (Usuario) objSesion.getAttribute("usuario") : null;
+    String currentGame = "Genshin";
 %>
 <!DOCTYPE html>
 <html lang="es">
@@ -40,69 +41,32 @@
         <main>
             <section class="feed">
                 <div class="post-creator">
-                    <%
-                        if (usuario != null) {
+                    <% if (usuario != null) {
                             String avatar = (usuario.getImagen() != null && !usuario.getImagen().isEmpty())
                                     ? "data:image/png;base64," + StringEscapeUtils.escapeHtml4(usuario.getImagen())
                                     : "../imagenes/icon.png";
-                            String nombreUsuario = StringEscapeUtils.escapeHtml4(usuario.getNombre());
                     %>
-                    <img src="<%= avatar %>" alt="Avatar" class="avatar">
-                    <input type="text" placeholder="Escribe una publicación en WiXDi Games">
-                    <button class="post-button">📷</button>
-                    <%
-                        } else {
-                    %>
-                    <p>Usuario no autenticado. Por favor, inicie sesión.</p>
-                    <%
-                        }
-                    %>
+                    <img src="<%= avatar%>" alt="Avatar" class="avatar">
+                    <input type="text" placeholder="Escribe una publicación en WiXDi Games" class="post-input">
+                    <button type="button" class="post-button">📷</button>
+                    <% }%>
                 </div>
 
-                <div class="posts">
-                    <div class="post">
-                        <div class="post-header">
-                            <img src="../imagenes/icon.png" alt="Avatar" class="avatar">
-                            <span class="username"><%= StringEscapeUtils.escapeHtml4("Usuario123") %></span>
-                        </div>
-                        <div class="post-content">
-                            <p>Primer post: ¡Hola a todos!</p>
-                            <img src="../imagenes/Genshin.jpg" alt="Imagen del post" class="post-image">
-                        </div>
-                        <div class="comments-section">
-                            <div class="comments">
-                                <div class="comment">
-                                    <img src="../imagenes/icon.png" alt="User Avatar" class="avatar">
-                                    <div class="comment-content">
-                                        <div class="comment-username"><%= StringEscapeUtils.escapeHtml4("Usuario456") %></div>
-                                        <div class="comment-text">¡Bienvenido a la comunidad! 🎮</div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="comment-form">
-                                <%
-                                    if (usuario != null) {
-                                        String avatarComment = (usuario.getImagen() != null && !usuario.getImagen().isEmpty())
-                                                ? "data:image/png;base64," + StringEscapeUtils.escapeHtml4(usuario.getImagen())
-                                                : "../imagenes/icon.png";
-                                %>
-                                <img src="<%= avatarComment %>" alt="User Avatar" class="avatar">
-                                <input type="text" class="comment-input" placeholder="Escribe un comentario...">
-                                <button class="comment-button">Comentar</button>
-                                <%
-                                    } else {
-                                %>
-                                <p>Usuario no autenticado. Por favor, inicie sesión para comentar.</p>
-                                <%
-                                    }
-                                %>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <!-- Contenedor de posts vacío -->
+                <div class="posts"></div>
             </section>
         </main>
 
+        <!-- Archivos de JavaScript -->
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <script src="../JS/CrearPost.js"></script>
+        <script src="../JS/ObtenerPosts.js"></script>
         <script src="../JS/script.js"></script>
+
+        <!-- Variable global que contiene el nombre del juego -->
+        <script>
+                        var currentGame = "<%= currentGame%>"; // Esta variable estará disponible en todos tus archivos JS
+                        console.log(currentGame); // Puedes verificar que se asignó correctamente
+        </script>
     </body>
 </html>

@@ -36,6 +36,7 @@ document.addEventListener("DOMContentLoaded", () => {
  
             const formData = new FormData();
             formData.append("content", content);
+            formData.append("categoria", currentGame);
             if (selectedImageFile) {
                 formData.append("image", selectedImageFile);
             }
