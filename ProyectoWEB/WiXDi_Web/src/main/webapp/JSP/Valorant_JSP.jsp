@@ -52,7 +52,9 @@
 
         <!-- Archivos de JavaScript -->
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-        <script src="../JS/PostCreator.js"></script>
+        <script src="../JS/CrearPost.js"></script>
+        <script src="../JS/CrearComentario.js"></script>
+        <script src="../JS/ObtenerPosts.js"></script>
         <script src="../JS/script.js"></script>
     </body>
 </html>

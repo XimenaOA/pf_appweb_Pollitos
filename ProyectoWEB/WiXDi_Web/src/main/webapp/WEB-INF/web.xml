@@ -20,6 +20,10 @@
         <servlet-name>ObtenerPostsServlet_Valorant</servlet-name>
         <servlet-class>Servlets.ObtenerPostsServlet_Valorant</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>CrearComentarioServlet</servlet-name>
+        <servlet-class>Servlets.CrearComentarioServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Registrar_Servlet</servlet-name>
         <url-pattern>/Registrar_Servlet</url-pattern>
@@ -39,6 +43,10 @@
     <servlet-mapping>
         <servlet-name>ObtenerPostsServlet_Valorant</servlet-name>
         <url-pattern>/ObtenerPostsServlet_Valorant</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CrearComentarioServlet</servlet-name>
+        <url-pattern>/CrearComentarioServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
