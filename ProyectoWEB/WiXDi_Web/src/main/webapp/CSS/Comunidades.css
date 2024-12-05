@@ -139,8 +139,6 @@ main {
     margin-top: 10px;
 }
 
-
-/* Estilos para los comentarios */
 .post-actions {
     display: flex;
     gap: 15px;
@@ -161,6 +159,65 @@ main {
     margin-top: 10px;
     border-top: 1px solid #eee;
     padding-top: 10px;
+}
+
+.comment {
+    position: relative;
+    cursor: pointer;
+    margin-bottom: 10px;
+}
+
+.comment .reply-indicator {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    color: #2a8457;
+    font-weight: bold;
+}
+
+.comment .replies-container {
+    display: none;
+    margin-left: 50px;
+    margin-top: 10px;
+    border-left: 2px solid #f0f0f0;
+    padding-left: 10px;
+}
+
+.comment.has-replies .reply-indicator::after {
+    content: "💬";
+    margin-left: 5px;
+}
+
+.comment.expanded .replies-container {
+    display: block;
+}
+
+.nested-comment-form {
+    display: none;
+    margin-top: 10px;
+    margin-left: 50px;
+}
+
+.comment.expanded .nested-comment-form {
+    display: flex;
+    gap: 10px;
+}
+
+.nested-comment-input {
+    flex-grow: 1;
+    border: 1px solid #ddd;
+    border-radius: 20px;
+    padding: 8px 15px;
+    outline: none;
+}
+
+.nested-comment-button {
+    background-color: #2a8457;
+    color: white;
+    border: none;
+    border-radius: 20px;
+    padding: 8px 15px;
+    cursor: pointer;
 }
 
 .comment-form {
