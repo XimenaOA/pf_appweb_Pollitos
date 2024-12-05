@@ -14,7 +14,7 @@ import dominio.Post;
 public interface IComentarioDAO {
     
      public void agregarComentario(Comentario comentario, Post post);
-     public void agregarComentarioAComentario(Comentario comentario, Comentario comentarioNuevo);
+     public void agregarComentarioAComentario(Comentario comentario, Comentario comentarioPadre);
      public void actualizarComentario(Comentario comentario);
      public void eliminarComentario(Comentario comentario);
      public Comentario consultarComentario(int id);

@@ -15,7 +15,7 @@ import java.util.List;
  */
 public interface IFachada {
      public void agregarComentario(Comentario comentario, Post post);
-    public void agregarComentarioAComentario(Comentario comentario, Comentario comentarioNuevo);
+    public void agregarComentarioAComentario(Comentario comentarioHijo, Comentario comentarioPadre);
     public void actualizarComentario(Comentario comentario);
     public void eliminarComentario(Comentario comentario);
     public Comentario consultarComentario(int id);

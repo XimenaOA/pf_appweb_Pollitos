@@ -50,7 +50,7 @@ function crearComentarioAnidado(postId, comentario, parentCommentId) {
     formData.append("postID", postId);
     formData.append("parentCommentId", parentCommentId);
 
-    fetch("http://localhost:8080/WiXDi_Web/CrearComentarioServlet", {
+    fetch("http://localhost:8080/WiXDi_Web/CrearComentarioHijo", {
         method: "POST",
         body: formData
     })
@@ -61,7 +61,7 @@ function crearComentarioAnidado(postId, comentario, parentCommentId) {
         } else {
             Swal.fire({
                 title: "Error",
-                text: data.error || "No se pudo comentar.",
+                text: data.error || "No se pudo responder.",
                 icon: "error",
                 confirmButtonText: "Aceptar"
             });
@@ -129,7 +129,7 @@ function cargarPosts() {
                                 <input type="text" class="nested-comment-input" placeholder="Responder...">
                                 <button class="nested-comment-button" 
                                         data-post-id="${post.idPost}" 
-                                        data-parent-comment-id="${comentario.idComentario}">
+                                        data-parent-comment-id="${comentario.id}">
                                     Responder
                                 </button>
                             </div>

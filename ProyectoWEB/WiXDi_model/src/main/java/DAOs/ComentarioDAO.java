@@ -23,54 +23,70 @@ public class ComentarioDAO implements IComentarioDAO {
     }
 
     @Override
-public void agregarComentario(Comentario comentario, Post post) {
-    EntityManager em = conexion.abrir();
-    try {
-        em.getTransaction().begin();
-
-        // Recuperar el Post gestionado si no lo está
-        Post postGestionado = em.find(Post.class, post.getIdPost());
-        if (postGestionado == null) {
-            throw new IllegalArgumentException("El Post asociado no existe en la base de datos.");
-        }
-
-        // Asociar el comentario al Post
-        comentario.setPost(postGestionado);
-
-        // Agregar el comentario a la lista de comentarios del Post
-        postGestionado.getComentarios().add(comentario);
-
-        // Persistir el nuevo comentario
-        em.persist(comentario);
-
-        // JPA sincroniza automáticamente los cambios en el Post gestionado
-        em.getTransaction().commit();
-    } catch (Exception e) {
-        if (em.getTransaction().isActive()) {
-            em.getTransaction().rollback(); // Rollback en caso de error
-        }
-        System.err.println("Error al agregar comentario: " + e.getMessage());
-        e.printStackTrace();
-    } finally {
-        em.close(); // Cerrar el EntityManager
-    }
-}
-
-
-    @Override
-    public void agregarComentarioAComentario(Comentario comentario, Comentario comentarioNuevo) {
+    public void agregarComentario(Comentario comentario, Post post) {
         EntityManager em = conexion.abrir();
         try {
             em.getTransaction().begin();
-            // Aquí asumimos que 'comentarioNuevo' es una respuesta al 'comentario' existente
-            comentarioNuevo.setComentarioPadre(comentario); // Asocia el nuevo comentario al comentario existente
-            em.persist(comentarioNuevo); // Persiste el nuevo comentario
-            em.getTransaction().commit(); // Confirma la transacción
+
+            // Recuperar el Post gestionado si no lo está
+            Post postGestionado = em.find(Post.class, post.getIdPost());
+            if (postGestionado == null) {
+                throw new IllegalArgumentException("El Post asociado no existe en la base de datos.");
+            }
+
+            // Asociar el comentario al Post
+            comentario.setPost(postGestionado);
+
+            // Agregar el comentario a la lista de comentarios del Post
+            postGestionado.getComentarios().add(comentario);
+
+            // Persistir el nuevo comentario
+            em.persist(comentario);
+
+            // JPA sincroniza automáticamente los cambios en el Post gestionado
+            em.getTransaction().commit();
         } catch (Exception e) {
             if (em.getTransaction().isActive()) {
-                em.getTransaction().rollback(); // Hace rollback en caso de error
+                em.getTransaction().rollback(); // Rollback en caso de error
             }
-            System.err.println("Error al agregar comentario a otro comentario: " + e.getMessage());
+            System.err.println("Error al agregar comentario: " + e.getMessage());
+            e.printStackTrace();
+        } finally {
+            em.close(); // Cerrar el EntityManager
+        }
+    }
+
+    @Override
+    public void agregarComentarioAComentario(Comentario comentarioHijo, Comentario comentarioPadre) {
+         EntityManager em = conexion.abrir();
+        try {
+            em.getTransaction().begin();
+
+            // Recuperar el Post gestionado si no lo está
+            Comentario comentarioGestionado = em.find(Comentario.class, comentarioPadre.getId());
+            if (comentarioGestionado == null) {
+                throw new IllegalArgumentException("El Post asociado no existe en la base de datos.");
+            }
+
+            // Asociar el comentario al Post
+            comentarioHijo.setComentarioPadre(comentarioGestionado);
+
+            // Agregar el comentario a la lista de comentarios del Post
+            comentarioGestionado.getComentariosHijos().add(comentarioHijo);
+
+            // Persistir el nuevo comentario
+            em.persist(comentarioHijo);
+
+            // JPA sincroniza automáticamente los cambios en el Post gestionado
+            em.getTransaction().commit();
+        } catch (Exception e) {
+            if (em.getTransaction().isActive()) {
+                em.getTransaction().rollback(); // Rollback en caso de error
+            }
+            System.err.println("Error al agregar comentario: " + e.getMessage());
+            e.printStackTrace();
+        } finally {
+            em.close(); // Cerrar el EntityManager
         }
     }
 
@@ -112,13 +128,14 @@ public void agregarComentario(Comentario comentario, Post post) {
     public Comentario consultarComentario(int id) {
         EntityManager em = conexion.abrir();
         em.getTransaction().begin();
-        Comentario comentario = null;
+
         try {
-            comentario = em.find(Comentario.class, id); // Busca el comentario por ID
+            Comentario comentario = em.find(Comentario.class, id); // Busca el comentario por ID
+            return comentario; // Retorna el comentario encontrado
         } catch (Exception e) {
             System.err.println("Error al consultar comentario: " + e.getMessage());
+            return null;
         }
-        return comentario; // Retorna el comentario encontrado
     }
 
 }

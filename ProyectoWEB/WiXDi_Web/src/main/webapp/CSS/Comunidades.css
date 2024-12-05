@@ -176,11 +176,8 @@ main {
 }
 
 .comment .replies-container {
-    display: none;
-    margin-left: 50px;
+    display: block; /* Cambié el display a block para que se apilen hacia abajo */
     margin-top: 10px;
-    border-left: 2px solid #f0f0f0;
-    padding-left: 10px;
 }
 
 .comment.has-replies .reply-indicator::after {
@@ -195,7 +192,6 @@ main {
 .nested-comment-form {
     display: none;
     margin-top: 10px;
-    margin-left: 50px;
 }
 
 .comment.expanded .nested-comment-form {
@@ -243,12 +239,6 @@ main {
     cursor: pointer;
 }
 
-.comment {
-    display: flex;
-    gap: 10px;
-    margin-bottom: 10px;
-}
-
 .comment-content {
     flex-grow: 1;
     background-color: #f8f8f8;
@@ -262,5 +252,5 @@ main {
 }
 
 .comment-text {
-    color: #333;
+    color: #333;
 }
