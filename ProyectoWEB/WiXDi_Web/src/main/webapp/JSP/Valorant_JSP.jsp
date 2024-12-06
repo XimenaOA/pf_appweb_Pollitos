@@ -2,8 +2,10 @@
 <%@page import="org.apache.commons.text.StringEscapeUtils"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%
-    HttpSession objSesion = request.getSession(false);
+    HttpSession objSesion = request.getSession();
     Usuario usuario = objSesion != null ? (Usuario) objSesion.getAttribute("usuario") : null;
+    String avatarSession = usuario.getImagen();
+    String nombreSession = usuario.getNombre();
     String currentGame = "Valorant";
 %>
 <!DOCTYPE html>
@@ -59,6 +61,8 @@
 
         <!-- Variable global que contiene el nombre del juego -->
         <script>
+                        var nombreSession = "<%= nombreSession%>";
+                        var avatarSession = "<%= avatarSession%>";
                         var currentGame = "<%= currentGame%>"; // Esta variable estará disponible en todos tus archivos JS
                         console.log(currentGame); // Puedes verificar que se asignó correctamente
         </script>

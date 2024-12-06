@@ -165,6 +165,8 @@ main {
     position: relative;
     cursor: pointer;
     margin-bottom: 10px;
+    padding-left: 10px;
+    border-left: 2px solid #ddd;
 }
 
 .comment .reply-indicator {
@@ -176,8 +178,9 @@ main {
 }
 
 .comment .replies-container {
-    display: block; /* Cambié el display a block para que se apilen hacia abajo */
-    margin-top: 10px;
+    margin-left: 20px; /* Sangría para comentarios anidados */
+    padding-left: 10px;
+    border-left: 2px solid #eee;
 }
 
 .comment.has-replies .reply-indicator::after {
@@ -252,5 +255,10 @@ main {
 }
 
 .comment-text {
-    color: #333;
+    color: #333;
+}
+
+.replies-container .comment {
+    margin-bottom: 5px;
+    padding-left: 15px;
 }

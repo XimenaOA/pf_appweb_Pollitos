@@ -28,6 +28,10 @@
         <servlet-name>CrearComentarioHijo</servlet-name>
         <servlet-class>Servlets.CrearComentarioHijo</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ObtenerRespuestasServlet</servlet-name>
+        <servlet-class>Servlets.ObtenerRespuestasServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Registrar_Servlet</servlet-name>
         <url-pattern>/Registrar_Servlet</url-pattern>
@@ -55,6 +59,10 @@
     <servlet-mapping>
         <servlet-name>CrearComentarioHijo</servlet-name>
         <url-pattern>/CrearComentarioHijo</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ObtenerRespuestasServlet</servlet-name>
+        <url-pattern>/ObtenerRespuestasServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

@@ -1,0 +1,344 @@
+06-Dec-2024 00:05:34.343 WARNING [http-nio-8080-exec-121] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesJdbc La aplicación web [WiXDi_Web] registró el conductor JDBC [com.mysql.cj.jdbc.Driver] pero falló al anular el registro mientras la aplicación web estaba parada. Para prevenir un fallo de memoria, se ha anulado el registro del conductor JDBC por la fuerza.
+06-Dec-2024 00:05:34.343 WARNING [http-nio-8080-exec-121] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesThreads The web application [WiXDi_Web] appears to have started a thread named [mysql-cj-abandoned-connection-cleanup] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.base/jdk.internal.misc.Unsafe.park(Native Method)
+ java.base/java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:269)
+ java.base/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:1847)
+ java.base/java.lang.ref.ReferenceQueue.await(ReferenceQueue.java:71)
+ java.base/java.lang.ref.ReferenceQueue.remove0(ReferenceQueue.java:143)
+ java.base/java.lang.ref.ReferenceQueue.remove(ReferenceQueue.java:218)
+ com.mysql.cj.jdbc.AbandonedConnectionCleanupThread.run(AbandonedConnectionCleanupThread.java:84)
+ java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+ java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+ java.base/java.lang.Thread.run(Thread.java:1570)
+06-Dec-2024 00:05:34.850 INFO [http-nio-8080-exec-121] org.apache.catalina.startup.HostConfig.undeploy Repliegue (undeploy) de la aplicación web que tiene como trayectoria de contexto [/WiXDi_Web]
+06-Dec-2024 00:05:38.869 INFO [mysql-cj-abandoned-connection-cleanup] org.apache.catalina.loader.WebappClassLoaderBase.checkStateForResourceLoading Acceso ilegal: esta instancia de aplicación web ya ha sido parada.  Could not load [].  La eventual traza de pila que sigue ha sido motivada por un error lanzado con motivos de depuración así como para intentar terminar el hilo que motivó el acceso ilegal y no tiene impacto funcional.
+	java.lang.IllegalStateException: Acceso ilegal: esta instancia de aplicación web ya ha sido parada.  Could not load [].  La eventual traza de pila que sigue ha sido motivada por un error lanzado con motivos de depuración así como para intentar terminar el hilo que motivó el acceso ilegal y no tiene impacto funcional.
+		at org.apache.catalina.loader.WebappClassLoaderBase.checkStateForResourceLoading(WebappClassLoaderBase.java:1232)
+		at org.apache.catalina.loader.WebappClassLoaderBase.getResource(WebappClassLoaderBase.java:845)
+		at com.mysql.cj.jdbc.AbandonedConnectionCleanupThread.checkThreadContextClassLoader(AbandonedConnectionCleanupThread.java:116)
+		at com.mysql.cj.jdbc.AbandonedConnectionCleanupThread.run(AbandonedConnectionCleanupThread.java:83)
+		at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+		at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+		at java.base/java.lang.Thread.run(Thread.java:1570)
+06-Dec-2024 00:05:46.037 INFO [http-nio-8080-exec-114] org.apache.catalina.startup.HostConfig.deployDescriptor Desplieque del descriptor de configuración [C:\Users\haloa\Desktop\github\pf_appweb_Pollitos\ProyectoWEB\apache-tomcat-11.0.1\conf\Catalina\localhost\WiXDi_Web.xml]
+06-Dec-2024 00:05:46.038 WARNING [http-nio-8080-exec-114] org.apache.catalina.startup.HostConfig.deployDescriptor The path attribute with value [/WiXDi_Web] in deployment descriptor [C:\Users\haloa\Desktop\github\pf_appweb_Pollitos\ProyectoWEB\apache-tomcat-11.0.1\conf\Catalina\localhost\WiXDi_Web.xml] has been ignored
+06-Dec-2024 00:05:47.354 INFO [http-nio-8080-exec-114] org.apache.jasper.servlet.TldScanner.scanJars Al menos un JAR, que se ha explorado buscando TLDs, aún no contenía TLDs. Activar historial de depuración para este historiador para una completa lista de los JARs que fueron explorados y de los que nos se halló TLDs. Saltarse JARs no necesarios durante la exploración puede dar lugar a una mejora de tiempo significativa en el arranque y compilación de JSP .
+06-Dec-2024 00:05:47.395 INFO [http-nio-8080-exec-114] org.apache.catalina.startup.HostConfig.deployDescriptor Deployment of deployment descriptor [C:\Users\haloa\Desktop\github\pf_appweb_Pollitos\ProyectoWEB\apache-tomcat-11.0.1\conf\Catalina\localhost\WiXDi_Web.xml] has finished in [1.358] ms
+06-Dec-2024 00:05:47.398 INFO [http-nio-8080-exec-122] org.apache.catalina.util.LifecycleBase.start The start() method was called on component [StandardEngine[Catalina].StandardHost[localhost].StandardContext[/WiXDi_Web]] after start() had already been called. The second call will be ignored.
+06-Dec-2024 00:10:15.857 WARNING [http-nio-8080-exec-130] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesJdbc La aplicación web [WiXDi_Web] registró el conductor JDBC [com.mysql.cj.jdbc.Driver] pero falló al anular el registro mientras la aplicación web estaba parada. Para prevenir un fallo de memoria, se ha anulado el registro del conductor JDBC por la fuerza.
+06-Dec-2024 00:10:15.857 WARNING [http-nio-8080-exec-130] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesThreads The web application [WiXDi_Web] appears to have started a thread named [mysql-cj-abandoned-connection-cleanup] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.base/jdk.internal.misc.Unsafe.park(Native Method)
+ java.base/java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:269)
+ java.base/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:1847)
+ java.base/java.lang.ref.ReferenceQueue.await(ReferenceQueue.java:71)
+ java.base/java.lang.ref.ReferenceQueue.remove0(ReferenceQueue.java:143)
+ java.base/java.lang.ref.ReferenceQueue.remove(ReferenceQueue.java:218)
+ com.mysql.cj.jdbc.AbandonedConnectionCleanupThread.run(AbandonedConnectionCleanupThread.java:84)
+ java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+ java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+ java.base/java.lang.Thread.run(Thread.java:1570)
+06-Dec-2024 00:10:16.372 INFO [http-nio-8080-exec-130] org.apache.catalina.startup.HostConfig.undeploy Repliegue (undeploy) de la aplicación web que tiene como trayectoria de contexto [/WiXDi_Web]
+06-Dec-2024 00:10:17.253 INFO [mysql-cj-abandoned-connection-cleanup] org.apache.catalina.loader.WebappClassLoaderBase.checkStateForResourceLoading Acceso ilegal: esta instancia de aplicación web ya ha sido parada.  Could not load [].  La eventual traza de pila que sigue ha sido motivada por un error lanzado con motivos de depuración así como para intentar terminar el hilo que motivó el acceso ilegal y no tiene impacto funcional.
+	java.lang.IllegalStateException: Acceso ilegal: esta instancia de aplicación web ya ha sido parada.  Could not load [].  La eventual traza de pila que sigue ha sido motivada por un error lanzado con motivos de depuración así como para intentar terminar el hilo que motivó el acceso ilegal y no tiene impacto funcional.
+		at org.apache.catalina.loader.WebappClassLoaderBase.checkStateForResourceLoading(WebappClassLoaderBase.java:1232)
+		at org.apache.catalina.loader.WebappClassLoaderBase.getResource(WebappClassLoaderBase.java:845)
+		at com.mysql.cj.jdbc.AbandonedConnectionCleanupThread.checkThreadContextClassLoader(AbandonedConnectionCleanupThread.java:116)
+		at com.mysql.cj.jdbc.AbandonedConnectionCleanupThread.run(AbandonedConnectionCleanupThread.java:83)
+		at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+		at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+		at java.base/java.lang.Thread.run(Thread.java:1570)
+06-Dec-2024 00:10:40.113 INFO [http-nio-8080-exec-132] org.apache.catalina.startup.HostConfig.deployDescriptor Desplieque del descriptor de configuración [C:\Users\haloa\Desktop\github\pf_appweb_Pollitos\ProyectoWEB\apache-tomcat-11.0.1\conf\Catalina\localhost\WiXDi_Web.xml]
+06-Dec-2024 00:10:40.114 WARNING [http-nio-8080-exec-132] org.apache.catalina.startup.HostConfig.deployDescriptor The path attribute with value [/WiXDi_Web] in deployment descriptor [C:\Users\haloa\Desktop\github\pf_appweb_Pollitos\ProyectoWEB\apache-tomcat-11.0.1\conf\Catalina\localhost\WiXDi_Web.xml] has been ignored
+06-Dec-2024 00:10:41.452 INFO [http-nio-8080-exec-132] org.apache.jasper.servlet.TldScanner.scanJars Al menos un JAR, que se ha explorado buscando TLDs, aún no contenía TLDs. Activar historial de depuración para este historiador para una completa lista de los JARs que fueron explorados y de los que nos se halló TLDs. Saltarse JARs no necesarios durante la exploración puede dar lugar a una mejora de tiempo significativa en el arranque y compilación de JSP .
+06-Dec-2024 00:10:41.500 INFO [http-nio-8080-exec-132] org.apache.catalina.startup.HostConfig.deployDescriptor Deployment of deployment descriptor [C:\Users\haloa\Desktop\github\pf_appweb_Pollitos\ProyectoWEB\apache-tomcat-11.0.1\conf\Catalina\localhost\WiXDi_Web.xml] has finished in [1.386] ms
+06-Dec-2024 00:10:41.502 INFO [http-nio-8080-exec-133] org.apache.catalina.util.LifecycleBase.start The start() method was called on component [StandardEngine[Catalina].StandardHost[localhost].StandardContext[/WiXDi_Web]] after start() had already been called. The second call will be ignored.
+06-Dec-2024 00:26:11.243 WARNING [http-nio-8080-exec-137] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesJdbc La aplicación web [WiXDi_Web] registró el conductor JDBC [com.mysql.cj.jdbc.Driver] pero falló al anular el registro mientras la aplicación web estaba parada. Para prevenir un fallo de memoria, se ha anulado el registro del conductor JDBC por la fuerza.
+06-Dec-2024 00:26:11.243 WARNING [http-nio-8080-exec-137] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesThreads The web application [WiXDi_Web] appears to have started a thread named [mysql-cj-abandoned-connection-cleanup] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.base/jdk.internal.misc.Unsafe.park(Native Method)
+ java.base/java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:269)
+ java.base/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:1847)
+ java.base/java.lang.ref.ReferenceQueue.await(ReferenceQueue.java:71)
+ java.base/java.lang.ref.ReferenceQueue.remove0(ReferenceQueue.java:143)
+ java.base/java.lang.ref.ReferenceQueue.remove(ReferenceQueue.java:218)
+ com.mysql.cj.jdbc.AbandonedConnectionCleanupThread.run(AbandonedConnectionCleanupThread.java:84)
+ java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+ java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+ java.base/java.lang.Thread.run(Thread.java:1570)
+06-Dec-2024 00:26:11.759 INFO [http-nio-8080-exec-137] org.apache.catalina.startup.HostConfig.undeploy Repliegue (undeploy) de la aplicación web que tiene como trayectoria de contexto [/WiXDi_Web]
+06-Dec-2024 00:26:13.235 INFO [mysql-cj-abandoned-connection-cleanup] org.apache.catalina.loader.WebappClassLoaderBase.checkStateForResourceLoading Acceso ilegal: esta instancia de aplicación web ya ha sido parada.  Could not load [].  La eventual traza de pila que sigue ha sido motivada por un error lanzado con motivos de depuración así como para intentar terminar el hilo que motivó el acceso ilegal y no tiene impacto funcional.
+	java.lang.IllegalStateException: Acceso ilegal: esta instancia de aplicación web ya ha sido parada.  Could not load [].  La eventual traza de pila que sigue ha sido motivada por un error lanzado con motivos de depuración así como para intentar terminar el hilo que motivó el acceso ilegal y no tiene impacto funcional.
+		at org.apache.catalina.loader.WebappClassLoaderBase.checkStateForResourceLoading(WebappClassLoaderBase.java:1232)
+		at org.apache.catalina.loader.WebappClassLoaderBase.getResource(WebappClassLoaderBase.java:845)
+		at com.mysql.cj.jdbc.AbandonedConnectionCleanupThread.checkThreadContextClassLoader(AbandonedConnectionCleanupThread.java:116)
+		at com.mysql.cj.jdbc.AbandonedConnectionCleanupThread.run(AbandonedConnectionCleanupThread.java:83)
+		at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+		at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+		at java.base/java.lang.Thread.run(Thread.java:1570)
+06-Dec-2024 00:26:54.568 INFO [http-nio-8080-exec-142] org.apache.catalina.startup.HostConfig.deployDescriptor Desplieque del descriptor de configuración [C:\Users\haloa\Desktop\github\pf_appweb_Pollitos\ProyectoWEB\apache-tomcat-11.0.1\conf\Catalina\localhost\WiXDi_Web.xml]
+06-Dec-2024 00:26:54.569 WARNING [http-nio-8080-exec-142] org.apache.catalina.startup.HostConfig.deployDescriptor The path attribute with value [/WiXDi_Web] in deployment descriptor [C:\Users\haloa\Desktop\github\pf_appweb_Pollitos\ProyectoWEB\apache-tomcat-11.0.1\conf\Catalina\localhost\WiXDi_Web.xml] has been ignored
+06-Dec-2024 00:26:55.838 INFO [http-nio-8080-exec-142] org.apache.jasper.servlet.TldScanner.scanJars Al menos un JAR, que se ha explorado buscando TLDs, aún no contenía TLDs. Activar historial de depuración para este historiador para una completa lista de los JARs que fueron explorados y de los que nos se halló TLDs. Saltarse JARs no necesarios durante la exploración puede dar lugar a una mejora de tiempo significativa en el arranque y compilación de JSP .
+06-Dec-2024 00:26:55.875 INFO [http-nio-8080-exec-142] org.apache.catalina.startup.HostConfig.deployDescriptor Deployment of deployment descriptor [C:\Users\haloa\Desktop\github\pf_appweb_Pollitos\ProyectoWEB\apache-tomcat-11.0.1\conf\Catalina\localhost\WiXDi_Web.xml] has finished in [1.307] ms
+06-Dec-2024 00:26:55.877 INFO [http-nio-8080-exec-143] org.apache.catalina.util.LifecycleBase.start The start() method was called on component [StandardEngine[Catalina].StandardHost[localhost].StandardContext[/WiXDi_Web]] after start() had already been called. The second call will be ignored.
+06-Dec-2024 00:56:51.837 WARNING [http-nio-8080-exec-146] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesJdbc La aplicación web [WiXDi_Web] registró el conductor JDBC [com.mysql.cj.jdbc.Driver] pero falló al anular el registro mientras la aplicación web estaba parada. Para prevenir un fallo de memoria, se ha anulado el registro del conductor JDBC por la fuerza.
+06-Dec-2024 00:56:51.838 WARNING [http-nio-8080-exec-146] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesThreads The web application [WiXDi_Web] appears to have started a thread named [mysql-cj-abandoned-connection-cleanup] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.base/jdk.internal.misc.Unsafe.park(Native Method)
+ java.base/java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:269)
+ java.base/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:1847)
+ java.base/java.lang.ref.ReferenceQueue.await(ReferenceQueue.java:71)
+ java.base/java.lang.ref.ReferenceQueue.remove0(ReferenceQueue.java:143)
+ java.base/java.lang.ref.ReferenceQueue.remove(ReferenceQueue.java:218)
+ com.mysql.cj.jdbc.AbandonedConnectionCleanupThread.run(AbandonedConnectionCleanupThread.java:84)
+ java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+ java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+ java.base/java.lang.Thread.run(Thread.java:1570)
+06-Dec-2024 00:56:52.353 INFO [http-nio-8080-exec-146] org.apache.catalina.startup.HostConfig.undeploy Repliegue (undeploy) de la aplicación web que tiene como trayectoria de contexto [/WiXDi_Web]
+06-Dec-2024 00:56:54.652 INFO [mysql-cj-abandoned-connection-cleanup] org.apache.catalina.loader.WebappClassLoaderBase.checkStateForResourceLoading Acceso ilegal: esta instancia de aplicación web ya ha sido parada.  Could not load [].  La eventual traza de pila que sigue ha sido motivada por un error lanzado con motivos de depuración así como para intentar terminar el hilo que motivó el acceso ilegal y no tiene impacto funcional.
+	java.lang.IllegalStateException: Acceso ilegal: esta instancia de aplicación web ya ha sido parada.  Could not load [].  La eventual traza de pila que sigue ha sido motivada por un error lanzado con motivos de depuración así como para intentar terminar el hilo que motivó el acceso ilegal y no tiene impacto funcional.
+		at org.apache.catalina.loader.WebappClassLoaderBase.checkStateForResourceLoading(WebappClassLoaderBase.java:1232)
+		at org.apache.catalina.loader.WebappClassLoaderBase.getResource(WebappClassLoaderBase.java:845)
+		at com.mysql.cj.jdbc.AbandonedConnectionCleanupThread.checkThreadContextClassLoader(AbandonedConnectionCleanupThread.java:116)
+		at com.mysql.cj.jdbc.AbandonedConnectionCleanupThread.run(AbandonedConnectionCleanupThread.java:83)
+		at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+		at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+		at java.base/java.lang.Thread.run(Thread.java:1570)
+06-Dec-2024 00:57:08.542 INFO [http-nio-8080-exec-147] org.apache.catalina.startup.HostConfig.deployDescriptor Desplieque del descriptor de configuración [C:\Users\haloa\Desktop\github\pf_appweb_Pollitos\ProyectoWEB\apache-tomcat-11.0.1\conf\Catalina\localhost\WiXDi_Web.xml]
+06-Dec-2024 00:57:08.543 WARNING [http-nio-8080-exec-147] org.apache.catalina.startup.HostConfig.deployDescriptor The path attribute with value [/WiXDi_Web] in deployment descriptor [C:\Users\haloa\Desktop\github\pf_appweb_Pollitos\ProyectoWEB\apache-tomcat-11.0.1\conf\Catalina\localhost\WiXDi_Web.xml] has been ignored
+06-Dec-2024 00:57:09.828 INFO [http-nio-8080-exec-147] org.apache.jasper.servlet.TldScanner.scanJars Al menos un JAR, que se ha explorado buscando TLDs, aún no contenía TLDs. Activar historial de depuración para este historiador para una completa lista de los JARs que fueron explorados y de los que nos se halló TLDs. Saltarse JARs no necesarios durante la exploración puede dar lugar a una mejora de tiempo significativa en el arranque y compilación de JSP .
+06-Dec-2024 00:57:09.868 INFO [http-nio-8080-exec-147] org.apache.catalina.startup.HostConfig.deployDescriptor Deployment of deployment descriptor [C:\Users\haloa\Desktop\github\pf_appweb_Pollitos\ProyectoWEB\apache-tomcat-11.0.1\conf\Catalina\localhost\WiXDi_Web.xml] has finished in [1.326] ms
+06-Dec-2024 00:57:09.871 INFO [http-nio-8080-exec-152] org.apache.catalina.util.LifecycleBase.start The start() method was called on component [StandardEngine[Catalina].StandardHost[localhost].StandardContext[/WiXDi_Web]] after start() had already been called. The second call will be ignored.
+06-Dec-2024 01:00:27.996 WARNING [http-nio-8080-exec-159] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesJdbc La aplicación web [WiXDi_Web] registró el conductor JDBC [com.mysql.cj.jdbc.Driver] pero falló al anular el registro mientras la aplicación web estaba parada. Para prevenir un fallo de memoria, se ha anulado el registro del conductor JDBC por la fuerza.
+06-Dec-2024 01:00:27.997 WARNING [http-nio-8080-exec-159] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesThreads The web application [WiXDi_Web] appears to have started a thread named [mysql-cj-abandoned-connection-cleanup] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.base/jdk.internal.misc.Unsafe.park(Native Method)
+ java.base/java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:269)
+ java.base/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:1847)
+ java.base/java.lang.ref.ReferenceQueue.await(ReferenceQueue.java:71)
+ java.base/java.lang.ref.ReferenceQueue.remove0(ReferenceQueue.java:143)
+ java.base/java.lang.ref.ReferenceQueue.remove(ReferenceQueue.java:218)
+ com.mysql.cj.jdbc.AbandonedConnectionCleanupThread.run(AbandonedConnectionCleanupThread.java:84)
+ java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+ java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+ java.base/java.lang.Thread.run(Thread.java:1570)
+06-Dec-2024 01:00:28.514 INFO [http-nio-8080-exec-159] org.apache.catalina.startup.HostConfig.undeploy Repliegue (undeploy) de la aplicación web que tiene como trayectoria de contexto [/WiXDi_Web]
+06-Dec-2024 01:00:28.539 INFO [http-nio-8080-exec-157] org.apache.catalina.startup.HostConfig.deployDescriptor Desplieque del descriptor de configuración [C:\Users\haloa\Desktop\github\pf_appweb_Pollitos\ProyectoWEB\apache-tomcat-11.0.1\conf\Catalina\localhost\WiXDi_Web.xml]
+06-Dec-2024 01:00:28.541 WARNING [http-nio-8080-exec-157] org.apache.catalina.startup.HostConfig.deployDescriptor The path attribute with value [/WiXDi_Web] in deployment descriptor [C:\Users\haloa\Desktop\github\pf_appweb_Pollitos\ProyectoWEB\apache-tomcat-11.0.1\conf\Catalina\localhost\WiXDi_Web.xml] has been ignored
+06-Dec-2024 01:00:28.866 INFO [mysql-cj-abandoned-connection-cleanup] org.apache.catalina.loader.WebappClassLoaderBase.checkStateForResourceLoading Acceso ilegal: esta instancia de aplicación web ya ha sido parada.  Could not load [].  La eventual traza de pila que sigue ha sido motivada por un error lanzado con motivos de depuración así como para intentar terminar el hilo que motivó el acceso ilegal y no tiene impacto funcional.
+	java.lang.IllegalStateException: Acceso ilegal: esta instancia de aplicación web ya ha sido parada.  Could not load [].  La eventual traza de pila que sigue ha sido motivada por un error lanzado con motivos de depuración así como para intentar terminar el hilo que motivó el acceso ilegal y no tiene impacto funcional.
+		at org.apache.catalina.loader.WebappClassLoaderBase.checkStateForResourceLoading(WebappClassLoaderBase.java:1232)
+		at org.apache.catalina.loader.WebappClassLoaderBase.getResource(WebappClassLoaderBase.java:845)
+		at com.mysql.cj.jdbc.AbandonedConnectionCleanupThread.checkThreadContextClassLoader(AbandonedConnectionCleanupThread.java:116)
+		at com.mysql.cj.jdbc.AbandonedConnectionCleanupThread.run(AbandonedConnectionCleanupThread.java:83)
+		at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+		at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+		at java.base/java.lang.Thread.run(Thread.java:1570)
+06-Dec-2024 01:00:38.426 INFO [http-nio-8080-exec-157] org.apache.jasper.servlet.TldScanner.scanJars Al menos un JAR, que se ha explorado buscando TLDs, aún no contenía TLDs. Activar historial de depuración para este historiador para una completa lista de los JARs que fueron explorados y de los que nos se halló TLDs. Saltarse JARs no necesarios durante la exploración puede dar lugar a una mejora de tiempo significativa en el arranque y compilación de JSP .
+06-Dec-2024 01:00:38.466 INFO [http-nio-8080-exec-157] org.apache.catalina.startup.HostConfig.deployDescriptor Deployment of deployment descriptor [C:\Users\haloa\Desktop\github\pf_appweb_Pollitos\ProyectoWEB\apache-tomcat-11.0.1\conf\Catalina\localhost\WiXDi_Web.xml] has finished in [9.927] ms
+06-Dec-2024 01:00:38.470 INFO [http-nio-8080-exec-161] org.apache.catalina.util.LifecycleBase.start The start() method was called on component [StandardEngine[Catalina].StandardHost[localhost].StandardContext[/WiXDi_Web]] after start() had already been called. The second call will be ignored.
+06-Dec-2024 01:01:06.398 INFO [http-nio-8080-exec-155] org.apache.catalina.startup.HostConfig.undeploy Repliegue (undeploy) de la aplicación web que tiene como trayectoria de contexto [/WiXDi_Web]
+06-Dec-2024 01:01:06.419 INFO [http-nio-8080-exec-162] org.apache.catalina.startup.HostConfig.deployDescriptor Desplieque del descriptor de configuración [C:\Users\haloa\Desktop\github\pf_appweb_Pollitos\ProyectoWEB\apache-tomcat-11.0.1\conf\Catalina\localhost\WiXDi_Web.xml]
+06-Dec-2024 01:01:06.423 WARNING [http-nio-8080-exec-162] org.apache.catalina.startup.HostConfig.deployDescriptor The path attribute with value [/WiXDi_Web] in deployment descriptor [C:\Users\haloa\Desktop\github\pf_appweb_Pollitos\ProyectoWEB\apache-tomcat-11.0.1\conf\Catalina\localhost\WiXDi_Web.xml] has been ignored
+06-Dec-2024 01:01:37.063 INFO [http-nio-8080-exec-162] org.apache.jasper.servlet.TldScanner.scanJars Al menos un JAR, que se ha explorado buscando TLDs, aún no contenía TLDs. Activar historial de depuración para este historiador para una completa lista de los JARs que fueron explorados y de los que nos se halló TLDs. Saltarse JARs no necesarios durante la exploración puede dar lugar a una mejora de tiempo significativa en el arranque y compilación de JSP .
+06-Dec-2024 01:01:37.219 INFO [http-nio-8080-exec-162] org.apache.catalina.startup.HostConfig.deployDescriptor Deployment of deployment descriptor [C:\Users\haloa\Desktop\github\pf_appweb_Pollitos\ProyectoWEB\apache-tomcat-11.0.1\conf\Catalina\localhost\WiXDi_Web.xml] has finished in [30.800] ms
+06-Dec-2024 01:01:37.224 INFO [http-nio-8080-exec-165] org.apache.catalina.util.LifecycleBase.start The start() method was called on component [StandardEngine[Catalina].StandardHost[localhost].StandardContext[/WiXDi_Web]] after start() had already been called. The second call will be ignored.
+06-Dec-2024 01:03:55.501 WARNING [http-nio-8080-exec-174] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesJdbc La aplicación web [WiXDi_Web] registró el conductor JDBC [com.mysql.cj.jdbc.Driver] pero falló al anular el registro mientras la aplicación web estaba parada. Para prevenir un fallo de memoria, se ha anulado el registro del conductor JDBC por la fuerza.
+06-Dec-2024 01:03:55.501 WARNING [http-nio-8080-exec-174] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesThreads The web application [WiXDi_Web] appears to have started a thread named [mysql-cj-abandoned-connection-cleanup] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.base/jdk.internal.misc.Unsafe.park(Native Method)
+ java.base/java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:269)
+ java.base/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:1847)
+ java.base/java.lang.ref.ReferenceQueue.await(ReferenceQueue.java:71)
+ java.base/java.lang.ref.ReferenceQueue.remove0(ReferenceQueue.java:143)
+ java.base/java.lang.ref.ReferenceQueue.remove(ReferenceQueue.java:218)
+ com.mysql.cj.jdbc.AbandonedConnectionCleanupThread.run(AbandonedConnectionCleanupThread.java:84)
+ java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+ java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+ java.base/java.lang.Thread.run(Thread.java:1570)
+06-Dec-2024 01:03:56.010 INFO [http-nio-8080-exec-174] org.apache.catalina.startup.HostConfig.undeploy Repliegue (undeploy) de la aplicación web que tiene como trayectoria de contexto [/WiXDi_Web]
+06-Dec-2024 01:03:56.027 INFO [http-nio-8080-exec-173] org.apache.catalina.startup.HostConfig.deployDescriptor Desplieque del descriptor de configuración [C:\Users\haloa\Desktop\github\pf_appweb_Pollitos\ProyectoWEB\apache-tomcat-11.0.1\conf\Catalina\localhost\WiXDi_Web.xml]
+06-Dec-2024 01:03:56.028 WARNING [http-nio-8080-exec-173] org.apache.catalina.startup.HostConfig.deployDescriptor The path attribute with value [/WiXDi_Web] in deployment descriptor [C:\Users\haloa\Desktop\github\pf_appweb_Pollitos\ProyectoWEB\apache-tomcat-11.0.1\conf\Catalina\localhost\WiXDi_Web.xml] has been ignored
+06-Dec-2024 01:03:56.994 INFO [mysql-cj-abandoned-connection-cleanup] org.apache.catalina.loader.WebappClassLoaderBase.checkStateForResourceLoading Acceso ilegal: esta instancia de aplicación web ya ha sido parada.  Could not load [].  La eventual traza de pila que sigue ha sido motivada por un error lanzado con motivos de depuración así como para intentar terminar el hilo que motivó el acceso ilegal y no tiene impacto funcional.
+	java.lang.IllegalStateException: Acceso ilegal: esta instancia de aplicación web ya ha sido parada.  Could not load [].  La eventual traza de pila que sigue ha sido motivada por un error lanzado con motivos de depuración así como para intentar terminar el hilo que motivó el acceso ilegal y no tiene impacto funcional.
+		at org.apache.catalina.loader.WebappClassLoaderBase.checkStateForResourceLoading(WebappClassLoaderBase.java:1232)
+		at org.apache.catalina.loader.WebappClassLoaderBase.getResource(WebappClassLoaderBase.java:845)
+		at com.mysql.cj.jdbc.AbandonedConnectionCleanupThread.checkThreadContextClassLoader(AbandonedConnectionCleanupThread.java:116)
+		at com.mysql.cj.jdbc.AbandonedConnectionCleanupThread.run(AbandonedConnectionCleanupThread.java:83)
+		at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+		at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+		at java.base/java.lang.Thread.run(Thread.java:1570)
+06-Dec-2024 01:03:57.412 INFO [http-nio-8080-exec-173] org.apache.jasper.servlet.TldScanner.scanJars Al menos un JAR, que se ha explorado buscando TLDs, aún no contenía TLDs. Activar historial de depuración para este historiador para una completa lista de los JARs que fueron explorados y de los que nos se halló TLDs. Saltarse JARs no necesarios durante la exploración puede dar lugar a una mejora de tiempo significativa en el arranque y compilación de JSP .
+06-Dec-2024 01:03:57.451 INFO [http-nio-8080-exec-173] org.apache.catalina.startup.HostConfig.deployDescriptor Deployment of deployment descriptor [C:\Users\haloa\Desktop\github\pf_appweb_Pollitos\ProyectoWEB\apache-tomcat-11.0.1\conf\Catalina\localhost\WiXDi_Web.xml] has finished in [1.424] ms
+06-Dec-2024 01:03:57.454 INFO [http-nio-8080-exec-171] org.apache.catalina.util.LifecycleBase.start The start() method was called on component [StandardEngine[Catalina].StandardHost[localhost].StandardContext[/WiXDi_Web]] after start() had already been called. The second call will be ignored.
+06-Dec-2024 01:07:15.608 WARNING [http-nio-8080-exec-186] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesJdbc La aplicación web [WiXDi_Web] registró el conductor JDBC [com.mysql.cj.jdbc.Driver] pero falló al anular el registro mientras la aplicación web estaba parada. Para prevenir un fallo de memoria, se ha anulado el registro del conductor JDBC por la fuerza.
+06-Dec-2024 01:07:15.609 WARNING [http-nio-8080-exec-186] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesThreads The web application [WiXDi_Web] appears to have started a thread named [mysql-cj-abandoned-connection-cleanup] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.base/jdk.internal.misc.Unsafe.park(Native Method)
+ java.base/java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:269)
+ java.base/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:1847)
+ java.base/java.lang.ref.ReferenceQueue.await(ReferenceQueue.java:71)
+ java.base/java.lang.ref.ReferenceQueue.remove0(ReferenceQueue.java:143)
+ java.base/java.lang.ref.ReferenceQueue.remove(ReferenceQueue.java:218)
+ com.mysql.cj.jdbc.AbandonedConnectionCleanupThread.run(AbandonedConnectionCleanupThread.java:84)
+ java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+ java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+ java.base/java.lang.Thread.run(Thread.java:1570)
+06-Dec-2024 01:07:16.117 INFO [http-nio-8080-exec-186] org.apache.catalina.startup.HostConfig.undeploy Repliegue (undeploy) de la aplicación web que tiene como trayectoria de contexto [/WiXDi_Web]
+06-Dec-2024 01:07:19.285 INFO [mysql-cj-abandoned-connection-cleanup] org.apache.catalina.loader.WebappClassLoaderBase.checkStateForResourceLoading Acceso ilegal: esta instancia de aplicación web ya ha sido parada.  Could not load [].  La eventual traza de pila que sigue ha sido motivada por un error lanzado con motivos de depuración así como para intentar terminar el hilo que motivó el acceso ilegal y no tiene impacto funcional.
+	java.lang.IllegalStateException: Acceso ilegal: esta instancia de aplicación web ya ha sido parada.  Could not load [].  La eventual traza de pila que sigue ha sido motivada por un error lanzado con motivos de depuración así como para intentar terminar el hilo que motivó el acceso ilegal y no tiene impacto funcional.
+		at org.apache.catalina.loader.WebappClassLoaderBase.checkStateForResourceLoading(WebappClassLoaderBase.java:1232)
+		at org.apache.catalina.loader.WebappClassLoaderBase.getResource(WebappClassLoaderBase.java:845)
+		at com.mysql.cj.jdbc.AbandonedConnectionCleanupThread.checkThreadContextClassLoader(AbandonedConnectionCleanupThread.java:116)
+		at com.mysql.cj.jdbc.AbandonedConnectionCleanupThread.run(AbandonedConnectionCleanupThread.java:83)
+		at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+		at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+		at java.base/java.lang.Thread.run(Thread.java:1570)
+06-Dec-2024 01:07:29.964 INFO [http-nio-8080-exec-182] org.apache.catalina.startup.HostConfig.deployDescriptor Desplieque del descriptor de configuración [C:\Users\haloa\Desktop\github\pf_appweb_Pollitos\ProyectoWEB\apache-tomcat-11.0.1\conf\Catalina\localhost\WiXDi_Web.xml]
+06-Dec-2024 01:07:29.965 WARNING [http-nio-8080-exec-182] org.apache.catalina.startup.HostConfig.deployDescriptor The path attribute with value [/WiXDi_Web] in deployment descriptor [C:\Users\haloa\Desktop\github\pf_appweb_Pollitos\ProyectoWEB\apache-tomcat-11.0.1\conf\Catalina\localhost\WiXDi_Web.xml] has been ignored
+06-Dec-2024 01:07:31.243 INFO [http-nio-8080-exec-182] org.apache.jasper.servlet.TldScanner.scanJars Al menos un JAR, que se ha explorado buscando TLDs, aún no contenía TLDs. Activar historial de depuración para este historiador para una completa lista de los JARs que fueron explorados y de los que nos se halló TLDs. Saltarse JARs no necesarios durante la exploración puede dar lugar a una mejora de tiempo significativa en el arranque y compilación de JSP .
+06-Dec-2024 01:07:31.281 INFO [http-nio-8080-exec-182] org.apache.catalina.startup.HostConfig.deployDescriptor Deployment of deployment descriptor [C:\Users\haloa\Desktop\github\pf_appweb_Pollitos\ProyectoWEB\apache-tomcat-11.0.1\conf\Catalina\localhost\WiXDi_Web.xml] has finished in [1.317] ms
+06-Dec-2024 01:07:31.284 INFO [http-nio-8080-exec-187] org.apache.catalina.util.LifecycleBase.start The start() method was called on component [StandardEngine[Catalina].StandardHost[localhost].StandardContext[/WiXDi_Web]] after start() had already been called. The second call will be ignored.
+06-Dec-2024 01:13:01.811 WARNING [http-nio-8080-exec-196] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesJdbc La aplicación web [WiXDi_Web] registró el conductor JDBC [com.mysql.cj.jdbc.Driver] pero falló al anular el registro mientras la aplicación web estaba parada. Para prevenir un fallo de memoria, se ha anulado el registro del conductor JDBC por la fuerza.
+06-Dec-2024 01:13:01.811 WARNING [http-nio-8080-exec-196] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesThreads The web application [WiXDi_Web] appears to have started a thread named [mysql-cj-abandoned-connection-cleanup] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.base/jdk.internal.misc.Unsafe.park(Native Method)
+ java.base/java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:269)
+ java.base/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:1847)
+ java.base/java.lang.ref.ReferenceQueue.await(ReferenceQueue.java:71)
+ java.base/java.lang.ref.ReferenceQueue.remove0(ReferenceQueue.java:143)
+ java.base/java.lang.ref.ReferenceQueue.remove(ReferenceQueue.java:218)
+ com.mysql.cj.jdbc.AbandonedConnectionCleanupThread.run(AbandonedConnectionCleanupThread.java:84)
+ java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+ java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+ java.base/java.lang.Thread.run(Thread.java:1570)
+06-Dec-2024 01:13:02.321 INFO [http-nio-8080-exec-196] org.apache.catalina.startup.HostConfig.undeploy Repliegue (undeploy) de la aplicación web que tiene como trayectoria de contexto [/WiXDi_Web]
+06-Dec-2024 01:13:06.247 INFO [mysql-cj-abandoned-connection-cleanup] org.apache.catalina.loader.WebappClassLoaderBase.checkStateForResourceLoading Acceso ilegal: esta instancia de aplicación web ya ha sido parada.  Could not load [].  La eventual traza de pila que sigue ha sido motivada por un error lanzado con motivos de depuración así como para intentar terminar el hilo que motivó el acceso ilegal y no tiene impacto funcional.
+	java.lang.IllegalStateException: Acceso ilegal: esta instancia de aplicación web ya ha sido parada.  Could not load [].  La eventual traza de pila que sigue ha sido motivada por un error lanzado con motivos de depuración así como para intentar terminar el hilo que motivó el acceso ilegal y no tiene impacto funcional.
+		at org.apache.catalina.loader.WebappClassLoaderBase.checkStateForResourceLoading(WebappClassLoaderBase.java:1232)
+		at org.apache.catalina.loader.WebappClassLoaderBase.getResource(WebappClassLoaderBase.java:845)
+		at com.mysql.cj.jdbc.AbandonedConnectionCleanupThread.checkThreadContextClassLoader(AbandonedConnectionCleanupThread.java:116)
+		at com.mysql.cj.jdbc.AbandonedConnectionCleanupThread.run(AbandonedConnectionCleanupThread.java:83)
+		at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+		at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+		at java.base/java.lang.Thread.run(Thread.java:1570)
+06-Dec-2024 01:13:23.503 INFO [http-nio-8080-exec-197] org.apache.catalina.startup.HostConfig.deployDescriptor Desplieque del descriptor de configuración [C:\Users\haloa\Desktop\github\pf_appweb_Pollitos\ProyectoWEB\apache-tomcat-11.0.1\conf\Catalina\localhost\WiXDi_Web.xml]
+06-Dec-2024 01:13:23.504 WARNING [http-nio-8080-exec-197] org.apache.catalina.startup.HostConfig.deployDescriptor The path attribute with value [/WiXDi_Web] in deployment descriptor [C:\Users\haloa\Desktop\github\pf_appweb_Pollitos\ProyectoWEB\apache-tomcat-11.0.1\conf\Catalina\localhost\WiXDi_Web.xml] has been ignored
+06-Dec-2024 01:13:24.817 INFO [http-nio-8080-exec-197] org.apache.jasper.servlet.TldScanner.scanJars Al menos un JAR, que se ha explorado buscando TLDs, aún no contenía TLDs. Activar historial de depuración para este historiador para una completa lista de los JARs que fueron explorados y de los que nos se halló TLDs. Saltarse JARs no necesarios durante la exploración puede dar lugar a una mejora de tiempo significativa en el arranque y compilación de JSP .
+06-Dec-2024 01:13:24.859 INFO [http-nio-8080-exec-197] org.apache.catalina.startup.HostConfig.deployDescriptor Deployment of deployment descriptor [C:\Users\haloa\Desktop\github\pf_appweb_Pollitos\ProyectoWEB\apache-tomcat-11.0.1\conf\Catalina\localhost\WiXDi_Web.xml] has finished in [1.355] ms
+06-Dec-2024 01:13:24.860 INFO [http-nio-8080-exec-198] org.apache.catalina.util.LifecycleBase.start The start() method was called on component [StandardEngine[Catalina].StandardHost[localhost].StandardContext[/WiXDi_Web]] after start() had already been called. The second call will be ignored.
+06-Dec-2024 01:17:01.375 WARNING [http-nio-8080-exec-206] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesJdbc La aplicación web [WiXDi_Web] registró el conductor JDBC [com.mysql.cj.jdbc.Driver] pero falló al anular el registro mientras la aplicación web estaba parada. Para prevenir un fallo de memoria, se ha anulado el registro del conductor JDBC por la fuerza.
+06-Dec-2024 01:17:01.375 WARNING [http-nio-8080-exec-206] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesThreads The web application [WiXDi_Web] appears to have started a thread named [mysql-cj-abandoned-connection-cleanup] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.base/jdk.internal.misc.Unsafe.park(Native Method)
+ java.base/java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:269)
+ java.base/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:1847)
+ java.base/java.lang.ref.ReferenceQueue.await(ReferenceQueue.java:71)
+ java.base/java.lang.ref.ReferenceQueue.remove0(ReferenceQueue.java:143)
+ java.base/java.lang.ref.ReferenceQueue.remove(ReferenceQueue.java:218)
+ com.mysql.cj.jdbc.AbandonedConnectionCleanupThread.run(AbandonedConnectionCleanupThread.java:84)
+ java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+ java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+ java.base/java.lang.Thread.run(Thread.java:1570)
+06-Dec-2024 01:17:01.890 INFO [http-nio-8080-exec-206] org.apache.catalina.startup.HostConfig.undeploy Repliegue (undeploy) de la aplicación web que tiene como trayectoria de contexto [/WiXDi_Web]
+06-Dec-2024 01:17:05.884 INFO [mysql-cj-abandoned-connection-cleanup] org.apache.catalina.loader.WebappClassLoaderBase.checkStateForResourceLoading Acceso ilegal: esta instancia de aplicación web ya ha sido parada.  Could not load [].  La eventual traza de pila que sigue ha sido motivada por un error lanzado con motivos de depuración así como para intentar terminar el hilo que motivó el acceso ilegal y no tiene impacto funcional.
+	java.lang.IllegalStateException: Acceso ilegal: esta instancia de aplicación web ya ha sido parada.  Could not load [].  La eventual traza de pila que sigue ha sido motivada por un error lanzado con motivos de depuración así como para intentar terminar el hilo que motivó el acceso ilegal y no tiene impacto funcional.
+		at org.apache.catalina.loader.WebappClassLoaderBase.checkStateForResourceLoading(WebappClassLoaderBase.java:1232)
+		at org.apache.catalina.loader.WebappClassLoaderBase.getResource(WebappClassLoaderBase.java:845)
+		at com.mysql.cj.jdbc.AbandonedConnectionCleanupThread.checkThreadContextClassLoader(AbandonedConnectionCleanupThread.java:116)
+		at com.mysql.cj.jdbc.AbandonedConnectionCleanupThread.run(AbandonedConnectionCleanupThread.java:83)
+		at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+		at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+		at java.base/java.lang.Thread.run(Thread.java:1570)
+06-Dec-2024 01:17:23.830 INFO [http-nio-8080-exec-207] org.apache.catalina.startup.HostConfig.deployDescriptor Desplieque del descriptor de configuración [C:\Users\haloa\Desktop\github\pf_appweb_Pollitos\ProyectoWEB\apache-tomcat-11.0.1\conf\Catalina\localhost\WiXDi_Web.xml]
+06-Dec-2024 01:17:23.831 WARNING [http-nio-8080-exec-207] org.apache.catalina.startup.HostConfig.deployDescriptor The path attribute with value [/WiXDi_Web] in deployment descriptor [C:\Users\haloa\Desktop\github\pf_appweb_Pollitos\ProyectoWEB\apache-tomcat-11.0.1\conf\Catalina\localhost\WiXDi_Web.xml] has been ignored
+06-Dec-2024 01:17:25.149 INFO [http-nio-8080-exec-207] org.apache.jasper.servlet.TldScanner.scanJars Al menos un JAR, que se ha explorado buscando TLDs, aún no contenía TLDs. Activar historial de depuración para este historiador para una completa lista de los JARs que fueron explorados y de los que nos se halló TLDs. Saltarse JARs no necesarios durante la exploración puede dar lugar a una mejora de tiempo significativa en el arranque y compilación de JSP .
+06-Dec-2024 01:17:25.184 INFO [http-nio-8080-exec-207] org.apache.catalina.startup.HostConfig.deployDescriptor Deployment of deployment descriptor [C:\Users\haloa\Desktop\github\pf_appweb_Pollitos\ProyectoWEB\apache-tomcat-11.0.1\conf\Catalina\localhost\WiXDi_Web.xml] has finished in [1.354] ms
+06-Dec-2024 01:17:25.187 INFO [http-nio-8080-exec-208] org.apache.catalina.util.LifecycleBase.start The start() method was called on component [StandardEngine[Catalina].StandardHost[localhost].StandardContext[/WiXDi_Web]] after start() had already been called. The second call will be ignored.
+06-Dec-2024 01:19:10.092 WARNING [http-nio-8080-exec-214] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesJdbc La aplicación web [WiXDi_Web] registró el conductor JDBC [com.mysql.cj.jdbc.Driver] pero falló al anular el registro mientras la aplicación web estaba parada. Para prevenir un fallo de memoria, se ha anulado el registro del conductor JDBC por la fuerza.
+06-Dec-2024 01:19:10.094 WARNING [http-nio-8080-exec-214] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesThreads The web application [WiXDi_Web] appears to have started a thread named [mysql-cj-abandoned-connection-cleanup] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.base/jdk.internal.misc.Unsafe.park(Native Method)
+ java.base/java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:269)
+ java.base/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:1847)
+ java.base/java.lang.ref.ReferenceQueue.await(ReferenceQueue.java:71)
+ java.base/java.lang.ref.ReferenceQueue.remove0(ReferenceQueue.java:143)
+ java.base/java.lang.ref.ReferenceQueue.remove(ReferenceQueue.java:218)
+ com.mysql.cj.jdbc.AbandonedConnectionCleanupThread.run(AbandonedConnectionCleanupThread.java:84)
+ java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+ java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+ java.base/java.lang.Thread.run(Thread.java:1570)
+06-Dec-2024 01:19:10.612 INFO [http-nio-8080-exec-214] org.apache.catalina.startup.HostConfig.undeploy Repliegue (undeploy) de la aplicación web que tiene como trayectoria de contexto [/WiXDi_Web]
+06-Dec-2024 01:19:10.634 INFO [http-nio-8080-exec-216] org.apache.catalina.startup.HostConfig.deployDescriptor Desplieque del descriptor de configuración [C:\Users\haloa\Desktop\github\pf_appweb_Pollitos\ProyectoWEB\apache-tomcat-11.0.1\conf\Catalina\localhost\WiXDi_Web.xml]
+06-Dec-2024 01:19:10.637 WARNING [http-nio-8080-exec-216] org.apache.catalina.startup.HostConfig.deployDescriptor The path attribute with value [/WiXDi_Web] in deployment descriptor [C:\Users\haloa\Desktop\github\pf_appweb_Pollitos\ProyectoWEB\apache-tomcat-11.0.1\conf\Catalina\localhost\WiXDi_Web.xml] has been ignored
+06-Dec-2024 01:19:13.925 INFO [mysql-cj-abandoned-connection-cleanup] org.apache.catalina.loader.WebappClassLoaderBase.checkStateForResourceLoading Acceso ilegal: esta instancia de aplicación web ya ha sido parada.  Could not load [].  La eventual traza de pila que sigue ha sido motivada por un error lanzado con motivos de depuración así como para intentar terminar el hilo que motivó el acceso ilegal y no tiene impacto funcional.
+	java.lang.IllegalStateException: Acceso ilegal: esta instancia de aplicación web ya ha sido parada.  Could not load [].  La eventual traza de pila que sigue ha sido motivada por un error lanzado con motivos de depuración así como para intentar terminar el hilo que motivó el acceso ilegal y no tiene impacto funcional.
+		at org.apache.catalina.loader.WebappClassLoaderBase.checkStateForResourceLoading(WebappClassLoaderBase.java:1232)
+		at org.apache.catalina.loader.WebappClassLoaderBase.getResource(WebappClassLoaderBase.java:845)
+		at com.mysql.cj.jdbc.AbandonedConnectionCleanupThread.checkThreadContextClassLoader(AbandonedConnectionCleanupThread.java:116)
+		at com.mysql.cj.jdbc.AbandonedConnectionCleanupThread.run(AbandonedConnectionCleanupThread.java:83)
+		at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+		at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+		at java.base/java.lang.Thread.run(Thread.java:1570)
+06-Dec-2024 01:19:41.185 INFO [http-nio-8080-exec-216] org.apache.jasper.servlet.TldScanner.scanJars Al menos un JAR, que se ha explorado buscando TLDs, aún no contenía TLDs. Activar historial de depuración para este historiador para una completa lista de los JARs que fueron explorados y de los que nos se halló TLDs. Saltarse JARs no necesarios durante la exploración puede dar lugar a una mejora de tiempo significativa en el arranque y compilación de JSP .
+06-Dec-2024 01:19:41.343 INFO [http-nio-8080-exec-216] org.apache.catalina.startup.HostConfig.deployDescriptor Deployment of deployment descriptor [C:\Users\haloa\Desktop\github\pf_appweb_Pollitos\ProyectoWEB\apache-tomcat-11.0.1\conf\Catalina\localhost\WiXDi_Web.xml] has finished in [30.708] ms
+06-Dec-2024 01:19:41.350 INFO [http-nio-8080-exec-209] org.apache.catalina.util.LifecycleBase.start The start() method was called on component [StandardEngine[Catalina].StandardHost[localhost].StandardContext[/WiXDi_Web]] after start() had already been called. The second call will be ignored.
+06-Dec-2024 01:27:50.644 WARNING [http-nio-8080-exec-222] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesJdbc La aplicación web [WiXDi_Web] registró el conductor JDBC [com.mysql.cj.jdbc.Driver] pero falló al anular el registro mientras la aplicación web estaba parada. Para prevenir un fallo de memoria, se ha anulado el registro del conductor JDBC por la fuerza.
+06-Dec-2024 01:27:50.645 WARNING [http-nio-8080-exec-222] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesThreads The web application [WiXDi_Web] appears to have started a thread named [mysql-cj-abandoned-connection-cleanup] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.base/jdk.internal.misc.Unsafe.park(Native Method)
+ java.base/java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:269)
+ java.base/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:1847)
+ java.base/java.lang.ref.ReferenceQueue.await(ReferenceQueue.java:71)
+ java.base/java.lang.ref.ReferenceQueue.remove0(ReferenceQueue.java:143)
+ java.base/java.lang.ref.ReferenceQueue.remove(ReferenceQueue.java:218)
+ com.mysql.cj.jdbc.AbandonedConnectionCleanupThread.run(AbandonedConnectionCleanupThread.java:84)
+ java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+ java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+ java.base/java.lang.Thread.run(Thread.java:1570)
+06-Dec-2024 01:27:51.152 INFO [http-nio-8080-exec-222] org.apache.catalina.startup.HostConfig.undeploy Repliegue (undeploy) de la aplicación web que tiene como trayectoria de contexto [/WiXDi_Web]
+06-Dec-2024 01:27:53.053 INFO [mysql-cj-abandoned-connection-cleanup] org.apache.catalina.loader.WebappClassLoaderBase.checkStateForResourceLoading Acceso ilegal: esta instancia de aplicación web ya ha sido parada.  Could not load [].  La eventual traza de pila que sigue ha sido motivada por un error lanzado con motivos de depuración así como para intentar terminar el hilo que motivó el acceso ilegal y no tiene impacto funcional.
+	java.lang.IllegalStateException: Acceso ilegal: esta instancia de aplicación web ya ha sido parada.  Could not load [].  La eventual traza de pila que sigue ha sido motivada por un error lanzado con motivos de depuración así como para intentar terminar el hilo que motivó el acceso ilegal y no tiene impacto funcional.
+		at org.apache.catalina.loader.WebappClassLoaderBase.checkStateForResourceLoading(WebappClassLoaderBase.java:1232)
+		at org.apache.catalina.loader.WebappClassLoaderBase.getResource(WebappClassLoaderBase.java:845)
+		at com.mysql.cj.jdbc.AbandonedConnectionCleanupThread.checkThreadContextClassLoader(AbandonedConnectionCleanupThread.java:116)
+		at com.mysql.cj.jdbc.AbandonedConnectionCleanupThread.run(AbandonedConnectionCleanupThread.java:83)
+		at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+		at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+		at java.base/java.lang.Thread.run(Thread.java:1570)
+06-Dec-2024 01:28:07.613 INFO [http-nio-8080-exec-224] org.apache.catalina.startup.HostConfig.deployDescriptor Desplieque del descriptor de configuración [C:\Users\haloa\Desktop\github\pf_appweb_Pollitos\ProyectoWEB\apache-tomcat-11.0.1\conf\Catalina\localhost\WiXDi_Web.xml]
+06-Dec-2024 01:28:07.614 WARNING [http-nio-8080-exec-224] org.apache.catalina.startup.HostConfig.deployDescriptor The path attribute with value [/WiXDi_Web] in deployment descriptor [C:\Users\haloa\Desktop\github\pf_appweb_Pollitos\ProyectoWEB\apache-tomcat-11.0.1\conf\Catalina\localhost\WiXDi_Web.xml] has been ignored
+06-Dec-2024 01:28:09.024 INFO [http-nio-8080-exec-224] org.apache.jasper.servlet.TldScanner.scanJars Al menos un JAR, que se ha explorado buscando TLDs, aún no contenía TLDs. Activar historial de depuración para este historiador para una completa lista de los JARs que fueron explorados y de los que nos se halló TLDs. Saltarse JARs no necesarios durante la exploración puede dar lugar a una mejora de tiempo significativa en el arranque y compilación de JSP .
+06-Dec-2024 01:28:09.059 INFO [http-nio-8080-exec-224] org.apache.catalina.startup.HostConfig.deployDescriptor Deployment of deployment descriptor [C:\Users\haloa\Desktop\github\pf_appweb_Pollitos\ProyectoWEB\apache-tomcat-11.0.1\conf\Catalina\localhost\WiXDi_Web.xml] has finished in [1.446] ms
+06-Dec-2024 01:28:09.062 INFO [http-nio-8080-exec-227] org.apache.catalina.util.LifecycleBase.start The start() method was called on component [StandardEngine[Catalina].StandardHost[localhost].StandardContext[/WiXDi_Web]] after start() had already been called. The second call will be ignored.
+06-Dec-2024 01:30:05.216 INFO [http-nio-8080-exec-234] org.apache.coyote.http11.Http11Processor.service Error analizando cabecera de requerimiento HTTP
+ Note: further occurrences of HTTP request parsing errors will be logged at DEBUG level.
+	java.lang.IllegalArgumentException: La cabecera del requerimiento es demasido grande
+		at org.apache.coyote.http11.Http11InputBuffer.fill(Http11InputBuffer.java:773)
+		at org.apache.coyote.http11.Http11InputBuffer.parseRequestLine(Http11InputBuffer.java:430)
+		at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:268)
+		at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+		at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:905)
+		at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1746)
+		at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+		at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1148)
+		at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:636)
+		at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63)
+		at java.base/java.lang.Thread.run(Thread.java:1570)
+06-Dec-2024 01:34:45.548 WARNING [http-nio-8080-exec-228] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesJdbc La aplicación web [WiXDi_Web] registró el conductor JDBC [com.mysql.cj.jdbc.Driver] pero falló al anular el registro mientras la aplicación web estaba parada. Para prevenir un fallo de memoria, se ha anulado el registro del conductor JDBC por la fuerza.
+06-Dec-2024 01:34:45.549 WARNING [http-nio-8080-exec-228] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesThreads The web application [WiXDi_Web] appears to have started a thread named [mysql-cj-abandoned-connection-cleanup] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.base/jdk.internal.misc.Unsafe.park(Native Method)
+ java.base/java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:269)
+ java.base/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:1847)
+ java.base/java.lang.ref.ReferenceQueue.await(ReferenceQueue.java:71)
+ java.base/java.lang.ref.ReferenceQueue.remove0(ReferenceQueue.java:143)
+ java.base/java.lang.ref.ReferenceQueue.remove(ReferenceQueue.java:218)
+ com.mysql.cj.jdbc.AbandonedConnectionCleanupThread.run(AbandonedConnectionCleanupThread.java:84)
+ java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+ java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+ java.base/java.lang.Thread.run(Thread.java:1570)
+06-Dec-2024 01:34:46.061 INFO [http-nio-8080-exec-228] org.apache.catalina.startup.HostConfig.undeploy Repliegue (undeploy) de la aplicación web que tiene como trayectoria de contexto [/WiXDi_Web]
+06-Dec-2024 01:34:48.017 INFO [mysql-cj-abandoned-connection-cleanup] org.apache.catalina.loader.WebappClassLoaderBase.checkStateForResourceLoading Acceso ilegal: esta instancia de aplicación web ya ha sido parada.  Could not load [].  La eventual traza de pila que sigue ha sido motivada por un error lanzado con motivos de depuración así como para intentar terminar el hilo que motivó el acceso ilegal y no tiene impacto funcional.
+	java.lang.IllegalStateException: Acceso ilegal: esta instancia de aplicación web ya ha sido parada.  Could not load [].  La eventual traza de pila que sigue ha sido motivada por un error lanzado con motivos de depuración así como para intentar terminar el hilo que motivó el acceso ilegal y no tiene impacto funcional.
+		at org.apache.catalina.loader.WebappClassLoaderBase.checkStateForResourceLoading(WebappClassLoaderBase.java:1232)
+		at org.apache.catalina.loader.WebappClassLoaderBase.getResource(WebappClassLoaderBase.java:845)
+		at com.mysql.cj.jdbc.AbandonedConnectionCleanupThread.checkThreadContextClassLoader(AbandonedConnectionCleanupThread.java:116)
+		at com.mysql.cj.jdbc.AbandonedConnectionCleanupThread.run(AbandonedConnectionCleanupThread.java:83)
+		at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+		at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+		at java.base/java.lang.Thread.run(Thread.java:1570)
+06-Dec-2024 01:35:00.674 INFO [http-nio-8080-exec-227] org.apache.catalina.startup.HostConfig.deployDescriptor Desplieque del descriptor de configuración [C:\Users\haloa\Desktop\github\pf_appweb_Pollitos\ProyectoWEB\apache-tomcat-11.0.1\conf\Catalina\localhost\WiXDi_Web.xml]
+06-Dec-2024 01:35:00.675 WARNING [http-nio-8080-exec-227] org.apache.catalina.startup.HostConfig.deployDescriptor The path attribute with value [/WiXDi_Web] in deployment descriptor [C:\Users\haloa\Desktop\github\pf_appweb_Pollitos\ProyectoWEB\apache-tomcat-11.0.1\conf\Catalina\localhost\WiXDi_Web.xml] has been ignored
+06-Dec-2024 01:35:01.994 INFO [http-nio-8080-exec-227] org.apache.jasper.servlet.TldScanner.scanJars Al menos un JAR, que se ha explorado buscando TLDs, aún no contenía TLDs. Activar historial de depuración para este historiador para una completa lista de los JARs que fueron explorados y de los que nos se halló TLDs. Saltarse JARs no necesarios durante la exploración puede dar lugar a una mejora de tiempo significativa en el arranque y compilación de JSP .
+06-Dec-2024 01:35:02.033 INFO [http-nio-8080-exec-227] org.apache.catalina.startup.HostConfig.deployDescriptor Deployment of deployment descriptor [C:\Users\haloa\Desktop\github\pf_appweb_Pollitos\ProyectoWEB\apache-tomcat-11.0.1\conf\Catalina\localhost\WiXDi_Web.xml] has finished in [1.359] ms
+06-Dec-2024 01:35:02.035 INFO [http-nio-8080-exec-237] org.apache.catalina.util.LifecycleBase.start The start() method was called on component [StandardEngine[Catalina].StandardHost[localhost].StandardContext[/WiXDi_Web]] after start() had already been called. The second call will be ignored.

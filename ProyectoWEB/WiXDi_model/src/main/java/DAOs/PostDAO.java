@@ -140,7 +140,10 @@ public class PostDAO implements IPostDAO {
         EntityManager em = conexion.abrir();
         try {
             em.getTransaction().begin();
-            String jpql = "SELECT p FROM Post p WHERE p.categoria = :categoria";
+            String jpql = "SELECT po FROM Post po \n" +
+                "JOIN po.comentarios co \n" +
+                "WHERE co.comentarioPadre IS NULL \n" +
+                "AND po.categoria = :categoria";
             TypedQuery<Post> query = em.createQuery(jpql, Post.class);
             query.setParameter("categoria", categoria);
             return query.getResultList();

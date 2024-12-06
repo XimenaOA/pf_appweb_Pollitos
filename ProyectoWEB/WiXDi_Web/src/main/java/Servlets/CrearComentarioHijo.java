@@ -4,6 +4,8 @@
  */
 package Servlets;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.SerializationFeature;
 import control.Fachada;
 import control.IFachada;
 import dominio.Comentario;
@@ -19,6 +21,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import java.util.Date;
+import java.util.List;
 
 /**
  *
@@ -101,7 +104,7 @@ public class CrearComentarioHijo extends HttpServlet {
 
             String content = request.getParameter("comentario");
             System.out.println("Contenido de la respuesta: " + content);
-            
+
             // Obtener la sesión y el usuario autenticado
             HttpSession objSesion = request.getSession(false);
             Usuario usuario = objSesion != null ? (Usuario) objSesion.getAttribute("usuario") : null;
@@ -138,9 +141,11 @@ public class CrearComentarioHijo extends HttpServlet {
             Comentario comentatio = new Comentario(new Date(), content, usuario, post, comentarioPadre);
 
             // Usar la fachada de comentarios para agregar el comentario
-            fachada.agregarComentario(comentatio, post);
+            fachada.agregarComentarioAComentario(comentatio, comentarioPadre);
 
             System.out.println("Se manda a la base de datos el comentario");
+
+            fachada.consultarComentario(postHijojId).getComentariosHijos();
 
             // Responder con éxito
             response.setContentType("application/json");
