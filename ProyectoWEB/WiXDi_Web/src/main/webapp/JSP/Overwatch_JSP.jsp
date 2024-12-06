@@ -10,7 +10,9 @@
 <%
     HttpSession objSesion = request.getSession(false);
     Usuario usuario = objSesion != null ? (Usuario) objSesion.getAttribute("usuario") : null;
-     String currentGame = "Overwatch";
+    String avatarSession = usuario.getImagen();
+    String nombreSession = usuario.getNombre();
+    String currentGame = "Overwatch";
 %>
 <!DOCTYPE html>
 <html lang="es">
@@ -62,11 +64,13 @@
         <script src="../JS/CrearPost.js"></script>
         <script src="../JS/ObtenerPosts.js"></script>
         <script src="../JS/script.js"></script>
-         <!-- Variable global que contiene el nombre del juego -->
+        <!-- Variable global que contiene el nombre del juego -->
         <script>
-            var currentGame = "<%= currentGame %>"; // Esta variable estará disponible en todos tus archivos JS
-            console.log(currentGame); // Puedes verificar que se asignó correctamente
+                        var nombreSession = "<%= nombreSession%>";
+                        var avatarSession = "<%= avatarSession%>";
+                        var currentGame = "<%= currentGame%>"; // Esta variable estará disponible en todos tus archivos JS
+                        console.log(currentGame); // Puedes verificar que se asignó correctamente
         </script>
-        
+
     </body>
 </html>
