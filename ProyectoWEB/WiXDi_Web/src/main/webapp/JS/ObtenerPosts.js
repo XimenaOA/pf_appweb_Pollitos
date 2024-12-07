@@ -133,6 +133,28 @@ function cargarPosts() {
                             ? `<img src="data:image/png;base64,${post.foto}" alt="Imagen del post" class="post-image">`
                             : "";
 
+
+
+//                    //AQUI AGREGUE EL ICONO PARA ELIMINAR POST (SOLO ADMINSSS)-----------------------------             
+//
+//                    const deleteIcon = esAdministrador
+//                            ? `<span class="delete-post-icon" onclick="eliminarPost(${post.idPost})">🗑️</span>`
+//                            : '';
+//
+//                    postElement.innerHTML = `
+//                    <div class="post-header">
+//                        <img src="${avatar}" alt="Avatar" class="avatar">
+//                        <span class="username">${post.autor?.nombre || "Usuario desconocido"}</span>
+//                        ${deleteIcon}
+//                    </div>
+//                    <div class="post-content">
+//                        <p>${post.contenido || ""}</p>
+//                        ${contentImage}
+//                    </div>            
+//                 `;
+            
+
+
                     const commentsHTML = post.comentarios && post.comentarios.length > 0
                             ? post.comentarios.map((comentario) => {
                                 const comentarioAvatar = comentario.usuario?.imagen
@@ -171,7 +193,7 @@ function cargarPosts() {
                             <div class="nested-comment-form">
                                 <input type="text" class="nested-comment-input" placeholder="Responder...">
                                 <button class="nested-comment-button" 
-                                        data-post-id="${post.idPost}" 
+                                        datapost-id="${post.idPost}" 
                                         data-parent-comment-id="${comentario.id}">
                                     Responder
                                 </button>
@@ -235,4 +257,54 @@ function crearComentario(postID, comentario) {
                     });
                 }
             });
+
+    // Función para eliminar posts
+    function eliminarPost(postId) {
+        Swal.fire({
+            title: '¿Estás seguro?',
+            text: "No podrás revertir esta acción",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Sí, eliminar',
+            cancelButtonText: 'Cancelar'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                const formData = new FormData();
+                formData.append("postId", postId);
+
+                fetch("http://localhost:8080/WiXDi_Web/EliminarPostsServlet", {
+                    method: "POST",
+                    body: formData
+                })
+                        .then((response) => response.json())
+                        .then((data) => {
+                            if (data.success) {
+                                Swal.fire(
+                                        'Eliminado',
+                                        'El post ha sido eliminado.',
+                                        'success'
+                                        );
+                                // Recargar los posts después de eliminar
+                                cargarPosts();
+                            } else {
+                                Swal.fire(
+                                        'Error',
+                                        data.error || 'No se pudo eliminar el post',
+                                        'error'
+                                        );
+                            }
+                        })
+                        .catch((error) => {
+                            console.error("Error:", error);
+                            Swal.fire(
+                                    'Error',
+                                    'Hubo un problema al eliminar el post',
+                                    'error'
+                                    );
+                        });
+            }
+        });
+    }
 }

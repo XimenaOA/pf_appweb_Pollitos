@@ -47,6 +47,11 @@
                     <button type="button" class="post-button">📷</button>
                     <% }%>
                 </div>
+                
+                
+               <!-- ELIMINAR POSTS -->
+                
+
 
                 <!-- Contenedor de posts vacío -->
                 <div class="posts"></div>
@@ -66,5 +71,7 @@
                         var currentGame = "<%= currentGame%>"; // Esta variable estará disponible en todos tus archivos JS
                         console.log(currentGame); // Puedes verificar que se asignó correctamente
         </script>
+
+        
     </body>
 </html>

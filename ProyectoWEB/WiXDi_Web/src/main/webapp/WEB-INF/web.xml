@@ -32,6 +32,10 @@
         <servlet-name>ObtenerRespuestasServlet</servlet-name>
         <servlet-class>Servlets.ObtenerRespuestasServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>EliminarPostsServlet</servlet-name>
+        <servlet-class>Servlets.EliminarPostsServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Registrar_Servlet</servlet-name>
         <url-pattern>/Registrar_Servlet</url-pattern>
@@ -64,6 +68,10 @@
         <servlet-name>ObtenerRespuestasServlet</servlet-name>
         <url-pattern>/ObtenerRespuestasServlet</url-pattern>
     </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>EliminarPostsServlet</servlet-name>
+        <url-pattern>/EliminarPostsServlet</url-pattern>
+    </servlet-mapping>
     <session-config>
         <session-timeout>
             30
@@ -85,4 +93,10 @@
         <filter-name>AutenticadorFiltro</filter-name>
         <url-pattern>/JSP/*</url-pattern>
     </filter-mapping>
+    
+    
+    
+
+
+    
 </web-app>
