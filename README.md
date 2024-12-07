@@ -10,3 +10,5 @@
 - **Wilber Valdez Quintero** - ID: 00000247180  
 - **Ximena Oliva Andrade** - ID: 00000247563  
 - **Diego Alcantar Acosta** - ID: 00000247122
+
+una disculpa por el nombre del ultimo commit del "main" 🙄
